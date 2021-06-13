@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class coupon extends Model
 {
-    use HasFactory;
+    protected $table = "coupon";
+    protected $fillable = ['coupon_id', 'code' ,'description','active','value','start_date','end_date','discount_value','created_at', 'update_at' ,'retired'];
+    public $timestamps = true;
 }

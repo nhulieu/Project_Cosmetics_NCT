@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class tag extends Model
 {
-    use HasFactory;
+    protected $table = "tag";
+    protected $fillable = ['tag_ id','label','description','created_at', 'update_at' ,'retired'];
+    public $timestamps = true;
 }

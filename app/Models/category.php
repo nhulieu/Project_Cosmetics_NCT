@@ -8,13 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class category extends Model
 {
     protected $table = "category";
-    public $incrementing = false;
-    public function game(){
-        $product = product::find($this->prod_id);
-        return $product;
-    }
-    public function category(){
-        $category = category::find($this->cat_id);
-        return $category;
-    }
+    protected $fillable = ['cat_id', 'label' , 'created_at', 'update_at' ,'retired'];
+    public $timestamps = true;
 }
