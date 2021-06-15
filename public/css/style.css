@@ -236,6 +236,7 @@ h2 {
 /**********************************/
 .nav {
     position: relative;
+    margin-bottom: 30px;
 }
 
 @media (min-width: 992px) {
@@ -310,7 +311,7 @@ h2 {
 .bottom-bar {
     padding: 15px 0;
     background: #ffffff;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .bottom-bar .logo {

@@ -14,15 +14,21 @@ class Product extends Migration
     public function up()
     {
         Schema::create('product', function (Blueprint $table) {
-            $table->bigIncrements('ID');
-            $table->string('NAME', 100)->nullable();
-            $table->longText('DESCRIPTION')->nullable();
-            $table->boolean('RETIRED')->default(0);
-            $table->integer('STATUS')->nullable();
-            $table->float('PRICE')->nullable();
-            $table->integer('SALE')->nullable();
+            $table->increments('id');
+            $table->string('name', 250)->nullable();
+            $table->integer('category_id')->unsigned()->nullable();
+            $table->integer('brand_id')->unsigned()->nullable();
+            $table->longText('description')->nullable();            
+            $table->integer('status')->nullable();
+            $table->float('price')->nullable();
+            $table->integer('discount')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->integer('tax')->nullable();
+            $table->integer('feature')->nullable();
+            $table->integer('mark')->nullable();
+            $table->boolean('retired')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));       
         });
     }
 

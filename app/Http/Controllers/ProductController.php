@@ -27,7 +27,6 @@ class ProductController extends Controller
     public function index(){
         $products = product::all()->toArray();
         $gridProducts = $this->paginate($products, 9);
-        //dd($gridProducts);
         return view("index",["gridItems"=>$gridProducts, "page"=>0]);
     }
 }

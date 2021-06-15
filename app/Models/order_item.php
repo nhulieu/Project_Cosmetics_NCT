@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class order_item extends Model
 {
     protected $table = "order_item";
-    protected $fillable = ['or_id', 'prod_id', 'order_date', 'quantity', 'created_at', 'update_at', 'retired'];
+    protected $fillable = ['id', 'product_id', 'order_id', 'quantity', 'created_at', 'updated_at', 'retired'];
     public $timestamps = true;
 }

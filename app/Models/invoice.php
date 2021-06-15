@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class invoice extends Model
 {
     protected $table = "invoice";
-    protected $fillable = ['invoice_id', 'receive_date' ,'recipient_fname','recipient_lname','recipient_phone','recipient_address','invoice_date','type','created_at', 'update_at' ,'retired'];
+    protected $fillable = ['id', 'receive_date' ,'recipient_fname','recipient_lname','recipient_phone','recipient_address','type','created_at', 'updated_at' ,'retired','order_id'];
     public $timestamps = true;
 }
