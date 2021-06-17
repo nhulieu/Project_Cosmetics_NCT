@@ -21,16 +21,16 @@ class CreateUsersTable extends Migration
             $table->string('username', 50)->nullable(false);
             $table->string('password', 100)->nullable(false);
             $table->string('address')->nullable(false);
-            $table->string('token')->nullable();            
+            $table->string('token')->nullable();
             $table->boolean('active')->nullable()->default(false);
-            $table->float('amount_spend')->nullable();            
-            $table->integer('type')->unsigned()->nullable()->default(0);  
-            $table->boolean('retired')->nullable()->default(false);            
+            $table->float('amount_spend')->nullable();
+            $table->integer('type')->unsigned()->nullable()->default(0);
+            $table->boolean('retired')->nullable()->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
-        
+
     }
 
     /**

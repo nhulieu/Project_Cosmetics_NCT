@@ -9,4 +9,24 @@ class user extends Model
     protected $table = "user";
     protected $fillable = ['id','fname','lname','email','username','password','address','token','active','amount_spend','type','updated_at','created_at','retired'];
     public $timestamps = true;
+
+    function UserType(){
+        switch ($this->type) {
+            case 0:
+                return "Supervisor";
+                break;
+
+            case 1:
+                return "Admin";
+                break;
+
+            case 2:
+                return "User";
+                break;
+
+            default:
+                # code...
+                break;
+        }
+    }
 }
