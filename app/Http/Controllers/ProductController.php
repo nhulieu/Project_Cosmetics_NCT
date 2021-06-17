@@ -29,4 +29,5 @@ class ProductController extends Controller
         $gridProducts = $this->paginate($products, 9);
         return view("index",["gridItems"=>$gridProducts, "page"=>0]);
     }
+
 }
