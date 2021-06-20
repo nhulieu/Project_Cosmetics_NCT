@@ -6,7 +6,7 @@
                 <div class="footer-widget">
                     <h2>Get in Touch</h2>
                     <div class="contact-info">
-                        <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
+                        <p><i class="fa fa-map-marker"></i>590 Cach Mang Thang Tam, Ward 11, District 3, Ho Chi Minh City</p>
                         <p><i class="fa fa-envelope"></i>email@example.com</p>
                         <p><i class="fa fa-phone"></i>+123-456-7890</p>
                     </div>
@@ -76,11 +76,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 copyright">
-                <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
+                <p>Copyright &copy; <a href="">FPTAptch</a>. All Rights Reserved</p>
             </div>
 
             <div class="col-md-6 template-by">
-                <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                <p>A Product of <a href="">NCTGroup</a></p>
             </div>
         </div>
     </div>

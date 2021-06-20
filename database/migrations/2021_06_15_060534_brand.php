@@ -16,7 +16,7 @@ class Brand extends Migration
         Schema::create('brand', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 250)->nullable();   
-            $table->string('slogan', 250)->nullable();   
+            $table->string('slogan', 300)->nullable();   
             $table->string('logo', 250)->nullable();   
             $table->boolean('retired')->nullable()->default(false);            
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
@@ -31,6 +31,6 @@ class Brand extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('brand');
     }
 }

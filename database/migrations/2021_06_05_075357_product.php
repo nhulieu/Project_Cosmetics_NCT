@@ -24,7 +24,7 @@ class Product extends Migration
             $table->integer('discount')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('tax')->nullable();
-            $table->integer('feature')->nullable();
+            $table->longText('feature')->nullable();
             $table->integer('mark')->nullable();
             $table->boolean('retired')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -36,6 +36,6 @@ class Coupon extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('coupon');
     }
 }

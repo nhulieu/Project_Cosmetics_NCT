@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Client\ProductController;
+use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Admin\ProductController;
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,10 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
-Route::view('/home','welcome');
+//Route::view('/home','welcome');
+Route::get('/', [ProductController::class, "index"]);
+Route::get('/contact', [ClientController::class, "contact"]);
 
-Route::get('/', [\App\Http\Controllers\ProductController::class, "index"]);
 
 //Category
 Route::get('/category',[CategoryController::class, 'home']);
