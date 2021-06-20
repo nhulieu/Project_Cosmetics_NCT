@@ -14,10 +14,10 @@ class Review extends Migration
     public function up()
     {
         Schema::create('review', function (Blueprint $table) {
-            $table->increments('id');                   
+            $table->increments('id');
             $table->integer('mark')->nullable()->default(0);
-            $table->string('content')->nullable();            
-            $table->boolean('retired')->nullable()->default(false);            
+            $table->string('content')->nullable();
+            $table->boolean('retired')->nullable()->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->integer('user_id')->unsigned();
@@ -32,6 +32,6 @@ class Review extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('review');
     }
 }

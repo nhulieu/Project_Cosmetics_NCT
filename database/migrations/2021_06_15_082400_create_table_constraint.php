@@ -43,11 +43,16 @@ class CreateTableConstraint extends Migration
         Schema::table('invoice', function (Blueprint $table) {
             $table->foreign('order_id')->references('id')->on('order')->onDelete('CASCADE')->onUpdate('CASCADE');    
         });
+        
         Schema::table('review', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('user')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('product_id')->references('id')->on('product')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
-        
+
+        Schema::table('wishlist', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('product_id')->references('id')->on('product')->onDelete('CASCADE')->onUpdate('CASCADE');
+        });        
     }
 
     /**

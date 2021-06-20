@@ -1,7 +1,10 @@
 @extends('layout.layout')
 @section('title', 'Homepage')
 @section('content')
-    <!-- Main Slider Start -->
+    <!-- Main Slider Start -->    
+    {{-- @foreach ($listItem as $item )
+
+    @endforeach --}}
     <div class="header">
         <div class="container-fluid">
             <div class="row">

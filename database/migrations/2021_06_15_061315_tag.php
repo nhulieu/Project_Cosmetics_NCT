@@ -30,6 +30,6 @@ class Tag extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tag');
     }
 }

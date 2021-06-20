@@ -20,7 +20,7 @@
                         <div class="dropdown-menu">
                             <a href="wishlist.html" class="dropdown-item">Wishlist</a>
                             <a href="login.html" class="dropdown-item">Login & Register</a>
-                            <a href="contact.html" class="dropdown-item">Contact Us</a>
+                            <a href="/contact" class="dropdown-item">Contact Us</a>
                         </div>
                     </div>
                 </div>
