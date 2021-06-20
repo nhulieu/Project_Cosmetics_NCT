@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Client\ProductController;
 use App\Http\Controllers\Client\ClientController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\AdminProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,25 +46,25 @@ Route::get('/tag/update/{id}', [TagController::class, 'update']);
 Route::post('/tag/postUpdate/{id}',[TagController::class, 'postUpdate']);
 
 //Product
-Route::get('product/home', [ProductController::class, 'home']);
-Route::get('product/create', [ProductController::class, 'create']);
-Route::post('product/postCreate', [ProductController::class, 'postCreate']);
-Route::get('product/update/{id}', [ProductController::class, 'update']);
-Route::post('product/postUpdate/{id}', [ProductController::class, 'postUpdate']);
-Route::get('product/delete/{id}', [ProductController::class, 'delete']);
-Route::get('product/view/{id}', [ProductController::class, 'viewDetail']);
+Route::get('product/home', [AdminProductController::class, 'home']);
+Route::get('product/create', [AdminProductController::class, 'create']);
+Route::post('product/postCreate', [AdminProductController::class, 'postCreate']);
+Route::get('product/update/{id}', [AdminProductController::class, 'update']);
+Route::post('product/postUpdate/{id}', [AdminProductController::class, 'postUpdate']);
+Route::get('product/delete/{id}', [AdminProductController::class, 'delete']);
+Route::get('product/view/{id}', [AdminProductController::class, 'viewDetail']);
 
 //Images
-Route::get('product/image/{id}', [ProductController::class, 'image']);
-Route::get('product/createImage/{id}', [ProductController::class, 'createImage']);
-Route::post('product/postCreateImage/{id}', [ProductController::class, 'postCreateImage']);
-Route::get('product/updateImage/{id}', [ProductController::class, 'updateImage']);
-Route::post('product/postUpdateImage/{id}', [ProductController::class, 'postUpdateImage']);
-Route::get('product/deleteImage/{id}', [ProductController::class, 'deleteImage']);
+Route::get('product/image/{id}', [AdminProductController::class, 'image']);
+Route::get('product/createImage/{id}', [AdminProductController::class, 'createImage']);
+Route::post('product/postCreateImage/{id}', [AdminProductController::class, 'postCreateImage']);
+Route::get('product/updateImage/{id}', [AdminProductController::class, 'updateImage']);
+Route::post('product/postUpdateImage/{id}', [AdminProductController::class, 'postUpdateImage']);
+Route::get('product/deleteImage/{id}', [AdminProductController::class, 'deleteImage']);
 
 //Reviews
-Route::get('product/review/{id}', [ProductController::class, 'review']);
-Route::get('product/deleteReviews/{id}', [ProductController::class, 'deleteReview']);
+Route::get('product/review/{id}', [AdminProductController::class, 'review']);
+Route::get('product/deleteReviews/{id}', [AdminProductController::class, 'deleteReview']);
 
 //Feedback
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
-class ProductController extends Controller
+class AdminProductController extends Controller
 {
     public function home()
     {
@@ -34,7 +34,7 @@ class ProductController extends Controller
     public function delete($id)
     {
         product::where("id", $id)->update(['retired' => '1']);
-        return redirect()->action([ProductController::class, 'home']);
+        return redirect()->action([AdminProductController::class, 'home']);
     }
 
     public function review($id)
@@ -95,11 +95,11 @@ class ProductController extends Controller
                 $newImage->save();
 
                 $images = image::where('product_id', '=', $id)->get();
-                return redirect()->action([ProductController::class, 'image'], ["id" => $id, "images" => $images]);
+                return redirect()->action([AdminProductController::class, 'image'], ["id" => $id, "images" => $images]);
             }
         } catch (\Throwable $throwable) {
             DB::rollback();
-            return redirect()->action([ProductController::class, 'update']);
+            return redirect()->action([AdminProductController::class, 'update']);
         }
     }
 
@@ -139,7 +139,7 @@ class ProductController extends Controller
 
         $success = $image->where('id', $id)
             ->update(['path' => $newPath, 'cover' => $cover]);
-        return redirect()->action([ProductController::class, 'image'], ["id" => $image->product_id, "images" => $images]);
+        return redirect()->action([AdminProductController::class, 'image'], ["id" => $image->product_id, "images" => $images]);
     }
 
     public function deleteImage($id)
