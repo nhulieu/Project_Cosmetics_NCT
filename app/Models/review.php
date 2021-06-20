@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Models\user;
 use Illuminate\Database\Eloquent\Model;
 
 class review extends Model
@@ -17,4 +16,3 @@ class review extends Model
         return $user->fname . " " . $user->lname;
     }
 }
-
