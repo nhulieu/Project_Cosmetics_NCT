@@ -9,7 +9,7 @@ use App\Models\product;
 class category extends Model
 {
     protected $table = "category";
-    protected $fillable = ['id', 'label', 'description', 'created_at', 'updated_at' ,'retired'];
+    protected $fillable = ['id', 'name', 'description', 'created_at', 'updated_at' ,'retired'];
     public $timestamps = true;
 
     public function products()

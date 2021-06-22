@@ -21,9 +21,19 @@ class BrandController extends Controller
 
     public function postCreate(Request $request)
     {
-        $brand = $request->all();
-        $b = new brand($brand);
-        $b->save();
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageName = $request->file('image')->getClientOriginalName();
+
+        $request->file('image')->move(public_path('img/brand/'), $imageName);
+
+        $brand = brand::create([
+            'name' => $request->input('name'),
+            'slogan' => $request->input('slogan'),
+            'logo' => $imageName
+        ]);
+
         return redirect()->action([BrandController::class, 'home']);
     }
 
@@ -49,6 +59,12 @@ class BrandController extends Controller
     {
         $brand = brand::where('id', $id);
         $brand->update(['retired' => '1']);
+        return redirect()->action([BrandController::class, 'home']);
+    }
+
+    public function sureDelete($id)
+    {
+        brand::where('id', $id)->delete();
         return redirect()->action([BrandController::class, 'home']);
     }
 }

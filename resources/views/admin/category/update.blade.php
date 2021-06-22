@@ -14,7 +14,11 @@
             </div>
             <div class="form-group">
                 <label for="txt-name">Category Name</label>
-                <input type="text" class="form-control" id="label" name="label" value="{{ $category->label }}">
+                <input type="text" class="form-control" id="name" name="name" value="{{ $category->name }}">
+            </div>
+            <div class="form-group">
+                <label for="txt-name">Description</label>
+                <input type="text" class="form-control" id="description" name="description" value="{{ $category->description }}">
             </div>
         </div>
         <!-- /.card-body -->

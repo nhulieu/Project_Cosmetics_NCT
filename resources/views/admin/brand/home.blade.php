@@ -30,7 +30,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="categories" class="table table-bordered table-hover">
+                        <table id="brands" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -46,7 +46,7 @@
                                     <th scope="row">{{ $b->id }}</th>
                                     <td>{{ $b->name }}</td>
                                     <td>{{ $b->slogan }}</td>
-                                    <td>{{ $b->logo }}</td>
+                                    <td><img src="{{ asset('img/brand/'. $b->logo) }}" alt="{{ $b->name }}" style="width: 50px; height: 50px"></td>
                                     <td class="text-left">
                                         <a class="btn btn-info btn-sm"
                                            href="{{ url('/brand/update/'.$b->id) }}">
@@ -54,7 +54,7 @@
                                         </a>
 
                                         <a class="btn btn-danger btn-sm"
-                                           href="">
+                                           href="{{ url('/brand/delete/' . $b->id) }}">
                                             <i class="fas fa-trash"></i> Delete
                                         </a>
                                     </td>
@@ -74,7 +74,21 @@
 @stop
 
 @section('js')
-
+    <script>
+        $(document).ready(function () {
+            $('#brands').DataTable({
+                pageLength: 5,
+                paging: true,
+                lengthChange: false,
+                searching: true,
+                ordering: true,
+                info: true,
+                autoWidth: true,
+                // sScrollX: "300%",
+                bScrollCollapse: true,
+            });
+        });
+    </script>
 @stop
 
 @section('footer')
