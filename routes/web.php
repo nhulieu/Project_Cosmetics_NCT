@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\FeedbackController;
 //Route::view('/home','welcome');
 Route::get('/', [ProductController::class, "index"]);
 Route::get('/contact', [ClientController::class, "contact"]);
+Route::get('/product-list', [ClientController::class, "product"]);
+Route::get('/product-list/', [ClientController::class, "product"]);
 
 
 //Category

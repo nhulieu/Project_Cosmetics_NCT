@@ -10,4 +10,9 @@ class brand extends Model
     protected $table = "brand";
     protected $fillable = ['id', 'name', 'slogan', 'logo' , 'created_at', 'updated_at' ,'retired'];
     public $timestamps = true;
+
+    public function products()
+    {
+        return $this->hasMany(coupon::class);
+    }
 }

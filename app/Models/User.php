@@ -29,4 +29,9 @@ class user extends Model
                 break;
         }
     }
+
+    public function orders()
+    {
+        return $this->hasMany(order::class);
+    }
 }

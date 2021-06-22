@@ -83,4 +83,14 @@ class product extends Model
                 break;
         }
     }
+
+    public function category()
+    {
+        return $this->belongsTo(category::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(image::class);
+    }
 }
