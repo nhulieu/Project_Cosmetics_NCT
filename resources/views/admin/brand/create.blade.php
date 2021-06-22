@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    <form action="{{ route('createBrand') }}" method="post" >
+    <form action="{{ route('createBrand') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -17,14 +17,14 @@
                 <input type="text" class="form-control" id="txt-name" name="slogan" placeholder="Slogan">
             </div>
             <div class="form-group">
-                <label for="txt-name">Logo</label>
-                <input type="text" class="form-control" id="txt-name" name="logo" placeholder="logo">
+                <label for="txt-name">Logo :</label>
+                <input type="file" id="image" name="image" placeholder="logo">
             </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-danger" onclick="">Cancel</button>
+            <a href="{{ url('/brand') }}" class="btn btn-danger">Cancel</a>
         </div>
     </form>
 @stop

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\category;
 use App\Models\image;
 use App\Models\product;
+use App\Models\product_tag;
 use App\Models\review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +30,34 @@ class AdminProductController extends Controller
 
     public function postCreate(Request $request)
     {
+        try {
+            $product = $request->all();
+            $newProduct = new product();
+            $newProduct->name = $product['name'];
+            $newProduct->description = $product['description'];
+            $newProduct->status = $product['status'];
+            $newProduct->price = $product['price'];
+            $newProduct->discount = $product['discount'];
+            $newProduct->quantity = $product['quantity'];
+            $newProduct->tax = $product['tax'];
+            $newProduct->feature = $product['feature'];
+            $newProduct->mark = $product['mark'];
+            $newProduct->id = $newProduct->nextID();
 
+            $newProduct->save();
+
+            foreach ($product['tag'] as $t) {
+                $product_tag = new product_tag();
+                $product_tag->product_id = $newProduct->id;
+                $product_tag->tag_id = $newProduct->$t;
+            }
+
+
+        } catch (\Throwable $throwable) {
+            DB::rollBack();
+            return redirect()->action([AdminProductController::class, 'home']);
+
+        }
     }
 
     public function delete($id)
@@ -170,7 +199,7 @@ class AdminProductController extends Controller
     public function viewDetail($id)
     {
         $product = product::find($id);
-        return view('admin.product.viewDetail',[
+        return view('admin.product.viewDetail', [
             'product' => $product
         ]);
     }

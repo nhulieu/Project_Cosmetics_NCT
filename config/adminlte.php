@@ -265,7 +265,21 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'View Categories',
+            'text' => 'Products',
+            'icon' => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'View All',
+                    'url' => 'http://127.0.0.1:8000/product',
+                ],
+                [
+                    'text' => 'Add new',
+                    'url' => 'http://127.0.0.1:8000/product/create',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Categories',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -279,7 +293,7 @@ return [
             ],
         ],
         [
-            'text' => 'View Brand',
+            'text' => 'Brand',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -293,7 +307,7 @@ return [
             ]
         ],
         [
-            'text' => 'View Tag',
+            'text' => 'Tag',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -307,7 +321,7 @@ return [
             ],
         ],
         [
-            'text' => 'View Order',
+            'text' => 'Order',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -317,7 +331,7 @@ return [
             ],
         ],
         [
-            'text' => 'View Feedback',
+            'text' => 'Feedback',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -381,21 +395,21 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],

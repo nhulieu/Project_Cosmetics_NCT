@@ -20,7 +20,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-danger" onclick="">Cancel</button>
+            <a href="{{ url('/tag/') }}" class="btn btn-danger">Cancel</a>
         </div>
     </form>
 @stop

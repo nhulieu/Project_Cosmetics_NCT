@@ -37,7 +37,10 @@ class CategoryController extends Controller
     {
         $category = $request->all();
         $c = category::where('id', $id);
-        $c->update(['label' => $category['label']]);
+        $c->update([
+            'name' => $category['name'],
+            'description' => $category['description']
+        ]);
         return redirect()->action([CategoryController::class, 'home']);
     }
 
