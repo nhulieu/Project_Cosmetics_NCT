@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email', 250)->unique();
             $table->string('username', 50)->nullable(false);
             $table->string('password', 100)->nullable(false);
-            $table->string('address')->nullable(false);
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable(false);
             $table->string('token')->nullable();
             $table->boolean('active')->nullable()->default(false);
             $table->float('amount_spend')->nullable();

@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Prodcuts</li>
+                <li class="breadcrumb-item active">Products</li>
             </ul>
         </div>
     </div>
@@ -74,13 +74,13 @@
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        <a href="{{url('/product-detail/'.$item->id)}}">
+                                        <a href="{{url('/product-details/'.$item->id)}}">
                                             <img src="img/brand_logo/vaseline.png" alt="Product Image">
                                         </a>
                                         <div class="product-action">
                                             <a href="#"><i class="fa fa-cart-plus"></i></a>
                                             <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
+                                            <a href="{{url('/product-details/'.$item->id)}}"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-price">
