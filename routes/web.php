@@ -22,12 +22,20 @@ use App\Http\Controllers\Admin\UserController;
 */
 
 //Route::view('/home','welcome');
-Route::get('/', [ProductController::class, "index"]);
+Route::get('/signin', [ClientController::class, "signin"]);
+Route::post('/signin', [ClientController::class, "postSignin"]);
+Route::post('/signup', [ClientController::class, "postSignup"]);
+Route::get('/', [ClientController::class, "home"]);
 Route::get('/contact', [ClientController::class, "contact"]);
-Route::get('/login', [UserController::class, 'login']);
-Route::post('/checkLogin', [UserController::class, 'checkLogin']);
-Route::get('/register', [UserController::class, 'register']);
-Route::post('/postRegister', [UserController::class, 'postRegister'])->name('postRegister');
+Route::get('/product-list', [ClientController::class, "product"]);
+Route::get('/wishlist', [ClientController::class, "wishlist"]);
+Route::get('/about', [ClientController::class, "about"]);
+Route::get('/my-account', [ClientController::class, "account"]);
+Route::get('/order', [ClientController::class, "order"]);
+Route::get('/order-details', [ClientController::class, "orderDetails"]);
+Route::get('/product-details/{id}', [ClientController::class, "productDetails"]);
+
+
 
 //Category
 Route::get('/category', [CategoryController::class, 'home']);

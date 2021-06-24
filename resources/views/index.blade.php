@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Homepage')
+@section('title', 'Home')
 @section('content')
     <!-- Main Slider Start -->    
     {{-- @foreach ($listItem as $item )

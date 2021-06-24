@@ -23,4 +23,9 @@ class image extends Model
     {
         return basename($this->path);
     }
+
+    public function product()
+    {
+        return $this->belongsTo(product::class);
+    }
 }

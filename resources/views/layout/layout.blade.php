@@ -28,21 +28,9 @@
 
 <body>
 
-
-<!-- Breadcrumb Start -->
-<div class="breadcrumb-wrap">
-    <div class="container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Root</a></li>
-            <li class="breadcrumb-item"><a href="#">Branch 1</a></li>
-            <li class="breadcrumb-item active">Branch 2</li>
-        </ul>
-    </div>
-</div>
-<!-- Breadcrumb End -->
-<!-- HEADER -->
-@include('layout.header')
-<!-- /HEADER-->
+    <!-- HEADER -->
+    @include('layout.header')
+    <!-- /HEADER-->
 
 <!-- NAVIGATION -->
 @include('layout.navigation')

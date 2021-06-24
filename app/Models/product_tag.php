@@ -12,14 +12,12 @@ class product_tag extends Model
 
     public function product()
     {
-        $product = product::find($this->product_id);
-        return $product;
+        return $this->belongsTo(product::class);
     }
 
     public function tag()
     {
-        $tag = tag::find($this->tag_id);
-        return $tag;
+        return $this->belongsTo(tag::class);
     }
 }
 
