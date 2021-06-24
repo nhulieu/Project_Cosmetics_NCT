@@ -14,7 +14,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -29,45 +29,45 @@
 <body>
 
 
-
-    <!-- Breadcrumb Start -->
-    <div class="breadcrumb-wrap">
-        <div class="container-fluid">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Root</a></li>
-                <li class="breadcrumb-item"><a href="#">Branch 1</a></li>
-                <li class="breadcrumb-item active">Branch 2</li>
-            </ul>
-        </div>
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Root</a></li>
+            <li class="breadcrumb-item"><a href="#">Branch 1</a></li>
+            <li class="breadcrumb-item active">Branch 2</li>
+        </ul>
     </div>
-    <!-- Breadcrumb End -->
-    <!-- HEADER -->
-    @include('layout.header')
-    <!-- /HEADER-->
+</div>
+<!-- Breadcrumb End -->
+<!-- HEADER -->
+@include('layout.header')
+<!-- /HEADER-->
 
-    <!-- NAVIGATION -->
-    @include('layout.navigation')
-    <!-- /NAVIGATION-->
+<!-- NAVIGATION -->
+@include('layout.navigation')
+<!-- /NAVIGATION-->
 
-    <!-- section -->
-    @yield('content')
-    <!-- /section -->
+<!-- section -->
+@yield('content')
+<!-- /section -->
 
-    <!-- FOOTER -->
-    @include('layout.footer')
-    <!-- /FOOTER-->
+<!-- FOOTER -->
+@include('layout.footer')
+<!-- /FOOTER-->
 
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
-
-    <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+<script src="{{ asset('lib/slick/slick.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-show-password.min.js') }}"></script>
+<!-- Template Javascript -->
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>

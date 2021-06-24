@@ -46,7 +46,7 @@
                                     <th scope="row">{{ $b->id }}</th>
                                     <td>{{ $b->name }}</td>
                                     <td>{{ $b->slogan }}</td>
-                                    <td><img src="{{ asset('img/brand/'. $b->logo) }}" alt="{{ $b->name }}" style="width: 50px; height: 50px"></td>
+                                    <td><img src="{{ asset('img/brand_logo/'. $b->logo) }}" alt="{{ $b->name }}" style="width: 50px; height: 50px"></td>
                                     <td class="text-left">
                                         <a class="btn btn-info btn-sm"
                                            href="{{ url('/brand/update/'.$b->id) }}">

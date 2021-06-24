@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    <form action="{{ url('/brand/postUpdate/'.$brand->id) }}" method="post" >
+    <form action="{{ url('/brand/postUpdate/'.$brand->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -22,13 +22,13 @@
             </div>
             <div class="form-group">
                 <label for="txt-name">Logo</label>
-                <input type="text" class="form-control" id="logo" name="logo" value="{{ $brand->logo }}">
+                <input type="file" id="image" name="image">
             </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-danger" onclick="">Cancel</button>
+            <a href="{{ url('/brand/') }}" class="btn btn-danger">Cancel</a>
         </div>
     </form>
 @stop

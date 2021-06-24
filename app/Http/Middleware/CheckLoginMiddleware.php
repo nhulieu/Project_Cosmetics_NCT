@@ -14,14 +14,11 @@ class CheckLoginMiddleware
      * @param \Closure $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        if ($request->session()->has('user')) {
+        if($request->session()->has('user')){
             return $next($request);
-        } elseif ($request->session()->get('user') == null) {
-            return redirect('login');
-        } else {
-            return redirect('login');
         }
+        return redirect('login');
     }
 }

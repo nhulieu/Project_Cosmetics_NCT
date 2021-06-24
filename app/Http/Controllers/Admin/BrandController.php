@@ -26,7 +26,7 @@ class BrandController extends Controller
         ]);
         $imageName = $request->file('image')->getClientOriginalName();
 
-        $request->file('image')->move(public_path('img/brand/'), $imageName);
+        $request->file('image')->move(public_path('img/brand_logo/'), $imageName);
 
         $brand = brand::create([
             'name' => $request->input('name'),
@@ -45,13 +45,17 @@ class BrandController extends Controller
 
     public function postUpdate(Request $request, $id)
     {
-        $brand = $request->all();
-        $b = brand::where('id', $id);
-        $b->update([
-            'name' => $brand['name'],
-            'slogan' => $brand['slogan'],
-            'logo' => $brand['logo']
-        ]);
+
+        $imageName = $request->file('image')->getClientOriginalName();
+
+        $request->file('image')->move(public_path('img/brand_logo/'), $imageName);
+
+        brand::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'slogan' => $request->input('slogan'),
+                'logo' => $imageName
+            ]);
         return redirect()->action([BrandController::class, 'home']);
     }
 

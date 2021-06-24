@@ -19,6 +19,9 @@
     </section>
 
     <div class="card-body">
+        <a class="btn btn-success btn-btn" href="{{ url('/product/create') }}">
+            <i class="fas fa-plus"></i> Add
+        </a>
         <table id="products" class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -39,25 +42,25 @@
                     <td>{{ $product->id }}</td>
                     <td>
                         <div class="row">
-                            <a class="btn btn-warning btn-sm" title="View" href="{{ url('/product/view/'. $product->id) }}">
+                            <a class="btn btn-warning btn-sm" title="Detail"
+                               href="{{ url('/product/view/'. $product->id) }}">
                                 <font style="color: white"><i class="fas fa-eye"></i></font>
                             </a>
-
-                            <a class="btn btn-info btn-sm" title="Edit" href=>
+                            <a class="btn btn-info btn-sm" title="Edit"
+                               href="{{ url('/product/update/' .$product->id) }}">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-
                             <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()" href="">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </div>
                         <div class="row">
-                            <a class="btn btn-primary btn-sm" title="Img" onclick=""
-                               href="">
+                            <a class="btn btn-primary btn-sm" title="Image" onclick=""
+                               href="{{ url('/product/image/' . $product->id) }}">
                                 <i class="fa fa-image" aria-hidden="true"></i>
                             </a>
-                            <a class="btn btn-dark btn-sm" title="Cmt" onclick=""
-                               href="">
+                            <a class="btn btn-dark btn-sm" title="Review" onclick=""
+                               href="{{ url('product/review/' . $product->id) }}">
                                 <i class="fas fa-comments" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -80,9 +83,10 @@
 
 @section('js')
     <script>
-        function removeNotify(){
+        function removeNotify() {
             alertify.success('Success Remove');
         }
+
         $(document).ready(function () {
             $('#products').DataTable({
                 pageLength: 5,
@@ -97,4 +101,8 @@
             });
         });
     </script>
+@stop
+
+@section('footer')
+    @include('admin.footer')
 @stop

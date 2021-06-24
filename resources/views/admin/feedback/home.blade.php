@@ -22,14 +22,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                {{--                    <div class="card-header">--}}
-                {{--                        <h3 class="card-title">--}}
-                {{--                            <a class="btn btn-success btn-btn" href="{{ url('/category/create') }}">--}}
-                {{--                                <i class="fas fa-plus"></i> Add--}}
-                {{--                            </a>--}}
-                {{--                        </h3>--}}
-                {{--                    </div>--}}
-                <!-- /.card-header -->
                     <div class="card-body">
                         <table id="categories" class="table table-bordered table-hover">
                             <thead>
