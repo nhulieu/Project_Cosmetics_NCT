@@ -29,18 +29,25 @@
                         <div class="col-md-7">
                             <div class="product-content">
                                 <div class="title">
-                                    <h2>Product Name</h2>
+                                    <h2>{{$product->name}}</h2>
                                 </div>
                                 <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                                    @for ($i = 0; $i < $product->mark; $i++)
+                                        <i class="fa fa-star"></i>
+                                        @endfor
                                 </div>
                                 <div class="price">
                                     <h4>Price:</h4>
-                                    <p>$99 <span>$149</span></p>
+                                    <p>
+                                        @if ($product->discount > 0)
+                                        {{$product->price - ($product->price * $product->discount / 100)}}
+                                        <span>
+                                            {{$product->price}}
+                                        </span>
+                                        @else
+                                        {{$product->price}}
+                                        @endif
+                                    </p>
                                 </div>
                                 <div class="quantity">
                                     <h4>Quantity:</h4>
@@ -50,7 +57,26 @@
                                         <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
-                                <div class="p-size">
+                                <div class="price">
+                                    <h4>Status:</h4>
+                                    <!-- <div class="qty"> -->
+                                    @if ($product->quantity > 0)
+                                    <button type="button" class="btn btn-success">Available</button>
+                                    @else
+                                    <button type="button" class="btn btn-danger">Unavailable</button>
+                                    @endif
+
+                                    <!-- </div> -->
+                                </div>
+                                <div class="price">
+                                    <h4>Category:</h4>
+                                    <button type="button" class="btn btn-success">{{$product->category->name}}</button>
+                                </div>
+                                <div class="price">
+                                    <h4>Brand:</h4>
+                                    <button type="button" class="btn btn-success">{{$product->brand->name}}</button>
+                                </div>
+                                <!-- <div class="p-size">
                                     <h4>Size:</h4>
                                     <div class="btn-group btn-group-sm">
                                         <button type="button" class="btn">S</button>
@@ -58,15 +84,15 @@
                                         <button type="button" class="btn">L</button>
                                         <button type="button" class="btn">XL</button>
                                     </div>
-                                </div>
-                                <div class="p-color">
+                                </div> -->
+                                <!-- <div class="p-color">
                                     <h4>Color:</h4>
                                     <div class="btn-group btn-group-sm">
                                         <button type="button" class="btn">White</button>
                                         <button type="button" class="btn">Black</button>
                                         <button type="button" class="btn">Blue</button>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="action">
                                     <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
                                     <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
@@ -94,18 +120,16 @@
                             <div id="description" class="container tab-pane active">
                                 <h4>Product description</h4>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque. Suspendisse sit amet neque neque. Praesent suscipit et magna eu iaculis. Donec arcu libero, commodo ac est a, malesuada finibus dolor. Aenean in ex eu velit semper fermentum. In leo dui, aliquet sit amet eleifend sit amet, varius in turpis. Maecenas fermentum ut ligula at consectetur. Nullam et tortor leo.
+                                    {{$product->description}}
                                 </p>
+
                             </div>
                             <div id="specification" class="container tab-pane fade">
                                 <h4>Product specification</h4>
                                 <ul>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Lorem ipsum dolor sit amet</li>
+                                    {{$product->feature}}
                                 </ul>
+
                             </div>
                             <div id="reviews" class="container tab-pane fade">
                                 <div class="reviews-submitted">
@@ -130,20 +154,22 @@
                                         <i class="far fa-star"></i>
                                         <i class="far fa-star"></i>
                                     </div>
-                                    <div class="row form">
-                                        <div class="col-sm-6">
-                                            <input type="text" placeholder="Name">
+                                    <form action="">
+                                        <div class="row form">
+                                            <div class="col-sm-6">
+                                                <input type="text" placeholder="Name">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="email" placeholder="Email">
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <textarea placeholder="Review"></textarea>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <button>Submit</button>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <input type="email" placeholder="Email">
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <textarea placeholder="Review"></textarea>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <button>Submit</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -447,7 +473,7 @@
     <div class="container-fluid">
         <div class="brand-slider">
             @foreach($brands as $brand)
-                <div class="brand-item"><img src="{{$brand->logo}}" alt=""></div>
+            <div class="brand-item"><img src="{{$brand->logo}}" alt=""></div>
             @endforeach
         </div>
     </div>
