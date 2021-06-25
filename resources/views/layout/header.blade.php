@@ -44,8 +44,8 @@
                         
                     </a>
                     <a href="/order" class="btn cart">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>(0)</span>
+                        <i class="fa fa-shopping-cart"></i>                        
+                        <span id="order-amount">(0)</span>
                     </a>
                 </div>
             </div>

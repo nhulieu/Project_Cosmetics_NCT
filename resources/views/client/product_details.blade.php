@@ -65,7 +65,7 @@
                                     <h4>Quantity:</h4>
                                     <div class="qty">
                                         <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                        <input type="text" value="1">
+                                        <input id="product-qty" type="number" value="1" min = "0" max="99">
                                         <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
@@ -106,14 +106,18 @@
                                         </div>
                                     </div> -->
                                 <div class="action">
-                                    <a productid="{{$product->id}}" class="btn add-to-wishlist" href=""><i class="fa fa-heart"></i>Add to Wishlist</a>
-                                    <a class="btn"><i class="fa fa-shopping-cart" href=""></i>Add to Cart</a>
-                                    <a class="btn"><i class="fa fa-shopping-bag" href=""></i>Buy Now</a>
+                                    <button productid="{{$product->id}}" class="btn add-to-wishlist"><i class="fa fa-heart"></i>Add to Wishlist</button>                                    
+                                    <button  product="{{$product->toJson()}}"                            
+                                    class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+                                    <button class="btn buy-now"><i class="fa fa-shopping-bag"></i>Buy Now</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <script>
+                    
+                </script>
 
                 <div class="row product-detail-bottom">
                     <div class="col-lg-12">

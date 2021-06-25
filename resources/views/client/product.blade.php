@@ -78,7 +78,7 @@
                                             <img src="img/brand_logo/vaseline.png" alt="Product Image">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                            <a product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>
                                             <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>
                                             <a href="{{url('/product-details/'.$item->id)}}"><i class="fa fa-search"></i></a>
                                         </div>
@@ -90,11 +90,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        <script>
-                            function addToWishlist(){
-                                
-                            }
-                        </script>
                     </div>
 
                     <!-- Pagination Start -->

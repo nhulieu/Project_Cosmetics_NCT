@@ -51,6 +51,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('lib/shoppingcart/jquery.shoppingcart.js')}}"></script>
     <script src="{{ asset('js/bootstrap-show-password.min.js') }}"></script>
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
@@ -66,9 +67,7 @@
             }).done(function(response) {                
                 $('#wishlist-amount').html(response.result)
             }).fail(function(error){
-                console.log('====================================');
                 console.log(error);
-                console.log('====================================');
             });
         });
 
@@ -84,11 +83,34 @@
                 $('#wishlist-amount').html(response.result)
                 e.currentTarget.parentElement.parentElement.hidden = true;
             }).fail(function(error){
-                console.log('====================================');
                 console.log(error);
-                console.log('====================================');
             });
         });
+
+        $(".add-to-cart").click(function(e){          
+            $qtyInput = $("#product-qty")[0];
+            $qty = 1;
+            if($qtyInput != null){
+                $qty = $qtyInput.value;
+            }
+            $jsonObj = JSON.parse(e.currentTarget.getAttribute("product"));  
+            $product = {
+                id : $jsonObj.id,
+                name : $jsonObj.name,
+                price : $jsonObj.price,
+                discount : $jsonObj.discount,
+                count : parseInt($qty)
+            }
+            console.log($product);
+            if($.shoppingcart('add',$product)){
+                $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
+            }
+
+        })
+
+        $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
+
+        
     </script>
 </body>
 
