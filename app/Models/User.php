@@ -31,4 +31,14 @@ class user extends Model
     {
         return $this->hasMany(order::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(review::class);
+    }
+
+    public function wishlists()
+    {
+        return $this->hasMany(wishlist::class);
+    }
 }

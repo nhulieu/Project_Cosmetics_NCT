@@ -36,7 +36,12 @@
                 <div class="user">
                     <a href="/wishlist" class="btn wishlist">
                         <i class="fa fa-heart"></i>
-                        <span>(0)</span>
+                        @if (Session::get("user") !== null)
+                            <span id="wishlist-amount">{{Session::get("wishlistAmount")}}</span>
+                        @else
+                            <span id="wishlist-amount">(0)</span>
+                        @endif
+                        
                     </a>
                     <a href="/order" class="btn cart">
                         <i class="fa fa-shopping-cart"></i>

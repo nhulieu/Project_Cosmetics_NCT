@@ -66,7 +66,7 @@
                             <div class="col-md-4">
                                 <div class="product-item">
                                     <div class="product-title">
-                                        <a href="#" title="{{$item->name}}">{{$item->name}}</a>
+                                        <a href="{{url('/product-details/'.$item->id)}}" title="{{$item->name}}">{{$item->name}}</a>
                                         <div class="ratting">
                                             @for($i=0; $i < $item->mark; $i++)
                                                 <i class="fa fa-star"></i>
@@ -74,12 +74,12 @@
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        <a href="{{url('/product-details/'.$item->id)}}">
+                                        <a>
                                             <img src="img/brand_logo/vaseline.png" alt="Product Image">
                                         </a>
                                         <div class="product-action">
                                             <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
+                                            <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>
                                             <a href="{{url('/product-details/'.$item->id)}}"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
@@ -90,6 +90,11 @@
                                 </div>
                             </div>
                         @endforeach
+                        <script>
+                            function addToWishlist(){
+                                
+                            }
+                        </script>
                     </div>
 
                     <!-- Pagination Start -->

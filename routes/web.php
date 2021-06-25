@@ -24,16 +24,26 @@ use App\Http\Controllers\Admin\UserController;
 //Route::view('/home','welcome');
 Route::get('/signin', [ClientController::class, "signin"]);
 Route::post('/signin', [ClientController::class, "postSignin"]);
+Route::get("/signout", [ClientController::class, "signout"]);
+Route::get('/signup', [ClientController::class, "signin"]);
 Route::post('/signup', [ClientController::class, "postSignup"]);
+Route::get('/update-account', [ClientController::class, "account"]);
+Route::post("/update-account", [ClientController::class, "updateAccountDetails"]);
+Route::get('//update-password', [ClientController::class, "account"]);
+Route::post("/update-password", [ClientController::class, "updateAccountPassword"]);
 Route::get('/', [ClientController::class, "home"]);
 Route::get('/contact', [ClientController::class, "contact"]);
 Route::get('/product-list', [ClientController::class, "product"]);
 Route::get('/wishlist', [ClientController::class, "wishlist"]);
+Route::get('/add-wishlist/{id}',  [ClientController::class, "addWishlist"]);
+Route::get('/delete-wishlist/{id}',  [ClientController::class, "deleteWishlist"]);
 Route::get('/about', [ClientController::class, "about"]);
 Route::get('/my-account', [ClientController::class, "account"]);
 Route::get('/order', [ClientController::class, "order"]);
-Route::get('/order-details', [ClientController::class, "orderDetails"]);
+Route::get('/order-details/{id}', [ClientController::class, "orderDetails"]);
 Route::get('/product-details/{id}', [ClientController::class, "productDetails"]);
+
+
 
 
 //Category

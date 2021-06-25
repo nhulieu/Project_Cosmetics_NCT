@@ -10,14 +10,14 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav mr-auto">
                     <a href="/" class="nav-item nav-link">Home</a>
-                    <a href="/product-list" class="nav-item nav-link">Products</a>                    
+                    <a href="/product-list" class="nav-item nav-link">Products</a>
                     <!-- <a href="/product-detail" class="nav-item nav-link">Product Detail</a> -->
                     <!-- <a href="cart.html" class="nav-item nav-link">Cart</a> -->
                     <!-- <a href="checkout.html" class="nav-item nav-link">Checkout</a> -->
                     <!-- <a href="my-account.html" class="nav-item nav-link">My Account</a> -->
-                    <a href="/wishlist" class="nav-item nav-link">Wishlist</a>
-                    <a href="/contact" class="nav-item nav-link">Contact Us</a>            
-                    <a href="/about" class="nav-item nav-link">About</a>                    
+                    <!-- <a href="/wishlist" class="nav-item nav-link">Wishlist</a> -->
+                    <a href="/contact" class="nav-item nav-link">Contact Us</a>
+                    <a href="/about" class="nav-item nav-link">About</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                         <div class="dropdown-menu">
@@ -29,15 +29,18 @@
                 </div>
                 <div class="navbar-nav ml-auto">
                     <div class="nav-item dropdown">
+                        @if (Session::get("user") !== null)
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{Session::get("userFullname")}}</a>
+                        <div class="dropdown-menu">
+                            <a href="/my-account" class="dropdown-item">Setting</a>
+                            <a href="/signout" class="dropdown-item">Sign out</a>
+                        </div>
+                        @else
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                         <div class="dropdown-menu">
-                            @if (Session::get("user") !== null)
-                                <a href="/my-account" class="dropdown-item">Setting</a>
-                                <a href="/log-out" class="dropdown-item">Log out</a>
-                            @else
-                                <a href="/signin" class="dropdown-item">Sign up/ Sign in</a>
-                            @endif
+                            <a href="/signin" class="dropdown-item">Sign up/ Sign in</a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

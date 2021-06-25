@@ -20,14 +20,15 @@
                                 </tr>
                             </thead>
                             <tbody class="align-middle">
+                                @foreach ($order->items as $item)
                                 <tr>
                                     <td>
                                         <div class="img">
                                             <a href="#"><img src="img/product-1.jpg" alt="Image"></a>
-                                            <p>Product Name</p>
+                                            <p>{{$item->product->name}}</p>
                                         </div>
                                     </td>
-                                    <td>$99</td>
+                                    <td>{{$item->product->price}}</td>
                                     <td>
                                         <div class="qty">
                                             <button class="btn-minus"><i class="fa fa-minus"></i></button>
@@ -35,9 +36,10 @@
                                             <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </td>
-                                    <td>$99</td>
-                                    <td><button><i class="fa fa-trash"></i></button></td>
+                                    <td>{{$item->product->name * $item->quantity}}</td>
+                                    <td><a href="{{url('/product-details/'.$item->product->id)}}" class="btn">View</a></td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
