@@ -76,7 +76,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 copyright">
-                <p>Copyright &copy; <a href="">FPTAptch</a>. All Rights Reserved</p>
+                <p>Copyright &copy; <a href="">FPTAptech</a>. All Rights Reserved</p>
             </div>
 
             <div class="col-md-6 template-by">
@@ -86,3 +86,6 @@
     </div>
 </div>
 <!-- Footer Bottom End -->
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

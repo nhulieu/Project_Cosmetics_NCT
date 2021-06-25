@@ -79,12 +79,8 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="txt-os">Tag</label>
-{{--                                                <select readonly name="tag" id="tag" class="form-control">--}}
-{{--                                                    @foreach (App\Models\tag::all() as $tag)--}}
-{{--                                                        <option @if ($product->OS == $tag->id) selected--}}
-{{--                                                                @endif value="{{ $tag->id }}">{{ $tag->label }}</option>--}}
-{{--                                                    @endforeach--}}
-{{--                                                </select>--}}
+                                                <textarea readonly rows="4" id="" class="form-control"
+                                                          name="tag">{{ $product->getTag() }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -106,8 +102,13 @@
 
 @section('js')
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             bsCustomFileInput.init();
         });
     </script>
 @stop
+
+@section('footer')
+    @include('admin.footer')
+@stop
+

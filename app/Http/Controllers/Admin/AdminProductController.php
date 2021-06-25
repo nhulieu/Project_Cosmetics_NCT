@@ -34,6 +34,8 @@ class AdminProductController extends Controller
             $product = $request->all();
             $newProduct = new product();
             $newProduct->name = $product['name'];
+            $newProduct->category_id = $product['category'];
+            $newProduct->brand_id = $product['brand'];
             $newProduct->description = $product['description'];
             $newProduct->status = $product['status'];
             $newProduct->price = $product['price'];
@@ -41,24 +43,61 @@ class AdminProductController extends Controller
             $newProduct->quantity = $product['quantity'];
             $newProduct->tax = $product['tax'];
             $newProduct->feature = $product['feature'];
-            $newProduct->mark = $product['mark'];
             $newProduct->id = $newProduct->nextID();
-
             $newProduct->save();
 
             foreach ($product['tag'] as $t) {
                 $product_tag = new product_tag();
                 $product_tag->product_id = $newProduct->id;
-                $product_tag->tag_id = $newProduct->$t;
+                $product_tag->tag_id = $t;
+                $product_tag->save();
             }
-
-
         } catch (\Throwable $throwable) {
             DB::rollBack();
             return redirect()->action([AdminProductController::class, 'home']);
-
         }
+
+        return redirect()->action([AdminProductController::class, 'home']);
     }
+
+    public function update($id)
+    {
+        $product = product::find($id);
+        return view('admin.product.update')->with([
+            'product' => $product
+        ]);
+    }
+
+    public function postUpdate(Request $request, $id)
+    {
+        $product = $request->all();
+        product::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'category_id' => $request->input('category'),
+                'brand_id' => $request->input('brand'),
+                'description' => $request->input('description'),
+                'status' => $request->input('status'),
+                'price' => $request->input('price'),
+                'discount' => $request->input('discount'),
+                'quantity' => $request->input('quantity'),
+                'tax' => $request->input('tax'),
+                'feature' => $request->input('feature'),
+            ]);
+        product_tag::where('product_id', '=', $id)->delete();
+
+        if (isset($product['tag'])) {
+            foreach ($product['tag'] as $tag) {
+                $product_tag = new product_tag();
+                $product_tag->product_id = $id;
+                $product_tag->tag_id = $tag;
+                $product_tag->save();
+            }
+        }
+
+        return redirect()->action([AdminProductController::class, 'home']);
+    }
+
 
     public function delete($id)
     {
@@ -100,9 +139,9 @@ class AdminProductController extends Controller
     public function postCreateImage(Request $request, $id)
     {
         try {
-            if ($request->hasFile('IMAGE')) {
-                $file = $request['IMAGE'];
-                $cover = $request['COVER'];
+            if ($request->hasFile('image')) {
+                $file = $request['image'];
+                $cover = $request['cover'];
 
                 $product = product::find($id);
                 $newImage = new image();
@@ -135,19 +174,18 @@ class AdminProductController extends Controller
     public function updateImage($id)
     {
         $image = image::find($id);
-        return view('admin.product.updateImage', [
-            'image', $image
-        ]);
+        return view('admin.product.updateImage')->with(["image" => $image]);
     }
+
 
     public function postUpdateImage(Request $request, $id)
     {
         $image = image::find($id);
         $images = image::where('product_id', '=', $image->product_id)->get();
-        $cover = $request['COVER'];
+        $cover = $request['cover'];
         $newPath = "";
-        if ($request->hasFile('IMAGE')) {
-            $file = $request['IMAGE'];
+        if ($request->hasFile('image')) {
+            $file = $request['image'];
             //Delete Old Image
             $path_file = "img/" . baseName($image->path);
             if (File::exists($path_file)) {
@@ -155,7 +193,7 @@ class AdminProductController extends Controller
             }
 
             $newName = Str::random(30) . '.' . $file->getClientOriginalExtension();
-            $file->move('img/product', $newName);
+            $file->move('img/product/', $newName);
             $newPath = '/img/product/' . $newName;
 
         } else {
@@ -183,18 +221,6 @@ class AdminProductController extends Controller
         return redirect()->back();
     }
 
-    public function update($id)
-    {
-        $product = product::find($id);
-        return view('admin.product.update', [
-            'product' => $product
-        ]);
-    }
-
-    public function postUpdate(Request $request, $id)
-    {
-
-    }
 
     public function viewDetail($id)
     {

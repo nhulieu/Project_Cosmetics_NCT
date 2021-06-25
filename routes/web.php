@@ -8,6 +8,8 @@ use App\Http\Controllers\Client\ProductController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\FeedbackController;
+use App\Http\Controllers\Admin\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,21 +36,20 @@ Route::get('/order-details', [ClientController::class, "orderDetails"]);
 Route::get('/product-details/{id}', [ClientController::class, "productDetails"]);
 
 
-
 //Category
-Route::get('/category',[CategoryController::class, 'home']);
+Route::get('/category', [CategoryController::class, 'home']);
 Route::get('/category/create', [CategoryController::class, 'create']);
-Route::post('/category/postCreate',[CategoryController::class, 'postCreate'])->name('createCategory');
+Route::post('/category/postCreate', [CategoryController::class, 'postCreate'])->name('createCategory');
 Route::get('category/update/{id}', [CategoryController::class, 'update']);
 Route::post('category/postUpdate/{id}', [CategoryController::class, 'postUpdate']);
-Route::get('/category/delete/{id}',[CategoryController::class, 'deleteAll']);
+Route::get('/category/delete/{id}', [CategoryController::class, 'deleteAll']);
 
 //Brand
-Route::get('/brand',[BrandController::class, 'home']);
-Route::get('/brand/create',[BrandController::class, 'create']);
+Route::get('/brand', [BrandController::class, 'home']);
+Route::get('/brand/create', [BrandController::class, 'create']);
 Route::post('/brand/postCreate', [BrandController::class, 'postCreate'])->name('createBrand');
 Route::get('/brand/update/{id}', [BrandController::class, 'update']);
-Route::post('/brand/postUpdate/{id}',[BrandController::class, 'postUpdate']);
+Route::post('/brand/postUpdate/{id}', [BrandController::class, 'postUpdate']);
 Route::get('/brand/delete/{id}', [BrandController::class, 'sureDelete']);
 
 //Tag
@@ -56,7 +57,7 @@ Route::get('/tag', [TagController::class, 'home']);
 Route::get('/tag/create', [TagController::class, 'create']);
 Route::post('/tag/postCreate', [TagController::class, 'postCreate'])->name('createTag');
 Route::get('/tag/update/{id}', [TagController::class, 'update']);
-Route::post('/tag/postUpdate/{id}',[TagController::class, 'postUpdate']);
+Route::post('/tag/postUpdate/{id}', [TagController::class, 'postUpdate']);
 
 //Product
 Route::get('product', [AdminProductController::class, 'home']);
@@ -81,8 +82,21 @@ Route::get('product/deleteReviews/{id}', [AdminProductController::class, 'delete
 
 //Feedback
 Route::get('feedback', [FeedbackController::class, 'home']);
-Route::get('feedback/delete/{id}', [FeedbackController::class, 'delete']);
 Route::get('feedback/detail/{id}', [FeedbackController::class, 'detail']);
-//Route::post('feedback/reply', 'Admin\FeedbackController@sendmail');
+Route::get('feedback/delete/{id}', [FeedbackController::class, 'delete']);
+Route::post('feedback/reply', [FeedbackController::class, 'sendMail']);
 
 //Order
+
+
+
+
+
+
+
+
+
+
+
+
+

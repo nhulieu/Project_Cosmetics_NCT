@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class product extends Model
 {
     protected $table = "product";
-    protected $fillable = ['id', 'category_id', 'name', 'description', 'status', 'price', 'discount', 'quantity', 'tax', 'feature', 'mark', 'created_at', 'updated_at', 'retired'];
+    protected $fillable = ['id', 'category_id', 'brand_id', 'name', 'description', 'status', 'price', 'discount', 'quantity', 'tax', 'feature', 'mark', 'created_at', 'updated_at', 'retired'];
     protected $guarded = [];
     public $timestamps = true;
 
@@ -47,8 +47,8 @@ class product extends Model
 
     public function Rating()
     {
-        $reviews = review::where('product_id',$this->id)->pluck('mark');
-        if($reviews->count() > 0)
+        $reviews = review::where('product_id', $this->id)->pluck('mark');
+        if ($reviews->count() > 0)
             return round(collect($reviews)->avg());
         return 0;
     }
