@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\brand;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\product;
 use App\Models\user;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ClientController extends Controller
@@ -33,10 +32,10 @@ class ClientController extends Controller
         $email = $request->input('txtEmail');
         $username = $request->input('txtUserName');
         $phone = $request->input('txtPhone');
-        $address = $request->input('txtAdress');
+        $address = $request->input('txtAddress');
         $accountPass = $request->input('txtAccountPass');
 
-        $duplicate_email_user = user::where("email", "=", $email);
+        $duplicate_email_user = user::where("email", "=", $email)->first();
         if ($duplicate_email_user != null) {
             return view("client.signin", ["isSignup" => true, "status" => "1"]);
         }

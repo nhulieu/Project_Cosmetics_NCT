@@ -36,7 +36,6 @@ Route::get('/order-details', [ClientController::class, "orderDetails"]);
 Route::get('/product-details/{id}', [ClientController::class, "productDetails"]);
 
 
-
 //Category
 Route::get('/category', [CategoryController::class, 'home']);
 Route::get('/category/create', [CategoryController::class, 'create']);
