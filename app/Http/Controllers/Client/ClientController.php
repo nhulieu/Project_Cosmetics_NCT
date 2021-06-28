@@ -17,6 +17,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use function MongoDB\BSON\toJSON;
 
 class ClientController extends Controller
 {
@@ -34,7 +35,7 @@ class ClientController extends Controller
 
     public function signout(Request $request){
         if($request->session()->get("user")[0]){
-            $request->session()->forget(["user", "userFullname","wishlistAmount"]);
+            $request->session()->forget(["user", "userFullname","wishlistAmount","order"]);
         }
         return Redirect("/");
     }
@@ -46,8 +47,8 @@ class ClientController extends Controller
         $username = $request->input('txtUserName');
         $phone = $request->input('txtPhone');
         $address = $request->input('txtAddress');
-        $accountPass = $request->input('txtAccountPass');        
-        
+        $accountPass = $request->input('txtAccountPass');
+
         $duplicate_email_user = user::where("email", "=", $email)->first();
         $duplicate_username_user = user::where("username", "=", $username)->first();
         if($duplicate_email_user != null && $duplicate_username_user != null){
@@ -77,7 +78,7 @@ class ClientController extends Controller
             $queryUser = user::where("email", "=", $user);
         }
 
-        $final_user = $queryUser->first();        
+        $final_user = $queryUser->first();
         if($final_user != null){
             if($password === $final_user->password){
                 $request->session()->put("user", $final_user->username);
@@ -110,14 +111,14 @@ class ClientController extends Controller
                 "phone" => $request->input('txtPhone'),
                 "address" => $request->input('txtAddress')
             ]);
-            return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"2"]); 
+            return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"2"]);
         }
-        return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"1"]);    
+        return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"1"]);
     }
 
     public function updateAccountPassword(Request $request){
         $currentPassword = $request->input('txtCurrentPassword');
-        $newPassword = $request->input('txtNewPassword'); 
+        $newPassword = $request->input('txtNewPassword');
         $username = $request->session()->get("user");
         $user = user::where("username","=",$username)->first();
         if($user !== null){
@@ -126,9 +127,9 @@ class ClientController extends Controller
                 return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"4"]);
             }else{
                 return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"5"]);
-            }            
+            }
         }
-        return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"3"]); 
+        return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"3"]);
     }
 
     public function contact()
@@ -148,7 +149,7 @@ class ClientController extends Controller
 
             return view("client.account",["user"=>user::where("username","=",$user)->first(), "status"=>"0", "active"=>"4"]);
         }
-        return view("signin");        
+        return view("client.signin", ["isSignup" => false, "status" => "0"]);
     }
 
     public function addWishlist(Request $request, $id){
@@ -156,21 +157,21 @@ class ClientController extends Controller
         if($username === null){
             return Redirect("/sigin");
         }
-        
-        $user = user::where("username", "=", $username)->first(); 
-        
+
+        $user = user::where("username", "=", $username)->first();
+
         if($user === null){
             return response()->json(["result"=>0]);
         }
         //dd($user->wishlists->count);
         // $request->session()->put("wishlistAmount", $user->wishlists->count());
-        // return response()->json(["result"=>2]);        
-        
+        // return response()->json(["result"=>2]);
+
         $existed_wish_item = wishlist::where([["user_id", "=", $user->id], ["product_id", "=", $id]])->first();
-        
+
         if($existed_wish_item !== null){
             $request->session()->put("wishlistAmount", $user->wishlists->count());
-            return response()->json(["result"=>$user->wishlists->count()]);  
+            return response()->json(["result"=>$user->wishlists->count()]);
         }
         $wish_item = new wishlist();
         $wish_item->user_id = $user->id;
@@ -185,16 +186,16 @@ class ClientController extends Controller
         if($username === null){
             return Redirect("/sigin");
         }
-        
-        $user = user::where("username", "=", $username)->first();         
+
+        $user = user::where("username", "=", $username)->first();
         if($user === null){
             return response()->json(["result"=>0]);
         }
-        
+
         wishlist::find($id)->delete();
-        $request->session()->put("wishlistAmount", $user->wishlists->count());        
+        $request->session()->put("wishlistAmount", $user->wishlists->count());
         return response()->json(["result"=>$user->wishlists->count()]);
-        
+
     }
 
     public function account(Request $request)
@@ -210,16 +211,28 @@ class ClientController extends Controller
     public function order(Request $request)
     {
         $user = $request->session()->get("user");
+
         if ($user !== null) {
-            return view("client.order");
+            $order = $request->session()->get("order");
+            if($order !== null){
+                return view("client.order", ["order"=>$order]);
+            }
+            return view("client.order", ["totalQty"=> 0, "totalPrice"=> 0, "order"=>[]]);
         }
         return view("index");
+    }
+
+    public function updateOrder(Request $request){
+        $order = $request->input("order");
+        $request->session()->put("order",json_encode($order));
+        $request->session()->save();
+        return response()->json(["result"=>$order]);
     }
 
     public function orderDetails(Request $request, $id)
     {
         $user = $request->session()->get("user");
-        if ($user !== null) {            
+        if ($user !== null) {
             return view("client.order_details",["order" => order::find($id)]);
         }
         return view("index");

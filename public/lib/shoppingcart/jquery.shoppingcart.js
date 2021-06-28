@@ -56,7 +56,7 @@
                     shoppingcartArray.push({
                         'id': parseInt(content.id),
                         'name': content.name || '',
-                        'discount': content.discount || '',                        
+                        'discount': content.discount || '',
                         //'attributes': content.attributes || [],
                         'price': parseFloat(content.price),
                         'count': parseInt((content.count || 1))
@@ -99,7 +99,7 @@
                     return false;
                 }
                 else {
-                    // item exist                    
+                    // item exist
                     if (content.name !== undefined) {
                         shoppingcartArray[index].name = content.name;
                     }

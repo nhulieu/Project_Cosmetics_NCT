@@ -59,12 +59,12 @@
     <script>
         $(".add-to-wishlist").click(function(e) {
             $id = e.currentTarget.getAttribute("productid");
-            console.log($id);            
+            console.log($id);
             $.ajax({
                 url: '/add-wishlist/' + $id,
                 type: 'GET',
                 data: {}
-            }).done(function(response) {                
+            }).done(function(response) {
                 $('#wishlist-amount').html(response.result)
             }).fail(function(error){
                 console.log(error);
@@ -72,14 +72,14 @@
         });
 
         $(".remove-from-wishlist").click(function(e) {
-            $id = e.currentTarget.getAttribute("productid");            
-            console.log($id);            
-            
+            $id = e.currentTarget.getAttribute("productid");
+            console.log($id);
+
             $.ajax({
                 url: '/delete-wishlist/' + $id,
                 type: 'GET',
                 data: {}
-            }).done(function(response) {                
+            }).done(function(response) {
                 $('#wishlist-amount').html(response.result)
                 e.currentTarget.parentElement.parentElement.hidden = true;
             }).fail(function(error){
@@ -87,13 +87,13 @@
             });
         });
 
-        $(".add-to-cart").click(function(e){          
+        $(".add-to-cart").click(function(e){
             $qtyInput = $("#product-qty")[0];
             $qty = 1;
             if($qtyInput != null){
                 $qty = $qtyInput.value;
             }
-            $jsonObj = JSON.parse(e.currentTarget.getAttribute("product"));  
+            $jsonObj = JSON.parse(e.currentTarget.getAttribute("product"));
             $product = {
                 id : $jsonObj.id,
                 name : $jsonObj.name,
@@ -104,13 +104,51 @@
             console.log($product);
             if($.shoppingcart('add',$product)){
                 $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
+                $.ajax({
+                    url: '/update-order',
+                    type: 'POST',
+                    data: {
+                        order : {
+                            totalQty : $.shoppingcart('getCount'),
+                            totalPrice : $.shoppingcart('getPrice'),
+                            items : $.shoppingcart('getAll')
+                        },
+                        _token : "{{csrf_token()}}"
+                    }
+                }).done(function(response) {
+                    console.log(response.result);
+                }).fail(function(error){
+                    console.log(error);
+                });
             }
+        })
 
+        $(".remove-item").click(function(e){
+            $item = JSON.parse(e.currentTarget.getAttribute("product"));
+            if($.shoppingcart('remove', $item)){
+               $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
+                $.ajax({
+                    url: '/update-order',
+                    type: 'POST',
+                    data: {
+                        order : {
+                            totalQty : $.shoppingcart('getCount'),
+                            totalPrice : $.shoppingcart('getPrice'),
+                            items : $.shoppingcart('getAll')
+                        },
+                        _token : "{{csrf_token()}}"
+                    }
+                }).done(function(response) {
+                    console.log(response.result);
+                }).fail(function(error){
+                    console.log(error);
+                });
+            }
         })
 
         $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
 
-        
+
     </script>
 </body>
 
