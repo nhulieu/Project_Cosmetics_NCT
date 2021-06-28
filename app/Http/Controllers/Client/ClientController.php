@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Client;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\brand;
+use App\Models\coupon;
+use Illuminate\Http\Client\Events\RequestSending;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\order;
@@ -35,9 +37,9 @@ class ClientController extends Controller
 
     public function signout(Request $request){
         if($request->session()->get("user")[0]){
-            $request->session()->forget(["user", "userFullname","wishlistAmount","order"]);
+            $request->session()->forget(["user", "userFullname","wishlistAmount", "order"]);
         }
-        return Redirect("/");
+        return response()->json(["result"=>"Sign out success"]);
     }
 
     public function postSignup(Request $request){
@@ -214,12 +216,13 @@ class ClientController extends Controller
 
         if ($user !== null) {
             $order = $request->session()->get("order");
+
             if($order !== null){
                 return view("client.order", ["order"=>$order]);
             }
-            return view("client.order", ["totalQty"=> 0, "totalPrice"=> 0, "order"=>[]]);
+            return view("client.order", ["totalQty"=> 0, "totalPrice"=> 0, "order"=>"[]"]);
         }
-        return view("index");
+        return redirect("/signin");
     }
 
     public function updateOrder(Request $request){
@@ -253,6 +256,24 @@ class ClientController extends Controller
         $products = product::all();
         $brands = brand::all();
         return view("client.product", ["products" => $products, "brands" => $brands]);
+    }
+
+    public function applyCoupon(Request $request){
+        $brand_ids = $request->ids;
+        $coupon_code = $request->code;
+        $coupon = coupon::whereIn('brand_id', $brand_ids)
+            ->where("active","=", true)
+            ->where("retired", "=", "false")
+            ->where("code","=",$coupon_code)
+            ->first();
+        if($coupon !== null){
+            if(!$coupon->active){
+                return response()->json(["result"=>[["state" => 1]]]);
+            }
+
+            return response()->json(["result"=>["state" => 0, "coupon" => $coupon]]);
+        }
+        return response()->json(["result"=>[["state" => 2]]]);
     }
 
 }

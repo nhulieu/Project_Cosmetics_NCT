@@ -33,7 +33,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{Session::get("userFullname")}}</a>
                         <div class="dropdown-menu">
                             <a href="/my-account" class="dropdown-item">Setting</a>
-                            <a href="/signout" class="dropdown-item">Sign out</a>
+                            <button class="dropdown-item sign-out">Sign out</button>
                         </div>
                         @else
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>

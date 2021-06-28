@@ -55,6 +55,7 @@
                     // item not exist
                     shoppingcartArray.push({
                         'id': parseInt(content.id),
+                        'brand_id': parseInt(content.brand_id),
                         'name': content.name || '',
                         'discount': content.discount || '',
                         //'attributes': content.attributes || [],
@@ -103,6 +104,11 @@
                     if (content.name !== undefined) {
                         shoppingcartArray[index].name = content.name;
                     }
+
+                    if (content.brand_id !== undefined) {
+                        shoppingcartArray[index].brand_id = content.brand_id;
+                    }
+
                     if (content.discount !== undefined) {
                         shoppingcartArray[index].discount = content.discount;
                     }
