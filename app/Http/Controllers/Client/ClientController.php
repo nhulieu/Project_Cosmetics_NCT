@@ -238,8 +238,8 @@ class ClientController extends Controller
 
     public function product()
     {
-        $products = product::all();
-        $brands = brand::all();
+        $products = product::paginate(6);
+        $brands = brand::paginate(11);
         return view("client.product", ["products" => $products, "brands" => $brands]);
     }
 
