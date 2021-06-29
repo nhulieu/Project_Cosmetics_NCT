@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="footer-widget">
-                    <h2>Get in Touch</h2>
+                    <h2>Keep in touch</h2>
                     <div class="contact-info">
                         <p><i class="fa fa-map-marker"></i>590 Cach Mang Thang Tam, Ward 11, District 3, Ho Chi Minh City</p>
-                        <p><i class="fa fa-envelope"></i>email@example.com</p>
-                        <p><i class="fa fa-phone"></i>+123-456-7890</p>
+                        <p><i class="fa fa-envelope"></i>cangtvts2006017@fpt.edu.vn</p>
+                        <p><i class="fa fa-phone"></i>+84962382911</p>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
 
             <div class="col-lg-3 col-md-6">
                 <div class="footer-widget">
-                    <h2>Company Info</h2>
+                    <h2>Our company</h2>
                     <ul>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Privacy Policy</a></li>
