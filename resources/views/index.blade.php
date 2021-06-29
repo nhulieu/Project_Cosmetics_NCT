@@ -15,19 +15,19 @@
                                 <a class="nav-link" href="/"><i class="fa fa-home"></i>Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i>Best Selling</a>
+                                <a class="nav-link" href="#best-sale"><i class="fa fa-shopping-bag"></i>Best Selling</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-plus-square"></i>New Arrivals</a>
+                                <a class="nav-link" href="#new-arrival"><i class="fa fa-plus-square"></i>New Arrivals</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-female"></i>Fashion & Beauty</a>
+                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Fashion & Beauty</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Famous Brands</a>
+                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-tshirt"></i>Famous Brands</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-cart-plus"></i>Accessories</a>
+                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-cart-plus"></i>Accessories</a>
                             </li>
                         </ul>
                     </nav>
@@ -79,7 +79,7 @@
     <!-- Main Slider End -->
 
     <!-- Brand Start -->
-    <div class="brand">
+    <div class="brand" id="fashion-beauty">
         <div class="container-fluid">
             <div class="brand-slider">
                 <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
@@ -210,7 +210,7 @@
     <div class="featured-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h1>Best sale</h1>
+                <h1 id="best-sale">Best sale</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
                 <div class="col-lg-3">
@@ -380,7 +380,7 @@
     <div class="recent-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h1>New Arrival</h1>
+                <h1 id="new-arrival">New Arrival</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
                 <div class="col-lg-3">
