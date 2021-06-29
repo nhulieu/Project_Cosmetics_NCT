@@ -20,6 +20,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('lib/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/slick/slick-theme.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
@@ -59,12 +60,12 @@
     <script>
         $(".add-to-wishlist").click(function(e) {
             $id = e.currentTarget.getAttribute("productid");
-            console.log($id);            
+            console.log($id);
             $.ajax({
                 url: '/add-wishlist/' + $id,
                 type: 'GET',
                 data: {}
-            }).done(function(response) {                
+            }).done(function(response) {
                 $('#wishlist-amount').html(response.result)
             }).fail(function(error){
                 console.log(error);
@@ -72,14 +73,14 @@
         });
 
         $(".remove-from-wishlist").click(function(e) {
-            $id = e.currentTarget.getAttribute("productid");            
-            console.log($id);            
-            
+            $id = e.currentTarget.getAttribute("productid");
+            console.log($id);
+
             $.ajax({
                 url: '/delete-wishlist/' + $id,
                 type: 'GET',
                 data: {}
-            }).done(function(response) {                
+            }).done(function(response) {
                 $('#wishlist-amount').html(response.result)
                 e.currentTarget.parentElement.parentElement.hidden = true;
             }).fail(function(error){
@@ -87,13 +88,13 @@
             });
         });
 
-        $(".add-to-cart").click(function(e){          
+        $(".add-to-cart").click(function(e){
             $qtyInput = $("#product-qty")[0];
             $qty = 1;
             if($qtyInput != null){
                 $qty = $qtyInput.value;
             }
-            $jsonObj = JSON.parse(e.currentTarget.getAttribute("product"));  
+            $jsonObj = JSON.parse(e.currentTarget.getAttribute("product"));
             $product = {
                 id : $jsonObj.id,
                 name : $jsonObj.name,
@@ -110,7 +111,7 @@
 
         $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
 
-        
+
     </script>
 </body>
 
