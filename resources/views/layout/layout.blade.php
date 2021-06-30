@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/alertify.css') }}" />
     <!-- include a theme, can be included into the core instead of 2 separate files -->
     <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/themes/bootstrap.css') }}" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
 </head>
@@ -62,6 +64,7 @@
         $(".add-to-wishlist").click(function(e) {
             $id = e.currentTarget.getAttribute("productid");
             //console.log($id);
+            console.log($id);
             $.ajax({
                 url: '/add-wishlist/' + $id,
                 type: 'GET',
@@ -274,6 +277,7 @@
             }
             //console.log($ids);
         }
+
     </script>
 </body>
 

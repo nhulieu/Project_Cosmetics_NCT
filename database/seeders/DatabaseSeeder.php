@@ -46,7 +46,6 @@ class brandSeeder extends Seeder
             ["name" => "", "slogan" => "", "logo" => "img/brand_logo/chanel_logo.png"],
             ["name" => "", "slogan" => "", "logo" => "img/brand_logo/laneige_logo.jpg"],
             ["name" => "", "slogan" => "", "logo" => "img/brand_logo/Bourjois.jpg"],
-            ["name" => "", "slogan" => "", "logo" => "img/brand_logo/L'oreal.jpg"]
 
         ]);
     }

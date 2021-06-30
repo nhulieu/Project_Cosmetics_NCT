@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('title', 'Home')
 @section('content')
-    <!-- Main Slider Start -->    
+    <!-- Main Slider Start -->
     {{-- @foreach ($listItem as $item )
 
     @endforeach --}}
@@ -15,25 +15,19 @@
                                 <a class="nav-link" href="/"><i class="fa fa-home"></i>Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i>Best Selling</a>
+                                <a class="nav-link" href="#best-sale"><i class="fa fa-shopping-bag"></i>Best Selling</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-plus-square"></i>New Arrivals</a>
+                                <a class="nav-link" href="#new-arrival"><i class="fa fa-plus-square"></i>New Arrivals</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-female"></i>Fashion & Beauty</a>
+                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Fashion & Beauty</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-child"></i>Kids & Babies Clothes</a>
+                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-tshirt"></i>Famous Brands</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Men & Women Clothes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-mobile-alt"></i>Gadgets & Accessories</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Electronics & Accessories</a>
+                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-cart-plus"></i>Accessories</a>
                             </li>
                         </ul>
                     </nav>
@@ -41,23 +35,23 @@
                 <div class="col-md-6">
                     <div class="header-slider normal-slider">
                         <div class="header-slider-item">
-                            <img src="img/slider-1.jpg" alt="Slider Image" />
+                            <img src="img/slider-1.png" alt="Slider Image" />
                             <div class="header-slider-caption">
-                                <p>Some text goes here that describes the image</p>
+                                <p>The best-buy brand</p>
                                 <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
                             </div>
                         </div>
                         <div class="header-slider-item">
-                            <img src="img/slider-2.jpg" alt="Slider Image" />
+                            <img src="img/slider-2.png" alt="Slider Image" />
                             <div class="header-slider-caption">
-                                <p>Some text goes here that describes the image</p>
+                                <p>The best sale all the time</p>
                                 <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
                             </div>
                         </div>
                         <div class="header-slider-item">
-                            <img src="img/slider-3.jpg" alt="Slider Image" />
+                            <img src="img/slider-3.png" alt="Slider Image" />
                             <div class="header-slider-caption">
-                                <p>Some text goes here that describes the image</p>
+                                <p>It's your shopping time</p>
                                 <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
                             </div>
                         </div>
@@ -66,13 +60,13 @@
                 <div class="col-md-3">
                     <div class="header-img">
                         <div class="img-item">
-                            <img src="img/category-1.jpg" />
+                            <img src="img/category-1.png" />
                             <a class="img-text" href="">
                                 <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
                         <div class="img-item">
-                            <img src="img/category-2.jpg" />
+                            <img src="img/category-2.png" />
                             <a class="img-text" href="">
                                 <p>Some text goes here that describes the image</p>
                             </a>
@@ -85,7 +79,7 @@
     <!-- Main Slider End -->
 
     <!-- Brand Start -->
-    <div class="brand">
+    <div class="brand" id="fashion-beauty">
         <div class="container-fluid">
             <div class="brand-slider">
                 <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
@@ -108,7 +102,7 @@
                         <i class="fab fa-cc-mastercard"></i>
                         <h2>Secure Payment</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur elit
+                            Be satisfied with our secured payment process
                         </p>
                     </div>
                 </div>
@@ -117,7 +111,7 @@
                         <i class="fa fa-truck"></i>
                         <h2>Worldwide Delivery</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur elit
+                            Ship goods to every corners of globe
                         </p>
                     </div>
                 </div>
@@ -126,7 +120,7 @@
                         <i class="fa fa-sync-alt"></i>
                         <h2>90 Days Return</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur elit
+                            Free to check & change
                         </p>
                     </div>
                 </div>
@@ -135,7 +129,7 @@
                         <i class="fa fa-comments"></i>
                         <h2>24/7 Support</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur elit
+                            Call us now
                         </p>
                     </div>
                 </div>
@@ -150,9 +144,9 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="category-item ch-400">
-                        <img src="img/category-3.jpg" />
+                        <img src="img/category-3.png" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>For more info, click here</p>
                         </a>
                     </div>
                 </div>
@@ -160,13 +154,13 @@
                     <div class="category-item ch-250">
                         <img src="img/category-4.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>For more info, click here</p>
                         </a>
                     </div>
                     <div class="category-item ch-150">
-                        <img src="img/category-5.jpg" />
+                        <img src="img/category-5.png" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>For more info, click here</p>
                         </a>
                     </div>
                 </div>
@@ -174,13 +168,13 @@
                     <div class="category-item ch-150">
                         <img src="img/category-6.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>For more info, click here</p>
                         </a>
                     </div>
                     <div class="category-item ch-250">
-                        <img src="img/category-7.jpg" />
+                        <img src="img/category-7.png" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>For more info, click here</p>
                         </a>
                     </div>
                 </div>
@@ -188,7 +182,7 @@
                     <div class="category-item ch-400">
                         <img src="img/category-8.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>For more info, click here</p>
                         </a>
                     </div>
                 </div>
@@ -202,10 +196,10 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1>call us for any queries</h1>
+                    <h1>Call us for any queries</h1>
                 </div>
                 <div class="col-md-6">
-                    <a href="tel:0123456789">+012-345-6789</a>
+                    <a href="tel:0123456789">+84962382911</a>
                 </div>
             </div>
         </div>
@@ -216,13 +210,13 @@
     <div class="featured-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h1>Featured Product</h1>
+                <h1 id="best-sale">Best sale</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="product-detail.html">Miracle Perfume</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -233,7 +227,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-1.jpg" alt="Product Image">
+                                <img src="img/product-1.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -242,7 +236,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>100</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -250,7 +244,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="product-detail.html">Channel Makeup Set</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -261,7 +255,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-2.jpg" alt="Product Image">
+                                <img src="img/product-2.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -270,7 +264,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>150</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -278,7 +272,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="product-detail.html">Beauty Crete box</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -289,7 +283,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-3.jpg" alt="Product Image">
+                                <img src="img/product-3.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -298,7 +292,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>65</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -306,7 +300,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="product-detail.html">Laura Mercier Powder</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -317,7 +311,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-4.jpg" alt="Product Image">
+                                <img src="img/product-4.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -326,7 +320,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>55</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -334,7 +328,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="#">M.A.C Foundation</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -345,7 +339,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-5.jpg" alt="Product Image">
+                                <img src="img/product-5.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -354,7 +348,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>85</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -386,13 +380,13 @@
     <div class="recent-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h1>Recent Product</h1>
+                <h1 id="new-arrival">New Arrival</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="#">Olay BB</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -403,7 +397,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-6.jpg" alt="Product Image">
+                                <img src="img/product-6.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -412,7 +406,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>95</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -420,7 +414,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="#">L’Oréal X Elie Saab Makeup</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -431,7 +425,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-7.jpg" alt="Product Image">
+                                <img src="img/product-7.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -440,7 +434,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>150</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -448,7 +442,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="#">AVON Moisturizing Eye</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -459,7 +453,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-8.jpg" alt="Product Image">
+                                <img src="img/product-8.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -468,7 +462,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>8</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -476,7 +470,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="#">Maybelline Mascara</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -487,7 +481,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-9.jpg" alt="Product Image">
+                                <img src="img/product-9.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -496,7 +490,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>9</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -504,7 +498,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="#">Clarins Skincare Combo</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -515,7 +509,7 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="img/product-10.jpg" alt="Product Image">
+                                <img src="img/product-10.png" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -524,7 +518,7 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
+                            <h3><span>$</span>25</h3>
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
@@ -544,8 +538,8 @@
                             <img src="img/review-1.jpg" alt="Image">
                         </div>
                         <div class="review-text">
-                            <h2>Customer Name</h2>
-                            <h3>Profession</h3>
+                            <h2>Hannah Montana</h2>
+                            <h3>Customer</h3>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -554,8 +548,7 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo
-                                finibus luctus et vitae lorem
+                                I must confess that I drop this website twice a week and choose the most sale price without worrying about quality.
                             </p>
                         </div>
                     </div>
@@ -566,8 +559,8 @@
                             <img src="img/review-2.jpg" alt="Image">
                         </div>
                         <div class="review-text">
-                            <h2>Customer Name</h2>
-                            <h3>Profession</h3>
+                            <h2>David Smith</h2>
+                            <h3>Makeup Professor</h3>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -576,8 +569,7 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo
-                                finibus luctus et vitae lorem
+                                I love to buy all stuff in NCT's website because it is pretty easily for us to buy and pay.
                             </p>
                         </div>
                     </div>
@@ -588,8 +580,8 @@
                             <img src="img/review-3.jpg" alt="Image">
                         </div>
                         <div class="review-text">
-                            <h2>Customer Name</h2>
-                            <h3>Profession</h3>
+                            <h2>Leona Lewis</h2>
+                            <h3>Celeb Assistant</h3>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -598,8 +590,7 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo
-                                finibus luctus et vitae lorem
+                                I cannot believe that I am a royal member of this e-commercial website and enjoy all products here.
                             </p>
                         </div>
                     </div>

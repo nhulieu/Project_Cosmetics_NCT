@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\brand;
 use App\Models\coupon;
 use Illuminate\Http\Client\Events\RequestSending;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\order;
@@ -253,8 +254,8 @@ class ClientController extends Controller
 
     public function product()
     {
-        $products = product::all();
-        $brands = brand::all();
+        $products = product::paginate(6);
+        $brands = brand::paginate(11);
         return view("client.product", ["products" => $products, "brands" => $brands]);
     }
 
