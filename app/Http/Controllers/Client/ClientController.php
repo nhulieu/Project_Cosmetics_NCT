@@ -6,6 +6,8 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\brand;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\coupon;
+use Illuminate\Http\Client\Events\RequestSending;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\order;
@@ -18,6 +20,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use function MongoDB\BSON\toJSON;
 
 class ClientController extends Controller
 {
@@ -35,9 +38,9 @@ class ClientController extends Controller
 
     public function signout(Request $request){
         if($request->session()->get("user")[0]){
-            $request->session()->forget(["user", "userFullname","wishlistAmount"]);
+            $request->session()->forget(["user", "userFullname","wishlistAmount", "order"]);
         }
-        return Redirect("/");
+        return response()->json(["result"=>"Sign out success"]);
     }
 
     public function postSignup(Request $request){
@@ -149,7 +152,7 @@ class ClientController extends Controller
 
             return view("client.account",["user"=>user::where("username","=",$user)->first(), "status"=>"0", "active"=>"4"]);
         }
-        return view("signin");
+        return view("client.signin", ["isSignup" => false, "status" => "0"]);
     }
 
     public function addWishlist(Request $request, $id){
@@ -211,10 +214,23 @@ class ClientController extends Controller
     public function order(Request $request)
     {
         $user = $request->session()->get("user");
+
         if ($user !== null) {
-            return view("client.order");
+            $order = $request->session()->get("order");
+
+            if($order !== null){
+                return view("client.order", ["order"=>$order]);
+            }
+            return view("client.order", ["totalQty"=> 0, "totalPrice"=> 0, "order"=>"[]"]);
         }
-        return view("index");
+        return redirect("/signin");
+    }
+
+    public function updateOrder(Request $request){
+        $order = $request->input("order");
+        $request->session()->put("order",json_encode($order));
+        $request->session()->save();
+        return response()->json(["result"=>$order]);
     }
 
     public function orderDetails(Request $request, $id)
@@ -241,6 +257,24 @@ class ClientController extends Controller
         $products = product::paginate(6);
         $brands = brand::paginate(11);
         return view("client.product", ["products" => $products, "brands" => $brands]);
+    }
+
+    public function applyCoupon(Request $request){
+        $brand_ids = $request->ids;
+        $coupon_code = $request->code;
+        $coupon = coupon::whereIn('brand_id', $brand_ids)
+            ->where("active","=", true)
+            ->where("retired", "=", "false")
+            ->where("code","=",$coupon_code)
+            ->first();
+        if($coupon !== null){
+            if(!$coupon->active){
+                return response()->json(["result"=>[["state" => 1]]]);
+            }
+
+            return response()->json(["result"=>["state" => 0, "coupon" => $coupon]]);
+        }
+        return response()->json(["result"=>[["state" => 2]]]);
     }
 
 }
