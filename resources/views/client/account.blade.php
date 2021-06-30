@@ -1,20 +1,12 @@
 @extends('layout.layout')
 @section('title', 'Account')
 @section('content')
-<!-- Breadcrumb Start -->
-<div class="breadcrumb-wrap">
-    <div class="container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Account</li>
-        </ul>
-    </div>
-</div>
 
 <!-- My Account Start -->
 <div class="my-account">
     <div class="container-fluid">
         <div class="row">
+            {{--Vertical Account Detail Actions--}}
             <div class="col-md-3">
                 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                     <a class="nav-link" id="account-nav active" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
@@ -25,8 +17,10 @@
                     <a class="nav-link" href="/signout"><i class="fa fa-sign-out-alt"></i>Sign out</a>
                 </div>
             </div>
+            {{--Detail information form--}}
             <div class="col-md-9">
                 <div class="tab-content">
+                    {{--Active 4--}}
                     <div class="tab-pane fade {{$active == 4 ? 'show active' : ''}}" id="wishlist-tab" role="tabpanel" aria-labelledby="wishlist-nav">
                         <h4>Wistlist</h4>
                         <div class="table-responsive">
@@ -59,6 +53,7 @@
                             </table>
                         </div>
                     </div>
+                    {{--Active 0--}}
                     <div class="tab-pane fade {{$active == 0 ? 'show active' : ''}}" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                         <h4>Account Details</h4>
                         <form id="register-form" action="/update-account" method="post">
@@ -155,6 +150,7 @@
                             </div>
                         </form>
                     </div>
+                    {{--Active 1--}}
                     <div class="tab-pane fade {{$active == 1 ? 'show active' : ''}}" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
                         <div class="table-responsive">
                             <h4>Orders History</h4>
@@ -181,16 +177,81 @@
                             </table>
                         </div>
                     </div>
+                    {{--Active 2--}}
                     <div class="tab-pane fade {{$active == 2 ? 'show active' : ''}}" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
                         <h4>Payment Method</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi
-                            viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor
-                            hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non.
-                            Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien
-                            eget arcu rhoncus scelerisque.
-                        </p>
+                        <div class="container">
+                            <!-- Credit Card Payment Form - START -->
+                            <div class="container">
+                                    <div class="col-md-12">
+                                        <div class="panel panel-default">
+                                            <div class="row">
+                                                {{--image visa--}}
+                                                <div class="col-6">
+                                                    <img class="img-responsive cc-img" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+                                                </div>
+                                                {{--visa information form--}}
+                                                <div class="panel-body">
+                                                    <form role="form">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label>CARD NUMBER</label>
+                                                                    <div class="input-group">
+                                                                        <input type="tel" class="form-control" placeholder="Valid Card Number" />
+                                                                        <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                                                    <input type="tel" class="form-control" placeholder="MM / YY" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label>CV CODE</label>
+                                                                    <input type="tel" class="form-control" placeholder="CVC" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="form-group">
+                                                                    <label>CARD OWNER</label>
+                                                                    <input type="text" class="form-control" placeholder="Card Owner Names" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                </div>
+                                                {{--Submit form--}}
+                                                <div class="panel-footer">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <button class="btn btn-warning btn-lg btn-block">Process payment</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <style>
+                                .cc-img {
+                                    margin: 0 auto;
+                                }
+                            </style>
+                            <!-- Credit Card Payment Form - END -->
+
+                        </div>
                     </div>
+                    {{--Active 3--}}
                     <div class="tab-pane fade {{$active == 3 ? 'show active' : ''}}" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
                         <h4>Address</h4>
                         <div class="row">
