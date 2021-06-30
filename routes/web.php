@@ -26,12 +26,16 @@ Route::get('/signin', [ClientController::class, "signin"]);
 Route::post('/signin', [ClientController::class, "postSignin"]);
 
 Route::get("/signout", [ClientController::class, "signout"]);
+
 Route::get('/signup', [ClientController::class, "signin"]);
 Route::post('/signup', [ClientController::class, "postSignup"]);
+
 Route::get('/update-account', [ClientController::class, "account"]);
 Route::post("/update-account", [ClientController::class, "updateAccountDetails"]);
+
 Route::get('//update-password', [ClientController::class, "account"]);
 Route::post("/update-password", [ClientController::class, "updateAccountPassword"]);
+
 Route::get('/', [ClientController::class, "home"]);
 Route::get('/contact', [ClientController::class, "contact"]);
 Route::get('/product-list', [ClientController::class, "product"]);

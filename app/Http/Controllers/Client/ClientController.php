@@ -100,11 +100,6 @@ class ClientController extends Controller
     }
 
     public function updateAccountDetails(Request $request){
-        $fname = $request->input('txtFirstName');
-        $lname = $request->input('txtLastName');
-        $email = $request->input('txtEmail');
-        $phone = $request->input('txtPhone');
-        $address = $request->input('txtAddress');
         $username = $request->session()->get("user");
         if(user::where("username", "=", $username)->first() != null){
             user::where("username", "=", $username)->update([
@@ -114,7 +109,7 @@ class ClientController extends Controller
                 "phone" => $request->input('txtPhone'),
                 "address" => $request->input('txtAddress')
             ]);
-            return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"2"]);
+            return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"2", "active"=>"0"]);
         }
         return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"1"]);
     }
