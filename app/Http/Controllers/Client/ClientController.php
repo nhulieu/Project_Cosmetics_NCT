@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\brand;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\coupon;
 use Illuminate\Http\Client\Events\RequestSending;
 use Illuminate\Http\Request;
@@ -253,8 +254,8 @@ class ClientController extends Controller
 
     public function product()
     {
-        $products = product::all();
-        $brands = brand::all();
+        $products = product::paginate(6);
+        $brands = brand::paginate(11);
         return view("client.product", ["products" => $products, "brands" => $brands]);
     }
 

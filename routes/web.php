@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\UserController;
 //Route::view('/home','welcome');
 Route::get('/signin', [ClientController::class, "signin"]);
 Route::post('/signin', [ClientController::class, "postSignin"]);
+
 Route::get("/signout", [ClientController::class, "signout"]);
 Route::get('/signup', [ClientController::class, "signin"]);
 Route::post('/signup', [ClientController::class, "postSignup"]);
@@ -44,8 +45,6 @@ Route::post('/update-order', [ClientController::class, "updateOrder"]);
 Route::get('/order-details/{id}', [ClientController::class, "orderDetails"]);
 Route::get('/product-details/{id}', [ClientController::class, "productDetails"]);
 Route::post('/apply-coupon', [ClientController::class, "applyCoupon"]);
-
-
 
 
 //Category

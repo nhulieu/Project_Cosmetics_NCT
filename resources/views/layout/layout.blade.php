@@ -20,6 +20,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('lib/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/slick/slick-theme.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/alertify.css') }}" />
     <!-- include a theme, can be included into the core instead of 2 separate files -->
     <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/themes/bootstrap.css') }}" />

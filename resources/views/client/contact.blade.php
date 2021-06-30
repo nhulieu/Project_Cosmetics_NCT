@@ -21,8 +21,8 @@
                 <div class="contact-info">
                     <h2>Our Office</h2>
                     <h3><i class="fa fa-map-marker"></i>590 Cach Mang Thang Tam, Ward 11, District 3, Ho Chi Minh City</h3>
-                    <h3><i class="fa fa-envelope"></i>nct.cosmetic.office@blahblah.com</h3>
-                    <h3><i class="fa fa-phone"></i>+0909-350-6789</h3>
+                    <h3><i class="fa fa-envelope"></i>cangtvts2006017@fpt.edu.vn</h3>
+                    <h3><i class="fa fa-phone"></i>+84962382911</h3>
                     <div class="social">
                         <a href=""><i class="fab fa-twitter"></i></a>
                         <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -36,8 +36,8 @@
                 <div class="contact-info">
                     <h2>Our Store</h2>
                     <h3><i class="fa fa-map-marker"></i>590 Cach Mang Thang Tam, Ward 11, District 3, Ho Chi Minh City</h3>
-                    <h3><i class="fa fa-envelope"></i>nct.cosmetic.store@blahblah.com</h3>
-                    <h3><i class="fa fa-phone"></i>+0909-350-1234</h3>
+                    <h3><i class="fa fa-envelope"></i>cangtvts2006017@fpt.edu.vn</h3>
+                    <h3><i class="fa fa-phone"></i>+84962382911</h3>
                     <div class="social">
                         <a href=""><i class="fab fa-twitter"></i></a>
                         <a href=""><i class="fab fa-facebook-f"></i></a>

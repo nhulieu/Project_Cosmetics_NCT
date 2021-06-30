@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-sm-6">
                 <i class="fa fa-envelope"></i>
-                support@email.com
+                cangtvts2006017@fpt.edu.vn
             </div>
             <div class="col-sm-6">
                 <i class="fa fa-phone-alt"></i>
-                +012-345-6789
+                +84962382911
             </div>
         </div>
     </div>
@@ -41,10 +41,10 @@
                         @else
                             <span id="wishlist-amount">(0)</span>
                         @endif
-                        
+
                     </a>
                     <a href="/order" class="btn cart">
-                        <i class="fa fa-shopping-cart"></i>                        
+                        <i class="fa fa-shopping-cart"></i>
                         <span id="order-amount">(0)</span>
                     </a>
                 </div>
