@@ -28,4 +28,5 @@ class image extends Model
     {
         return $this->belongsTo(product::class);
     }
+
 }

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(brandSeeder::class);
         $this->call(categorySeeder::class);
         $this->call(productSeeder::class);
+        $this->call(imageSeeder::class);
     }
 }
 
@@ -46,6 +47,108 @@ class brandSeeder extends Seeder
             ["name" => "", "slogan" => "", "logo" => "img/brand_logo/chanel_logo.png"],
             ["name" => "", "slogan" => "", "logo" => "img/brand_logo/laneige_logo.jpg"],
             ["name" => "", "slogan" => "", "logo" => "img/brand_logo/Bourjois.jpg"],
+
+        ]);
+    }
+}
+class imageSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('image')->insert([
+            ["product_id" => "1", "path" => "img/Product_Photo/1. Vaseline/1.jpg"],
+            ["product_id" => "1", "path" => "img/Product_Photo/1. Vaseline/2.jpg"],
+            ["product_id" => "1", "path" => "img/Product_Photo/1. Vaseline/3.jpg"],
+            ["product_id" => "1", "path" => "img/Product_Photo/1. Vaseline/4.jpg"],
+            ["product_id" => "1", "path" => "img/Product_Photo/1. Vaseline/5.webp"],
+            ["product_id" => "1", "path" => "img/Product_Photo/1. Vaseline/6.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/2. Bioderma/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/2. Bioderma/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/2. Bioderma/3.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/3. Sunplay/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/3. Sunplay/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/3. Sunplay/3.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/3. Sunplay/4.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/4. Maybelline/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/4. Maybelline/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/4. Maybelline/3.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/4. Maybelline/4.png"],
+            ["product_id" => "2", "path" => "img/Product_Photo/4. Maybelline/5.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/5. The face shop/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/5. The face shop/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/5. The face shop/3.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/6. Makeup Voluminous Lash Paradise Waterproof Mascara/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/6. Makeup Voluminous Lash Paradise Waterproof Mascara/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/6. Makeup Voluminous Lash Paradise Waterproof Mascara/3.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/7. Neo Cushion Glow #23N/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/7. Neo Cushion Glow #23N/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/7. Neo Cushion Glow #23N/3.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/7. Neo Cushion Glow #23N/4.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/8. L'absolu/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/8. L'absolu/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/8. L'absolu/3.webp"],
+            ["product_id" => "2", "path" => "img/Product_Photo/8. L'absolu/4.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/9. EFFACLAR/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/9. EFFACLAR/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/9. EFFACLAR/3.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/9. EFFACLAR/4.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/10. L'Oreal/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/10. L'Oreal/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/10. L'Oreal/3.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/11. Innisfree/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/11. Innisfree/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/11. Innisfree/3.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/12. Hatomugi/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/12. Hatomugi/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/12. Hatomugi/3.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/12. Hatomugi/4.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/13. VITALUMIÈRE/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/13. VITALUMIÈRE/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/13. VITALUMIÈRE/3.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/13. VITALUMIÈRE/4.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/14. Nivea Lip/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/14. Nivea Lip/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/14. Nivea Lip/3.jpeg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/15. Vichy Aqualia/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/15. Vichy Aqualia/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/15. Vichy Aqualia/3.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/16. Biore/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/16. Biore/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/16. Biore/1.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/17. SENKA/1.png"],
+            ["product_id" => "2", "path" => "img/Product_Photo/17. SENKA/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/17. SENKA/3.webp"],
+            ["product_id" => "2", "path" => "img/Product_Photo/17. SENKA/4.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/17. SENKA/5.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/17. SENKA/6.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/18. Bourjois/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/18. Bourjois/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/18. Bourjois/3.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/19. Paula's Choice/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/19. Paula's Choice/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/19. Paula's Choice/3.jpg"],
+
+            ["product_id" => "2", "path" => "img/Product_Photo/20. Moroccanoil/1.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/20. Moroccanoil/2.jpg"],
+            ["product_id" => "2", "path" => "img/Product_Photo/20. Moroccanoil/3.jpg"],
 
         ]);
     }

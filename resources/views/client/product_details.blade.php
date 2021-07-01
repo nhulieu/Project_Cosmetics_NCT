@@ -22,20 +22,14 @@
                     <div class="row align-items-center">
                         <div class="col-md-5">
                             <div class="product-slider-single normal-slider">
-                                <img src="img/product-1.jpg" alt="Product Image">
-                                <img src="img/product-3.jpg" alt="Product Image">
-                                <img src="img/product-5.jpg" alt="Product Image">
-                                <img src="img/product-7.jpg" alt="Product Image">
-                                <img src="img/product-9.jpg" alt="Product Image">
-                                <img src="img/product-10.jpg" alt="Product Image">
+                                @foreach($images as $image)
+                                    <img src="{{$image->path}}" alt="Product Image">
+                                @endforeach
                             </div>
                             <div class="product-slider-single-nav normal-slider">
-                                <div class="slider-nav-img"><img src="img/product-1.jpg" alt="Product Image"></div>
-                                <div class="slider-nav-img"><img src="img/product-3.jpg" alt="Product Image"></div>
-                                <div class="slider-nav-img"><img src="img/product-5.jpg" alt="Product Image"></div>
-                                <div class="slider-nav-img"><img src="img/product-7.jpg" alt="Product Image"></div>
-                                <div class="slider-nav-img"><img src="img/product-9.jpg" alt="Product Image"></div>
-                                <div class="slider-nav-img"><img src="img/product-10.jpg" alt="Product Image"></div>
+                                @foreach($images as $image)
+                                    <img src="{{$image->path}}" alt="Product Image">
+                                @endforeach
                             </div>
                         </div>
                         <div class="col-md-7">
@@ -106,8 +100,8 @@
                                         </div>
                                     </div> -->
                                 <div class="action">
-                                    <button productid="{{$product->id}}" class="btn add-to-wishlist"><i class="fa fa-heart"></i>Add to Wishlist</button>                                    
-                                    <button  product="{{$product->toJson()}}"                            
+                                    <button productid="{{$product->id}}" class="btn add-to-wishlist"><i class="fa fa-heart"></i>Add to Wishlist</button>
+                                    <button  product="{{$product->toJson()}}"
                                     class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
                                     <button class="btn buy-now"><i class="fa fa-shopping-bag"></i>Buy Now</button>
                                 </div>
@@ -116,7 +110,7 @@
                     </div>
                 </div>
                 <script>
-                    
+
                 </script>
 
                 <div class="row product-detail-bottom">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\brand;
+use App\Models\image;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\coupon;
 use Illuminate\Http\Client\Events\RequestSending;
@@ -241,10 +242,11 @@ class ClientController extends Controller
     {
         $product = product::find($id);
         $brands = brand::all();
+        $images = product::images();
         if ($product->retired) {
             return view("index");
         }
-        return view("client.product_details", ["product" => $product, "brands" => $brands]);
+        return view("client.product_details", ["product" => $product, "brands" => $brands, "images" => $images]);
     }
 
     public function product()
