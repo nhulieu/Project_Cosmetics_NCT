@@ -21,14 +21,15 @@
                 <div class="product-detail-top">
                     <div class="row align-items-center">
                         <div class="col-md-5">
+                            {{-- {{dd($product->images)}} --}}
                             <div class="product-slider-single normal-slider">
-                                @foreach($images as $image)
-                                    <img src="{{$image->path}}" alt="Product Image">
+                                @foreach($product->images as $image)
+                                    <img src="{{asset($image->path)}}" alt="Product Image">
                                 @endforeach
                             </div>
                             <div class="product-slider-single-nav normal-slider">
-                                @foreach($images as $image)
-                                    <img src="{{$image->path}}" alt="Product Image">
+                                @foreach($product->images as $image)
+                                    <img src="{{asset($image->path)}}" alt="Product Image">
                                 @endforeach
                             </div>
                         </div>
@@ -450,19 +451,19 @@
 
                 <div class="sidebar-widget brands">
                     <h2 class="title">Our Brands</h2>
-                    <ul>
-                        <li><a href="#">Nulla </a><span>(45)</span></li>
-                        <li><a href="#">Curabitur </a><span>(34)</span></li>
-                        <li><a href="#">Nunc </a><span>(67)</span></li>
-                        <li><a href="#">Ullamcorper</a><span>(74)</span></li>
-                        <li><a href="#">Fusce </a><span>(89)</span></li>
-                        <li><a href="#">Sagittis</a><span>(28)</span></li>
+                    <ul>                        
+                        @foreach ($brands as $brand)
+                            <li><a href="#">{{$brand->name}}</a><span>({{$brand->products->count()}})</span></li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="sidebar-widget tag">
                     <h2 class="title">Tags Cloud</h2>
-                    <a href="#">Lorem ipsum</a>
+                    @foreach ($tags as $tag)
+                        <a href="#">{{$tag->label}}</a>
+                    @endforeach
+                    {{-- <a href="#">Lorem ipsum</a>
                     <a href="#">Vivamus</a>
                     <a href="#">Phasellus</a>
                     <a href="#">pulvinar</a>
@@ -473,7 +474,7 @@
                     <a href="#">Sit amet</a>
                     <a href="#">Vel posuere</a>
                     <a href="#">orci luctus</a>
-                    <a href="#">Nam lorem</a>
+                    <a href="#">Nam lorem</a> --}}
                 </div>
             </div>
             <!-- Side Bar End -->

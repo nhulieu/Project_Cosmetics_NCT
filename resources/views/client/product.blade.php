@@ -91,6 +91,13 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-center">
+                                {{--Result set--}}
+                                {{$products->links()}}
+                            </div>
+                            <br>
+                        </div>
                     </div>
                 </div>
 

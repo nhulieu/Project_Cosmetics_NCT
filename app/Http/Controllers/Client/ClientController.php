@@ -242,11 +242,10 @@ class ClientController extends Controller
     {
         $product = product::find($id);
         $brands = brand::all();
-        $images = product::images();
         if ($product->retired) {
             return view("index");
         }
-        return view("client.product_details", ["product" => $product, "brands" => $brands, "images" => $images]);
+        return view("client.product_details", ["product" => $product, "brands" => $brands]);
     }
 
     public function product()

@@ -13,6 +13,10 @@ class brand extends Model
 
     public function products()
     {
+        return $this->hasMany(product::class);
+    }
+
+    public function coupons(){
         return $this->hasMany(coupon::class);
     }
 }
