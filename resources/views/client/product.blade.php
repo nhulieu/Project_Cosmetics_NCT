@@ -1,7 +1,6 @@
 @extends('layout.layout')
 @section('title', 'Product')
 @section('content')
-
     <!-- Product List Start -->
     <div class="product-view">
         <div class="container-fluid">
@@ -53,15 +52,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="d-flex justify-content-center">
-                                {{--Result set--}}
-                                {{$products->links()}}
-                            </div>
-                            <br>
-                        </div>
-                        {{--Product list--}}
-                        @foreach($products as $index => $item)
+                        @foreach($products as $item)
                             <div class="col-md-4">
                                 <div class="product-item">
                                     <div class="product-title">
@@ -73,10 +64,10 @@
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        @if(isset($brands[$index]->logo))
-                                        <a>
-                                            <img src="{{$brands[$index]->logo}}" alt="Product Image">
-                                        </a>
+                                        @if(isset($item->images->first()->path))
+                                            <a>
+                                                <img src="{{$item->images->first()->path}}" alt="Product Image">
+                                            </a>
                                         @endif
                                         <div class="product-action">
                                             <a product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>
@@ -91,13 +82,25 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div class="col-md-12">
-                            <div class="d-flex justify-content-center">
-                                {{--Result set--}}
-                                {{$products->links()}}
-                            </div>
-                            <br>
+                        <!-- Pagination Start -->
+
+                        <div class="col-md-12 mt-5">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{$products->currentPage() == 1 ?$products->url(1) : $products->url($products->currentPage()-1)}}" >Previous</a>
+                                    </li>
+                                    @for($i=1;$i<=$products->lastPage();$i++)
+                                        <li class="{{$products->currentPage() == $i ? "page-item active":"page-item"}}"><a class="page-link" href="{{$products->url($i)}}">{{$i}}</a></li>
+                                    @endfor
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{$products->nextPageUrl()}}">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
+                        <!-- Pagination Start -->
+
                     </div>
                 </div>
 
@@ -219,16 +222,16 @@
                     <div class="sidebar-widget brands">
                         <h2 class="title">Our Brands</h2>
                         <ul>
-                            @foreach($brands as $brand)
-                            <li><a href="#">{{$brand->name}} </a><span>(...)</span></li>
+                            @foreach(\App\Models\brand::all() as $brand)
+                                <li><a href="#">{{$brand->name}} </a><span>({{$brand->products->count()}})</span></li>
                             @endforeach
                         </ul>
                     </div>
 
                     <div class="sidebar-widget tag">
                         <h2 class="title">Tags Cloud</h2>
-                        @foreach($brands as $brand)
-                            <a href="#">{{$brand->name}} </a>
+                        @foreach(\App\Models\tag::all() as $tag)
+                            <a href="#">{{$tag->label}} </a>
                         @endforeach
                     </div>
                 </div>
@@ -242,7 +245,7 @@
     <div class="brand">
         <div class="container-fluid">
             <div class="brand-slider">
-                @foreach($brands as $brand)
+                @foreach(\App\Models\brand::all() as $brand)
                     <div class="brand-item"><img src="{{$brand->logo}}" alt=""></div>
                 @endforeach
             </div>

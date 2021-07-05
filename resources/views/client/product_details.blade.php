@@ -452,7 +452,7 @@
                 <div class="sidebar-widget brands">
                     <h2 class="title">Our Brands</h2>
                     <ul>
-                        @foreach ($brands as $brand)
+                        @foreach (\App\Models\brand::all() as $brand)
                             <li><a href="#">{{$brand->name}}</a><span>({{$brand->products->count()}})</span></li>
                         @endforeach
                     </ul>
@@ -460,21 +460,9 @@
 
                 <div class="sidebar-widget tag">
                     <h2 class="title">Tags Cloud</h2>
-                    @foreach ($tags as $tag)
-                        <a href="#">{{$tag->label}}</a>
+                    @foreach(\App\Models\tag::all() as $tag)
+                        <a href="#">{{$tag->label}} </a>
                     @endforeach
-                    {{-- <a href="#">Lorem ipsum</a>
-                    <a href="#">Vivamus</a>
-                    <a href="#">Phasellus</a>
-                    <a href="#">pulvinar</a>
-                    <a href="#">Curabitur</a>
-                    <a href="#">Fusce</a>
-                    <a href="#">Sem quis</a>
-                    <a href="#">Mollis metus</a>
-                    <a href="#">Sit amet</a>
-                    <a href="#">Vel posuere</a>
-                    <a href="#">orci luctus</a>
-                    <a href="#">Nam lorem</a> --}}
                 </div>
             </div>
             <!-- Side Bar End -->
@@ -487,7 +475,7 @@
 <div class="brand">
     <div class="container-fluid">
         <div class="brand-slider">
-            @foreach($brands as $brand)
+            @foreach(\App\Models\brand::all() as $brand)
             <div class="brand-item"><img src="{{$brand->logo}}" alt=""></div>
             @endforeach
         </div>

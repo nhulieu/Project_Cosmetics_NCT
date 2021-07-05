@@ -242,19 +242,16 @@ class ClientController extends Controller
     public function productDetails($id)
     {
         $product = product::find($id);
-        $brands = brand::all();
-        $tags = tag::all();
         if ($product->retired) {
             return view("index");
         }
-        return view("client.product_details", ["product" => $product, "brands" => $brands , "tags" => $tags]);
+        return view("client.product_details", ["product" => $product]);
     }
 
     public function product()
     {
-        $products = product::paginate(6);
-        $brands = brand::paginate(11);
-        return view("client.product", ["products" => $products, "brands" => $brands]);
+        $products = product::paginate(9)->withQueryString();
+        return view("client.product", ["products" => $products]);
     }
 
     public function applyCoupon(Request $request){
@@ -274,5 +271,4 @@ class ClientController extends Controller
         }
         return response()->json(["result"=>[["state" => 2]]]);
     }
-
 }
