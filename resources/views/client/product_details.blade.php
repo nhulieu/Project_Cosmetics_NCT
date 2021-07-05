@@ -209,7 +209,7 @@
                                 </div>
                                 <div class="product-image">
                                     <a href="product-detail.html">
-                                        <img src="img/product-10.jpg" alt="Product Image">
+                                        <img src="/img/product-10.png" alt="Product Image">
                                     </a>
                                     <div class="product-action">
                                         <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -237,7 +237,7 @@
                                 </div>
                                 <div class="product-image">
                                     <a href="product-detail.html">
-                                        <img src="img/product-8.jpg" alt="Product Image">
+                                        <img src="/img/product-8.png" alt="Product Image">
                                     </a>
                                     <div class="product-action">
                                         <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -265,7 +265,7 @@
                                 </div>
                                 <div class="product-image">
                                     <a href="product-detail.html">
-                                        <img src="img/product-6.jpg" alt="Product Image">
+                                        <img src="/img/product-6.png" alt="Product Image">
                                     </a>
                                     <div class="product-action">
                                         <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -293,7 +293,7 @@
                                 </div>
                                 <div class="product-image">
                                     <a href="product-detail.html">
-                                        <img src="img/product-4.jpg" alt="Product Image">
+                                        <img src="/img/product-4.png" alt="Product Image">
                                     </a>
                                     <div class="product-action">
                                         <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -321,7 +321,7 @@
                                 </div>
                                 <div class="product-image">
                                     <a href="product-detail.html">
-                                        <img src="img/product-2.jpg" alt="Product Image">
+                                        <img src="/img/product-2.png" alt="Product Image">
                                     </a>
                                     <div class="product-action">
                                         <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -381,7 +381,7 @@
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-7.jpg" alt="Product Image">
+                                    <img src="/img/product-7.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -407,7 +407,7 @@
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-8.jpg" alt="Product Image">
+                                    <img src="/img/product-8.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -433,7 +433,7 @@
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-9.jpg" alt="Product Image">
+                                    <img src="/img/product-9.png" alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -451,7 +451,7 @@
 
                 <div class="sidebar-widget brands">
                     <h2 class="title">Our Brands</h2>
-                    <ul>                        
+                    <ul>
                         @foreach ($brands as $brand)
                             <li><a href="#">{{$brand->name}}</a><span>({{$brand->products->count()}})</span></li>
                         @endforeach
