@@ -30,7 +30,7 @@ class ClientController extends Controller
     {
         $products = product::all();
         //$listItem = $this->paginate($products, 9);
-        return view("index", ["listItem" => $products]);
+        return view("index", ["products" => $products]);
     }
 
     public function signin()
@@ -241,11 +241,12 @@ class ClientController extends Controller
 
     public function productDetails($id)
     {
+        $products = product::all();
         $product = product::find($id);
         if ($product->retired) {
             return view("index");
         }
-        return view("client.product_details", ["product" => $product]);
+        return view("client.product_details", ["product" => $product, "products" => $products]);
     }
 
     public function product()
