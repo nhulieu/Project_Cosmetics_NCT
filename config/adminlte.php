@@ -326,7 +326,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'View Order',
-                    'url' => '#',
+                    'url' => 'http://127.0.0.1:8000/cart',
                 ]
             ],
         ],
@@ -336,7 +336,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'View Feedback',
-                    'url' => '#',
+                    'url' => 'http://localhost:8000/feedback',
                 ]
             ],
         ],
