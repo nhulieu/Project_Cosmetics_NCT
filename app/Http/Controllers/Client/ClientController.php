@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Http\Requests\ContactRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\brand;
+use App\Models\feedback;
 use App\Models\image;
 use App\Models\tag;
 use Illuminate\Database\Eloquent\Model;
@@ -135,6 +137,17 @@ class ClientController extends Controller
     public function contact()
     {
         return view("client.contact");
+    }
+
+    public function postContact(ContactRequest $request) {
+        $message = $request->all();
+        $feedback = new feedback();
+        $feedback->name = $message['name'];
+        $feedback->email = $message['email'];
+        $feedback->subject = $message['subject'];
+        $feedback->message = $message['message'];
+        $feedback->save();
+        return redirect('contact')->with('success','Your message was sent success');
     }
 
     public function about()
