@@ -222,8 +222,13 @@
                     <div class="sidebar-widget brands">
                         <h2 class="title">Our Brands</h2>
                         <ul>
+<<<<<<< Updated upstream
                             @foreach(\App\Models\brand::all() as $brand)
                                 <li><a href="#">{{$brand->name}} </a><span>({{$brand->products->count()}})</span></li>
+=======
+                            @foreach($brands as $brand)
+                            <li><a href="#">{{$brand->name}} </a><span>({{$brand->products->count()}})</span></li>
+>>>>>>> Stashed changes
                             @endforeach
                         </ul>
                     </div>
