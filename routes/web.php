@@ -1,14 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\Client\ProductController;
-use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\FeedbackController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Client\ClientController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,7 +101,8 @@ Route::get('feedback/delete/{id}', [FeedbackController::class, 'delete']);
 Route::post('feedback/reply', [FeedbackController::class, 'sendMail']);
 
 //Order
-
+Route::get('cart', [OrderController::class, 'home']);
+Route::get('cart/detail/{id}', [OrderController::class, 'viewDetail']);
 
 
 

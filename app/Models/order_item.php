@@ -2,7 +2,8 @@
 
 namespace App;
 
-use App\Models;
+use App\Models\order;
+use App\Models\product;
 use Illuminate\Database\Eloquent\Model;
 
 class order_item extends Model
@@ -19,5 +20,10 @@ class order_item extends Model
     public function order()
     {
         return $this->belongsTo(order::class);
+    }
+
+    public function cart(){
+        $order = order::find($this->order_id);
+        return $order;
     }
 }
