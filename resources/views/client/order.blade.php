@@ -37,7 +37,8 @@
                                         <tr>
                                             <td>
                                                 <div class="img">
-                                                    <a href="#"><img src="img/product-1.jpg" alt="Image"></a>
+{{--                                                    {{dd(\App\Models\product::find($item->id)->images)}}--}}
+                                                    <a href="#"><img src="{{\App\Models\product::find($item->id)->images->first()->path}}" alt="Image"></a>
                                                     <p>{{$item->name}}</p>
                                                 </div>
                                             </td>

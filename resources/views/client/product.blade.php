@@ -118,7 +118,7 @@
                                     <a class="nav-link" href="#"><i class="fa fa-plus-square"></i>New Arrivals</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-female"></i>Fashion & Beauty</a>
+                                    <a class="nav-link" href="#"><i class="fa fa-female"></i>Beauty</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Famous Brands</a>
