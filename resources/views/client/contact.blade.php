@@ -52,38 +52,22 @@
                 <div class="col-lg-4">
                     <div class="contact-form">
                         <form action="{{ route('postContact') }}" method="post">
-                            @if ($errors->has('name'))
-                                <p class="text-center"
-                                   style="color: white; background-color:red">{{$errors->first('name')}}</p>
-                            @endif
-                            @if ($errors->has('email'))
-                                <p class="text-center"
-                                   style="color: white; background-color:red">{{$errors->first('email')}}</p>
-                            @endif
-                            @if ($errors->has('subject'))
-                                <p class="text-center"
-                                   style="color: white; background-color:red">{{$errors->first('subject')}}</p>
-                            @endif
-                            @if ($errors->has('message'))
-                                <p class="text-center"
-                                   style="color: white; background-color:red">{{$errors->first('message')}}</p>
-                            @endif
+                            @csrf
                             <input id='message' value="{{(Session::has('success'))?(Session::get('success')):'false'}}"
                                    hidden>
-                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input name="name" type="text" class="form-control" placeholder="Your Name"/>
+                                    <input name="name" type="text" class="form-control" placeholder="Your Name" required/>
                                 </div>
                                 <div class="col-md-6">
-                                    <input name="email" type="email" class="form-control" placeholder="Your Email"/>
+                                    <input name="email" type="email" class="form-control" placeholder="Your Email" required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input name="subject" type="text" class="form-control" placeholder="Subject"/>
+                                <input name="subject" type="text" class="form-control" placeholder="Subject" required/>
                             </div>
                             <div class="form-group">
-                                <textarea name="message" class="form-control" rows="5" placeholder="Message"></textarea>
+                                <textarea name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
                             </div>
                             <div>
                                 <button class="btn" type="submit">Send Message</button>
