@@ -2,27 +2,15 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use App\Models\brand;
-use App\Models\image;
-use App\Models\tag;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\coupon;
-use Illuminate\Http\Client\Events\RequestSending;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\coupon;
+use App\Models\feedback;
 use App\Models\order;
 use App\Models\product;
 use App\Models\user;
 use App\Models\wishlist;
-use App\order_item;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use function MongoDB\BSON\toJSON;
 
 class ClientController extends Controller
 {
@@ -135,6 +123,17 @@ class ClientController extends Controller
     public function contact()
     {
         return view("client.contact");
+    }
+
+    public function postContact(Request $request) {
+        $message = $request->all();
+        $feedback = new feedback();
+        $feedback->name = $message['name'];
+        $feedback->email = $message['email'];
+        $feedback->subject = $message['subject'];
+        $feedback->message = $message['message'];
+        $feedback->save();
+        return redirect('contact')->with('success','Your message was sent success');
     }
 
     public function about()
