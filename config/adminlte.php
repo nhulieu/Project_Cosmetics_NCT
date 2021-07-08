@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>Admin</b>',
-    'logo_img' => '../img/logo.png',
+//    'logo_img' => '../img/logo.png',
     'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -325,7 +325,7 @@ return [
             ],
         ],
 
-        ['header' => 'labels'],
+//        ['header' => 'labels'],
 //        [
 //            'text' => 'important',
 //            'icon_color' => 'red',
