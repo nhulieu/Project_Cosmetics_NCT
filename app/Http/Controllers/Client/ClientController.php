@@ -2,6 +2,16 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\brand;
+use App\Models\image;
+use App\Models\review;
+use App\Models\tag;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\coupon;
+use Illuminate\Http\Client\Events\RequestSending;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\coupon;
 use App\Models\feedback;
@@ -17,8 +27,10 @@ class ClientController extends Controller
     public function home()
     {
         $products = product::all();
+        $users = user::all();
+        $reviews = review::all();
         //$listItem = $this->paginate($products, 9);
-        return view("index", ["products" => $products]);
+        return view("index", ["products" => $products, "reviews" => $reviews, "users" => $users]);
     }
 
     public function signin()
