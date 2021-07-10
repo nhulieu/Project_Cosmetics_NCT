@@ -37,6 +37,7 @@ Route::post("/update-password", [ClientController::class, "updateAccountPassword
 
 Route::get('/', [ClientController::class, "home"]);
 Route::get('/contact', [ClientController::class, "contact"]);
+Route::post('contact', [ClientController::class, 'postContact'])->name('postContact');
 Route::get('/product-list', [ClientController::class, "product"]);
 Route::get('/wishlist', [ClientController::class, "wishlist"]);
 Route::get('/add-wishlist/{id}',  [ClientController::class, "addWishlist"]);
