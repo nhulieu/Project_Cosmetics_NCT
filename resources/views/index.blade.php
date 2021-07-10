@@ -312,69 +312,27 @@
     <div class="review">
         <div class="container-fluid">
             <div class="row align-items-center review-slider normal-slider">
+                @foreach($reviews as $review)
                 <div class="col-md-6">
                     <div class="review-slider-item">
                         <div class="review-img">
-                            <img src="img/review-1.jpg" alt="Image">
+                            <img src="https://i.pravatar.cc/150?img={{$review->user->id+2}}" alt="Image">
                         </div>
                         <div class="review-text">
-                            <h2>Hannah Montana</h2>
-                            <h3>Customer</h3>
+                            <h2>{{$review->user->username}}</h2>
+                            <h3>{{$review->user->email}}</h3>
                             <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                @for($i=0; $i < $review->mark; $i++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
                             </div>
                             <p>
-                                I must confess that I drop this website twice a week and choose the most sale price without worrying about quality.
+                                {{$review->content}}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="review-slider-item">
-                        <div class="review-img">
-                            <img src="img/review-2.jpg" alt="Image">
-                        </div>
-                        <div class="review-text">
-                            <h2>David Smith</h2>
-                            <h3>Makeup Professor</h3>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <p>
-                                I love to buy all stuff in NCT's website because it is pretty easily for us to buy and pay.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="review-slider-item">
-                        <div class="review-img">
-                            <img src="img/review-3.jpg" alt="Image">
-                        </div>
-                        <div class="review-text">
-                            <h2>Leona Lewis</h2>
-                            <h3>Celeb Assistant</h3>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <p>
-                                I cannot believe that I am a royal member of this e-commercial website and enjoy all products here.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

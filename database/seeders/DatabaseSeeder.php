@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(categorySeeder::class);
         $this->call(productSeeder::class);
         $this->call(imageSeeder::class);
+        $this->call(userSeeder::class);
+        $this->call(reviewSeeder::class);
     }
 }
 
@@ -54,6 +56,29 @@ class brandSeeder extends Seeder
         ]);
     }
 }
+class userSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('user')->insert([
+            ["fname"=>"Cang","lname"=>"Trinh","email"=>"trinhvancang92@gmail.com","username"=>"Cang Trinh","password"=>"123","address"=>"123 Nguyen Trai","phone"=>"0962382911", "type"=>"1"],
+            ["fname"=>"Tai","lname"=>"Ngo","email"=>"taingo@gmail.com","username"=>"Tai Ngo","password"=>"123","address"=>"456 Nguyen Trai","phone"=>"0988777999", "type"=>"2"],
+            ["fname"=>"Nhu","lname"=>"Lieu","email"=>"lieunhu@gmail.com","username"=>"Lieu Nhu","password"=>"123","address"=>"789 Nguyen Trai","phone"=>"0999888666", "type"=>"2"],
+        ]);
+    }
+}
+class reviewSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('review')->insert([
+            ["mark"=>"5","content"=>"I love to buy all stuff in NCT's website because it is pretty easily for us to buy and pay.","user_id"=>"1","product_id"=>"1"],
+            ["mark"=>"5","content"=>"I cannot believe that I am a royal member of this e-commercial website and enjoy all products here.","user_id"=>"2","product_id"=>"2"],
+            ["mark"=>"5","content"=>"I must confess that I drop this website twice a week and choose the most sale price without worrying about quality.","user_id"=>"3","product_id"=>"3"],
+        ]);
+    }
+}
+
 class imageSeeder extends Seeder
 {
     public function run()
