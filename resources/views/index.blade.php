@@ -61,14 +61,14 @@
                     <div class="header-img">
                         <div class="img-item">
                             <img src="img/category-1.png" />
-                            <a class="img-text" href="">
-                                <p>Some text goes here that describes the image</p>
+                            <a class="img-text" href="/product-list">
+                                <p>Click here to buy</p>
                             </a>
                         </div>
                         <div class="img-item">
                             <img src="img/category-2.png" />
-                            <a class="img-text" href="">
-                                <p>Some text goes here that describes the image</p>
+                            <a class="img-text" href="/product-list">
+                                <p>Click here to buy</p>
                             </a>
                         </div>
                     </div>
