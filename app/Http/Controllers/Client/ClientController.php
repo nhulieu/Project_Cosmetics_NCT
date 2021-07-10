@@ -13,13 +13,11 @@ use App\Models\coupon;
 use Illuminate\Http\Client\Events\RequestSending;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\coupon;
 use App\Models\feedback;
 use App\Models\order;
 use App\Models\product;
 use App\Models\user;
 use App\Models\wishlist;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ClientController extends Controller
