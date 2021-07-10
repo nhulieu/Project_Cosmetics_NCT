@@ -276,6 +276,17 @@
             }
             //console.log($ids);
         }
+
+        $("#reset-filter").click(function(e){
+            e.preventDefault();
+            $form = e.target.form;
+            $form.name.value = "";
+            $form.brand.value = "";
+            $form.category.value = "";
+            $form.status.value = "";
+            $form.from.value = "";
+            $form.to.value = "";
+        })
     </script>
 </body>
 

@@ -67,7 +67,7 @@
                                 <div class="price">
                                     <h4>Status:</h4>
                                     <!-- <div class="qty"> -->
-                                    @if ($product->quantity > 0)
+                                    @if ($product->status == 1)
                                     <button type="button" class="btn btn-success">Available</button>
                                     @else
                                     <button type="button" class="btn btn-danger">Unavailable</button>
