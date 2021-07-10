@@ -13,13 +13,11 @@ use App\Models\coupon;
 use Illuminate\Http\Client\Events\RequestSending;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\coupon;
 use App\Models\feedback;
 use App\Models\order;
 use App\Models\product;
 use App\Models\user;
 use App\Models\wishlist;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ClientController extends Controller
@@ -91,7 +89,11 @@ class ClientController extends Controller
                 $request->session()->put("wishlistAmount", $final_user->wishlists->count());
                 $request->session()->save();
                 // dd($request->session()->get("user"));
-                return redirect("/");
+                if ($final_user->type==1){
+                    return redirect("/product");                    
+                }else{
+                    return redirect("/");
+                }
             } else {
                 return view("client.signin", ["isSignup" => false, "status" => "3"]);
             }
