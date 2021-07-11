@@ -262,10 +262,49 @@ class ClientController extends Controller
         return view("client.product_details", ["product" => $product, "products" => $products]);
     }
 
-    public function product()
+    public function product(Request $request)
     {
-        $products = product::paginate(9)->withQueryString();
-        return view("client.product", ["products" => $products]);
+        $product_query = product::query();
+        $name = null;
+        $brand = null;
+        $category = null;
+        $from = null;
+        $to = null;
+        $status = null;
+        $tag = null;
+        if(count($request->query()) > 0){
+            $name = $request->input("name");
+            $brand = $request->input("brand");
+            $category = $request->input("category");
+            $from = $request->input("from");
+            $to = $request->input("to");
+            $status = $request->input("status");
+            $tag = $request->input("tag");
+            if($name != null){
+                $product_query->where('name', 'LIKE', '%' . $name . '%');
+            }
+            if($brand != null){
+                $product_query->where('brand_id','=', $brand);
+            }
+            if($category != null){
+                $product_query->where('category_id','=', $category);
+            }
+            if($from != null){
+                $product_query->where('price','>=', $from);
+            }
+            if($to != null){
+                $product_query->where('price','<=', $to);
+            }
+            if($status != null){
+                $product_query->where('status','<=', $status);
+            }
+            if($tag != null){
+                $product_query->leftJoin('product_tag', 'product_tag.product_id', '=', 'product.id')->where("tag_id","=", $tag);
+            }
+        }
+
+        $products = $product_query->paginate(9)->withQueryString();
+        return view("client.product", ["products" => $products, "name" => $name, "brandInput" => $brand, "categoryInput" => $category, "from" => $from, "to" => $to, "status" => $status ]);
     }
 
     public function applyCoupon(Request $request){

@@ -1,10 +1,15 @@
 @extends('layout.layout')
 @section('title', 'Home')
 @section('content')
-    <!-- Main Slider Start -->
-    {{-- @foreach ($listItem as $item )
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-wrap mb-5">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+            </ul>
+        </div>
+    </div>
 
-    @endforeach --}}
     <div class="header">
         <div class="container-fluid">
             <div class="row">
@@ -82,12 +87,9 @@
     <div class="brand" id="fashion-beauty">
         <div class="container-fluid">
             <div class="brand-slider">
-                <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
-                <div class="brand-item"><img src="img/brand-2.png" alt=""></div>
-                <div class="brand-item"><img src="img/brand-3.png" alt=""></div>
-                <div class="brand-item"><img src="img/brand-4.png" alt=""></div>
-                <div class="brand-item"><img src="img/brand-5.png" alt=""></div>
-                <div class="brand-item"><img src="img/brand-6.png" alt=""></div>
+                @foreach(\App\Models\brand::all() as $brand)
+                    <a class="brand-item" href="{{url('/product-list?brand='.$brand->id)}}"><img src="{{$brand->logo}}" alt=""/></a>
+                @endforeach
             </div>
         </div>
     </div>
