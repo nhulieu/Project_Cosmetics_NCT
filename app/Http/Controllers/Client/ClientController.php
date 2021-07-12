@@ -6,8 +6,11 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\brand;
 use App\Models\image;
+use App\Models\invoice;
 use App\Models\review;
 use App\Models\tag;
+use App\order_item;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\coupon;
 use Illuminate\Http\Client\Events\RequestSending;
@@ -25,10 +28,9 @@ class ClientController extends Controller
     public function home()
     {
         $products = product::all();
-        $users = user::all();
         $reviews = review::all();
         //$listItem = $this->paginate($products, 9);
-        return view("index", ["products" => $products, "reviews" => $reviews, "users" => $users]);
+        return view("index", ["products" => $products, "reviews" => $reviews]);
     }
 
     public function signin()
@@ -231,7 +233,8 @@ class ClientController extends Controller
     public function order(Request $request)
     {
         $user = $request->session()->get("user");
-
+        $request->session()->put("coupon", 0);
+        $request->session()->save();
         if ($user !== null) {
             $order = $request->session()->get("order");
 
@@ -249,6 +252,81 @@ class ClientController extends Controller
         $request->session()->put("order", json_encode($order));
         $request->session()->save();
         return response()->json(["result" => $order]);
+    }
+
+    public function checkout(Request $request){
+        $user = $request->session()->get("user");
+
+        if ($user !== null) {
+            $order = $request->session()->get("order");
+            if($order !== null){
+                $coupon = $request->session()->get("coupon");
+                return view("client.checkout",["user"=>user::where("username","=",$user)->first(), "order"=>$order, "coupon" => $coupon]);
+            }
+            return view("client.checkout",["user"=>user::where("username","=",$user)->first(), "order"=>[], "coupon" => 0]);
+        }
+        return redirect("/signin");
+    }
+
+    public function goBill(Request $request){
+        $username = $request->session()->get("user");
+        if($username === null){
+            $products = product::all();
+            $reviews = review::all();
+            //$listItem = $this->paginate($products, 9);
+            return view("index", ["products" => $products, "reviews" => $reviews]);
+        }
+        $user = user::where("username", "=", $username)->first();
+
+        $sessionOrder = json_decode($request->session()->get("order"));
+
+        //Create Order
+        $order = new order();
+        $order->order_date = Carbon::now();
+        $order->user_id = $user->id;
+        $order->status = 1;
+        $order->id = 1;
+//        $order->save();
+
+        //Create Order Item
+        foreach ($sessionOrder->items as $item){
+            $order_item = new order_item();
+            $order_item->order_id = $order->id;
+            $order_item->product_id = $item->id;
+            $order_item->quantity = $item->count;
+//          $order_item->save();
+        }
+//        dd(json_decode($order));
+        dd($sessionOrder);
+
+        //Create invoice
+        $invoice = new invoice();
+        $invoice->order_id = $order->id;
+        $invoice->recipient_fname = $user->fname;
+        $invoice->recipient_lname = $user->lname;
+        $invoice->recipient_phone = $user->phone;
+        $invoice->recipient_address = $user->address;
+        $invoice->type = $request->input("paymentMethod");
+//        $invoice->save()
+    }
+
+    public function applyCoupon(Request $request){
+        $brand_ids = $request->ids;
+        $coupon_code = $request->code;
+        $coupon = coupon::whereIn('brand_id', $brand_ids)
+            ->where("active","=", true)
+            ->where("retired", "=", "false")
+            ->where("code","=",$coupon_code)
+            ->first();
+        if($coupon !== null){
+            if(!$coupon->active){
+                return response()->json(["result"=>[["state" => 1]]]);
+            }
+            $request->session()->put("coupon", $coupon->discount);
+            $request->session()->save();
+            return response()->json(["result"=>["state" => 0, "coupon" => $coupon]]);
+        }
+        return response()->json(["result"=>[["state" => 2]]]);
     }
 
     public function orderDetails(Request $request, $id)

@@ -107,7 +107,7 @@
                 brand_id : $jsonObj.brand_id,
                 count : parseInt($qty)
             }
-            console.log($product);
+            // console.log($product);
             if($.shoppingcart('add',$product)){
                 $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
                 $.ajax({
@@ -224,9 +224,10 @@
                         }
                     }).done(function(response) {
                         //console.log("Update Quantity success");
-                        $('#item-total-price-'+$id).html("$" + ($prd.price * $prd.count * (1 - $prd.discount/100)));
-                        $('#order_total-value').html("$" + ($.shoppingcart("getPrice")));
-                        $('#order_grand_total-value').html("$" + (parseInt($.shoppingcart("getPrice")) + $coupon));
+                        $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
+                        $('#item-total-price-'+$id).html("$" + ($prd.price * $prd.count * (1 - $prd.discount/100)).toFixed(2));
+                        $('#order_total-value').html("$" + parseFloat($.shoppingcart("getPrice")).toFixed(2));
+                        $('#order_grand_total-value').html("$" + (parseFloat($.shoppingcart("getPrice")) + $coupon).toFixed(2));
                     }).fail(function(error){
                         console.log(error);
                     });
@@ -258,8 +259,8 @@
                             alertify.success("Apply coupon success!");
                             $('#coupon-value').html(response.result.coupon.discount);
                             $coupon = $('#coupon-value').html();
-                            $('#order_total-value').html("$" + ($.shoppingcart("getPrice")));
-                            $('#order_grand_total-value').html("$" + (parseInt($.shoppingcart("getPrice")) - $coupon));
+                            $('#order_total-value').html("$" +  ( $.shoppingcart("getPrice").toFixed(2)));
+                            $('#order_grand_total-value').html("$" + (parseInt($.shoppingcart("getPrice")) - $coupon).toFixed(2));
                             break;
                         case 1:
                             alertify.error("The coupon has been expired!");
