@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    <form action="{{ route('createTag') }}" method="post">
+    <form action="{{ url('/admin/tag/postCreate') }}" method="post">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -20,7 +20,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{ url('/tag/') }}" class="btn btn-danger">Cancel</a>
+            <a href="{{ url('admin/tag') }}" class="btn btn-danger">Cancel</a>
         </div>
     </form>
 @stop

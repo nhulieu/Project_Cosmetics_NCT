@@ -21,7 +21,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form action="{{ url('/feedback/reply') }}" method="post">
+                        <form action="{{ url('admin/feedback/reply') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="">Email:</label>
@@ -46,7 +46,6 @@
             </div>
         </div>
     </div>
-
 @stop
 
 @section('footer')

@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <a class="btn btn-success btn-btn" href="{{ url('/category/create') }}">
+                            <a class="btn btn-success btn-btn" href="{{ url('admin/category/create') }}">
                                 <i class="fas fa-plus"></i> Add
                             </a>
                         </h3>
@@ -48,12 +48,12 @@
                                     <td>{{ $category->description }}</td>
                                     <td class="text-left">
                                         <a class="btn btn-info btn-sm"
-                                           href="{{ url('/category/update/'.$category->id) }}">
+                                           href="{{ url('/admin/category/update/'.$category->id) }}">
                                             <i class="fas fa-pencil-alt"></i> Edit
                                         </a>
 
                                         <a class="btn btn-danger btn-sm"
-                                           href="{{ url('/category/delete/'.$category->id) }}">
+                                           href="{{ url('/admin/category/delete/'.$category->id) }}">
                                             <i class="fas fa-trash"></i> Delete
                                         </a>
                                     </td>

@@ -15,7 +15,7 @@
                         <!-- /.card-header -->
 
                         <!-- form start -->
-                        <form role="form" action="{{ url('product/postUpdate/' .$product->id) }}" method="post"
+                        <form role="form" action="{{ url('admin/product/postUpdate/' .$product->id) }}" method="post"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="{{ url('/product/') }}" class="btn btn-danger">Cancel</a>
+                                    <a href="{{ url('admin/product/') }}" class="btn btn-danger">Cancel</a>
                                 </div>
                             </div>
                         </form>

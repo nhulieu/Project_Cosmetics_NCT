@@ -16,17 +16,17 @@ class CheckAdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->has('user')) {
+        if($request->session()->has('user')){
             $user = $request->session()->get('user');
-            if ($user->type == 0) {
+            if($user->type == 1){
                 return $next($request);
             } else {
                 return redirect('/');
             }
-        } elseif ($request->session()->get('user') == null) {
-            return redirect('login');
-        } else {
-            return redirect('login');
+        }elseif($request->session()->get('user') == null) {
+            return redirect('signin');
+        }else {
+            return redirect('signin');
         }
     }
 }

@@ -254,11 +254,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'View All',
-                    'url' => 'http://127.0.0.1:8000/product',
+                    'url' => 'http://127.0.0.1:8000/admin/product',
                 ],
                 [
                     'text' => 'Add new',
-                    'url' => 'http://127.0.0.1:8000/product/create',
+                    'url' => 'http://127.0.0.1:8000/admin/product/create',
                 ],
             ],
         ],
@@ -268,11 +268,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'View All',
-                    'url' => 'http://127.0.0.1:8000/category',
+                    'url' => 'http://127.0.0.1:8000/admin/category',
                 ],
                 [
                     'text' => 'Add new',
-                    'url' => 'http://127.0.0.1:8000/category/create',
+                    'url' => 'http://127.0.0.1:8000/admin/category/create',
                 ],
             ],
         ],
@@ -282,11 +282,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'View Brand',
-                    'url' => 'http://127.0.0.1:8000/brand'
+                    'url' => 'http://127.0.0.1:8000/admin/brand'
                 ],
                 [
                     'text' => 'Add new',
-                    'url' => 'http://127.0.0.1:8000/brand/create'
+                    'url' => 'http://127.0.0.1:8000/admin/brand/create'
                 ]
             ]
         ],
@@ -296,11 +296,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'View Tag',
-                    'url' => 'http://localhost:8000/tag',
+                    'url' => 'http://localhost:8000/admin/tag',
                 ],
                 [
                     'text' => 'Add new',
-                    'url' => 'http://localhost:8000/tag/create',
+                    'url' => 'http://localhost:8000/admin/tag/create',
                 ],
             ],
         ],
@@ -310,7 +310,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'View Order',
-                    'url' => 'http://127.0.0.1:8000/cart',
+                    'url' => 'http://127.0.0.1:8000/admin/cart',
                 ]
             ],
         ],
@@ -320,7 +320,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'View Feedback',
-                    'url' => 'http://localhost:8000/feedback',
+                    'url' => 'http://localhost:8000/admin/feedback',
                 ]
             ],
         ],
