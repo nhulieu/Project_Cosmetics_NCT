@@ -176,7 +176,49 @@ class imageSeeder extends Seeder
 
             ["product_id" => "20", "path" => "img/Product_Photo/20. Moroccanoil/1.jpg"],
             ["product_id" => "20", "path" => "img/Product_Photo/20. Moroccanoil/2.jpg"],
-            ["product_id" => "20", "path" => "img/Product_Photo/20. Moroccanoil/3.jpg"]
+            ["product_id" => "20", "path" => "img/Product_Photo/20. Moroccanoil/3.jpg"],
+
+            ["product_id" => "21", "path" => "img/Product_Photo/21. Maybelline Baby Skin Makeup Primer 22ml/1.png"],
+            ["product_id" => "21", "path" => "img/Product_Photo/21. Maybelline Baby Skin Makeup Primer 22ml/2.jpg"],
+            ["product_id" => "21", "path" => "img/Product_Photo/21. Maybelline Baby Skin Makeup Primer 22ml/3.jpg"],
+
+            ["product_id" => "22", "path" => "img/Product_Photo/22. L'Oréal Paris Color Conditioner 165ml/1.jpeg"],
+            ["product_id" => "22", "path" => "img/Product_Photo/22. L'Oréal Paris Color Conditioner 165ml/2.jpg"],
+            ["product_id" => "22", "path" => "img/Product_Photo/22. L'Oréal Paris Color Conditioner 165ml/3.png"],
+
+            ["product_id" => "23", "path" => "img/Product_Photo/23. Paula's Choice 5% AHA Exfoliating Scrub For Normal Dry Skin 50ml/1.jpg"],
+            ["product_id" => "23", "path" => "img/Product_Photo/23. Paula's Choice 5% AHA Exfoliating Scrub For Normal Dry Skin 50ml/2.jpg"],
+            ["product_id" => "23", "path" => "img/Product_Photo/23. Paula's Choice 5% AHA Exfoliating Scrub For Normal Dry Skin 50ml/3.jpg"],
+
+            ["product_id" => "24", "path" => "img/Product_Photo/24. Lancôme Youthful & Radiant Skin Care 7ml/1.jpg"],
+            ["product_id" => "24", "path" => "img/Product_Photo/24. Lancôme Youthful & Radiant Skin Care 7ml/2.jpg"],
+            ["product_id" => "24", "path" => "img/Product_Photo/24. Lancôme Youthful & Radiant Skin Care 7ml/3.jpg"],
+
+            ["product_id" => "25", "path" => "img/Product_Photo/25. Banana Boat Ultra Protect Sports Sunscreen SPF110 (90ml)/1.jpg"],
+            ["product_id" => "25", "path" => "img/Product_Photo/25. Banana Boat Ultra Protect Sports Sunscreen SPF110 (90ml)/2.jpg"],
+            ["product_id" => "25", "path" => "img/Product_Photo/25. Banana Boat Ultra Protect Sports Sunscreen SPF110 (90ml)/3.jpg"],
+
+            ["product_id" => "26", "path" => "img/Product_Photo/26. Bath&Body Works Japanese Cherry Blossom Shower Gel/1.jpg"],
+            ["product_id" => "26", "path" => "img/Product_Photo/26. Bath&Body Works Japanese Cherry Blossom Shower Gel/2.jpg"],
+            ["product_id" => "26", "path" => "img/Product_Photo/26. Bath&Body Works Japanese Cherry Blossom Shower Gel/3.jpg"],
+
+            ["product_id" => "27", "path" => "img/Product_Photo/27. Bath & Body Works Black Raspberry Vanilla Shower Gel 295ml/1.jpg"],
+            ["product_id" => "27", "path" => "img/Product_Photo/27. Bath & Body Works Black Raspberry Vanilla Shower Gel 295ml/2.jpg"],
+            ["product_id" => "27", "path" => "img/Product_Photo/27. Bath & Body Works Black Raspberry Vanilla Shower Gel 295ml/3.jpg"],
+
+            ["product_id" => "28", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/1.jpg"],
+            ["product_id" => "28", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/2.jpg"],
+            ["product_id" => "28", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/3.jpg"],
+
+            ["product_id" => "29", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/1.jpg"],
+            ["product_id" => "29", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/2.jpeg"],
+            ["product_id" => "29", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/3.jpg"],
+
+            ["product_id" => "30", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/1.jpg"],
+            ["product_id" => "30", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/2.jpeg"],
+            ["product_id" => "30", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/3.jpg"],
+
+
         ]);
     }
 }
@@ -402,7 +444,88 @@ How to Use : Take Moroccanoil Moisture Repair Shampoo into your hand and apply e
 Ingredient :Argan Oil:
 Lavender, Rosemary, Chamomile and Jojoba Extracts:
 Cocamide Mea:
-Keratin:","status"=>"2","price"=>"23.9","discount"=>"5","quantity"=>"8","tax"=>"5","feature"=>"","mark"=>"5"]
+Keratin:","status"=>"2","price"=>"23.9","discount"=>"5","quantity"=>"8","tax"=>"5","feature"=>"","mark"=>"5"],
+            ["name"=>"Maybelline Baby Skin Makeup Primer 22ml Baby Skin Pore Eraser","category_id"=>"22","brand_id"=>"15","description"=>"Maybelline Baby Skin Instant Pore Eraser Primer has perfect coverage, the product will make large pores evaporate instantly with just a thin layer of cream, promising to bring you smooth skin. smooth as baby skin. Besides, you will no longer have to worry about dry, rough skin because the product also has the function of moisturizing the skin all day long. The ability to control oil of Maybelline Baby Skin Instant Pore Eraser primer will surely make oily skin girls fall in love, the skin will be dry, soft and smooth, the makeup layer will not be patchy or dull for many hours.
+
+How to Use : Take an appropriate amount of the product and dot 5 points on the face (forehead, nose, cheeks and chin), use your hands or a sponge to gently spread all over the face for a beautiful, pink and white skin that is naturally radiant.
+
+Ingredient :DIMETHICONE DIMETHICONE CROSSPOLYMER STEARYL HEPTANOATE CAPRYLYL GLYCOL SILICA SILYLATE PROPYLENE GLYCOL PENTAERYTHRITYL TETRAISOSTEARATE PRUNUS CERASUS EXTRACT / BITTER CHERRY EXTRACT [+/- MAY CONTAIN / PEUT CONTENIR CI 73360 / RED 30 CI 77492 / IRON OXIDES ]","status"=>"1","price"=>"4.13","discount"=>"0","quantity"=>"10","tax"=>"7","feature"=>"","mark"=>"4"],
+
+
+    ["name"=>"L'Oréal Paris Color Conditioner 165ml Elseve Color Protect","category_id"=>"10","brand_id"=>"20","description"=>"For dyed hair, frequent washing & combing along with the external impact of the environment will make the hair color fade quickly. L'Oréal Paris Elseve Color Protect Conditioner comes from the high-class L'Oréal Paris cosmetic brand originating from France - one of the leading hair care brands in the world, helping to take care of the hair. Professionally and effectively dyed hair. The product is applied advanced technology to help protect and keep dyed hair color long-lasting. Moreover, it also protects the hair from bad influences from the environment, thereby giving you beautiful shiny hair and natural color.
+
+How to Use : Use after shampoo step, take an appropriate amount of conditioner on the palm. Gently massage conditioner into hair. Pay attention to 5cm from the hairline. Then rinse with warm/cool water..
+
+Ingredient :AQUA/WATER, CETYL ALCOHOL, TOCOPHEROL, HYDROXYETHYLCELLULOSE, PHENOXYETHANOL BEHENTRIMONIUM CHLORIDE, ETHYLHEXYL METHOXYCINNAMTE, TRIDECETH-5, TRIDECETH-10, CHLORHEXIDINE DIGLUCONATE BENZYL ALCOHOL, BENZYL SALICYLATE, LINALOOL, BENZOPHENONE-4, AMODIMETHICONE, ISOPROPYL ALPHA-ISOMETHYL IONONE MYRISTYL ALCOHOL GERANIOL CETYLESTERS CETEARYL ALCOHOL CETRIMONIUM CHLORIDE CITRIC ACID BUTYLPHENYL METHYLPROPIONAL CITRONELLOL GLYCERIN PARFUM FRAGRANCE","status"=>"2","price"=>"2.6","discount"=>"21","quantity"=>"10","tax"=>"7","feature"=>"","mark"=>"3"],
+
+            ["name"=>"Paula's Choice 5% AHA Exfoliating Scrub For Normal Dry Skin 50ml Resist Daily Smoothing Treatment 5% AHA","category_id"=>"32","brand_id"=>"10","description"=>"Paula's Choice 5% AHA Resist Daily Smoothing Treatment 5% AHA is a chemical exfoliant from Paula's Choice cosmetic brand, containing 5% AHA concentration suitable for normal skin to dry, helps to remove dead cells and promote new skin cell renewal, restoring a youthful and radiant appearance, while brightening and even skin tone, helping to fade brown spots and fine lines.
+
+How to Use : Use after cleansing and balancing skin. In the event that flaking occurs, you need to reduce the frequency of use and add a moisturizer of the right texture. During the day, use a sunscreen with an SPF of 30 or higher.
+
+Ingredient :Water (Aqua), Glycolic Acid (alpha hydroxy acid/exfoliant), Cetyl Alcohol (texture-enhancing), Butylene Glycol (hydration), Dimethicone (hydrations/texture enhancer), Polyacrylamide (texture-enhancing), PPG-14 Butyl Ether (texture-enhancing), Palmitoyl Hexapeptide-12 (skin-restoring ingredient), Ceramide NG (skin replenishing), Tetrahydrodiferuloylmethane, Tetrahydrodemethoxydiferuloylmethane, Tetrahydrobisdemethoxydiferuloylmethane (skin-soothing/antioxidants derived from curcumin), Epigallocatechin Gallate (antioxidant), Salicylic Acid (BHA exfoliant/skin-soothing), Disodium Lauriminodipropionate Tocopheryl Phosphates (vitamin e based antioxidant), PEG-10 Phytosterol, Cucumis Melo (Melon Fruit Extract (antioxidant), Bisabolol (skin-soothing), Allantoin (skin-soothing), Cyclopentasiloxane, Cyclohexasiloxane, Dimethiconol (hydrations/texture enhancers), Tribehenin (texture enhancer), Polysorbate 20 (texture-enhancing), C12-15 Alkyl Benzoate, PEG-40 Stearate, Sorbitan Stearate (texture-enhancings), PVM/MA Decadiene Crosspolymer, Disodium EDTA (stabilizer), C13-14 Isoparaffin (solvent), Laureth-7 (texture-enhancing), Sodium Hydroxide (pH adjuster), Caprylyl Glycol (preservative), Ethylhexylglycerin (skin conditioning agent), Hexylene Glycol (solvent), Phenoxyethanol (preservative).
+","status"=>"1","price"=>"74400","discount"=>"5","quantity"=>"20","tax"=>"8","feature"=>"","mark"=>"3"],
+
+            ["name"=>"Lancôme Youthful & Radiant Skin Care 7ml Advanced Genifique","category_id"=>"34","brand_id"=>"16","description"=>"Lancôme Advanced Genifique Essence for Youthful & Radiant Skin is the divine  Black Serum product line from the high-end cosmetic brand Lancôme Paris, applying science to the skin microbiome with 7 types of Probiotics and Prebiotics, helping to increase strengthen the immune system, promote the production of new proteins, thereby supporting cell regeneration and restoring skin structure, deeply moisturizing the skin, nourishing the skin more firm and smooth.
+
+How to Use : Use twice, every morning and evening. Use after lotion step. Take 1 tube, gently apply all over the face and neck, then use the serum or other skin care products.
+
+Ingredient : Water, Bifida Ferment Lysate, Glycerin, Alcohol Denat., Dimethicone, Hydroxyethylpiperazine Ethane Sulfonic Acid, Ascorbyl Glucoside, Sodium Hyaluronate, Sodium Hydroxide, Sodium Benzoate, Phenoxyethanol, Adenosine, Faex Extract/Yeast Extract/Extrait De Levure, Peg-20 Methyl Glucose Sesquistearate, Peg-60 Hydrogenated Castor Oil, Salicyloyl Phytosphingosine, Ammonium Polyacryldimethyltauramide/Ammonium Polyacryloyldimethyl Taurate, Limonene, Xanthan Gum, Caprylyl Glycol, Disodium Edta, Octyldodecanol, Citronellol, Fragrance.","status"=>"1","price"=>"17.28","discount"=>"0","quantity"=>"21","tax"=>"9","feature"=>"","mark"=>"4"],
+
+            ["name"=>"Banana Boat Ultra Protect Sports Sunscreen SPF110 (90ml)","category_id"=>"7","brand_id"=>"9","description"=>"Banana Boat Ultra Protect Sport Sunscreen SPF110 (90ml) - 521900 provides perfect sun protection for the skin with SPF 110 PA +++ sun protection to help you comfortably exercise in the hot sun while still being protected. Protects against harmful UVA and UVB rays.
+
+How to Use :For the best skin protection, you should apply the cream 30 minutes before going out in the sun and reapply every 2 hours if continuously exposed to the sun.
+
+Ingredient :The product uses AvoTriplex technology to create an effective sunscreen film.
+The product has extremely strong SPF 110 sun protection that protects the skin against UVA rays that cause skin aging and UVB rays that cause sunburn, black skin when playing outdoors in the hot sun.","status"=>"1","price"=>"6.5","discount"=>"2","quantity"=>"10","tax"=>"5","feature"=>"","mark"=>"5"],
+
+            ["name"=>"Bath&Body Works Japanese Cherry Blossom Shower Gel","category_id"=>"8","brand_id"=>"2","description"=>"Bath & Body Works Shea & Vitamine Shower Gel 295Ml #Japanese Cherry Blossom is one of the indispensable things for body care. Suitable for all skin types, they will help your skin stay soft and smooth, not only that, but they also provide nutrients to effectively nourish and protect your skin. This is a transparent gel shower gel that softens and cleans the skin, creating a rich lather with a strong fragrance.
+
+How to Use : Wet the body, take an appropriate amount of shower gel, foam and massage on the skin then rinse.
+
+Ingredient :Shea Butter, Aloe Vera, Vitamin E, Jojoba Oil.","status"=>"1","price"=>"12.2","discount"=>"2","quantity"=>"26","tax"=>"6","feature"=>"","mark"=>"6"],
+
+            ["name"=>"Bath & Body Works Black Raspberry Vanilla Shower Gel 295ml","category_id"=>"8","brand_id"=>"2","description"=>"Bath & Body Works Shower Gel has a mild soap and lather formula that leaves you feeling clean yet extremely soft and beautifully scented with rich natural flowers. Bath & Body Works' exclusive shower gel is a blend of ultra-hydrating shea butter, vitamin E and aloe to nourish, hydrate and soften skin while boosting skin's vitality. smooth, youthful, slows down the aging process of the skin.
+The liquid gel product does not create much foam, does not dry the skin, balances the moisture of the skin, softens the rough skin layers and drifts away in the shower, the mild fragrance helps you have relaxing moments in the bathroom after A stressful day at work.
+The product does not retain a strong scent like when using perfume, but only faintly on the skin, hidden and visible, keeping a gentle fragrance on the body, increasing the charm for women. Scent: Fresh raspberry, ripe blackberry, vanilla orchid, creamy sandalwood, cashmere wood.
+
+How to Use : Wet the body, take an appropriate amount of shower gel, foam and massage on the skin then rinse.
+
+Ingredient :Shea Butter, Aloe Vera, Vitamin E, Jojoba Oil.","status"=>"1","price"=>"12.2","discount"=>"0","quantity"=>"27","tax"=>"7","feature"=>"","mark"=>"7"],
+            ["name"=>"Bath & Body Works Body Lotion Moonlight Path 236ml","category_id"=>"5","brand_id"=>"2","description"=>"Bath & Body Works Moonlight Path Body Lotion will soothe you into the most peaceful, soothing sleep. Body lotion provides vitamin E and minerals to help keep skin moisturized regularly. Bath & Body Works body lotion is like a smooth milk that penetrates quickly into the skin. Moonlight lotion helps you beat the rough, rough, dark look caused by cold weather or hot sun. At the same time, this antioxidant helps prevent skin aging, wrinkles, and sagging on the body.
+
+How to Use : After showering, pat dry.  Take a sufficient amount of Bath & Body Works Cream with Moonlight Path fragrance and apply all over the body. Just apply and gently massage your skin so that the Moonlight lotion can be evenly absorbed into the skin.
+
+Ingredient : Shea Butter (Shea Butter), Musk. White orchids, violets, and lavender. With vitamins E, B5…","status"=>"1","price"=>"287000","discount"=>"5","quantity"=>"28","tax"=>"8","feature"=>"","mark"=>"8"],
+
+            ["name"=>"VICTORIA'S SECRET Amber Romance shower gel 250ml","category_id"=>"8","brand_id"=>"5","description"=>"This is the best-selling scent of the Victoria Secret shower gel line - the scent is passionate and sexy, it is especially loved by those who like seductive scents, the warm, sensual scent of sexy amber cold and ice cream Anglaise.
+
+How to Use : Wet the body. Apply shower gel all over the body and gently massage. Then rinse with water.
+
+Ingredient : Grape seed extracts, plus antioxidants – vitamins E and C","status"=>"1","price"=>"10","discount"=>"5","quantity"=>"29","tax"=>"9","feature"=>"","mark"=>"9"],
+
+            ["name"=>"Senka Pink Brightening Facial Mask 25ml Perfect Aqua White Mask Extra White","category_id"=>"36","brand_id"=>"22","description"=>"Senka Perfect Aqua White Mask Extra White 25ml is a line of skin care masks from Japanese cosmetic brand Senka, extracted from white silk ingredients and rose essence to support brightening and even skin tone, improving skin tone. fades newly formed brown spots for soft, glowing skin.
+
+How to Use : Clean hands. Use after cleansing and balancing skin. Apply the mask on your face for 15-20 minutes. When taking out the mask, gently pat and massage to allow the moisturizing essence to penetrate deep into the skin.
+
+Ingredient : Rose extract, Aloe Vera Extract ,Hyaluronic Acid, Glycerin","status"=>"1","price"=>"1.5","discount"=>"0","quantity"=>"30","tax"=>"10","feature"=>"","mark"=>"10"],
+
+            ["name"=>" Victoria's Secret Very Sexy Body Lotion 100ml ","category_id"=>"5","brand_id"=>"5","description"=>"Very Sexy 100ml is a signature blend of gentle orchid and sweet vanilla, blended with fresh mandarin and seductive raspberries to create unique notes. Very Sexy is like an earnest invitation of feminine beauty and sensual sublimation emotions that attract everyone around.
+
+How to Use : After bathing, take an appropriate amount of body lotion and apply all over the body.
+
+Ingredient : Shea Butter (Shea Butter), Musk. White orchids, violets, and lavender. With vitamins E, B5…","status"=>"2","price"=>"12.5","discount"=>"1","quantity"=>"31","tax"=>"11","feature"=>"","mark"=>"11"]
+
+
+
+
+
+
+
+
+
+
+
+
         ]);
     }
 }
