@@ -14,11 +14,11 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="card-body">
-                            <a class="btn btn-danger btn-btn" href="{{ url('/product/') }}">
+                            <a class="btn btn-danger btn-btn" href="{{ url('/admin/product/') }}">
                                 <font color="white"><i class="fas fa-arrow-left"></i> Back</font>
                             </a>
                             <br><br>
-                            <a class="btn btn-success btn-btn" href="{{ url('product/createImage/'.$id)}}">
+                            <a class="btn btn-success btn-btn" href="{{ url('/admin/product/createImage/'.$id)}}">
                                 <i class="fas fa-plus"></i> Add
                             </a>
                             <table id="games" class="table table-bordered table-hover">
@@ -35,16 +35,16 @@
                                     <tr>
                                         <td class="text-center">{{ $img->id }}</td>
                                         <td class="text-center">
-                                            <img height="130px" width="100px" src="{{ $img->path }}" alt="">
+                                            <img height="130px" width="100px" src="{{ asset($img->path) }}" alt="">
                                         </td>
                                         <td class="text-center">{{ $img->cover==1 ? 'Yes' : 'No' }}</td>
                                         <td class="text-center">
                                             <a class="btn btn-info btn-sm" title="Edit"
-                                               href="{{ url('product/updateImage/'.$img->id) }}">
+                                               href="{{ url('admin/product/updateImage/'.$img->id) }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()"
-                                               href="{{ url("product/deleteImage/".$img->id) }}">
+                                               href="{{ url("admin/product/deleteImage/".$img->id) }}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>

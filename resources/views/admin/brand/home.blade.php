@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <a class="btn btn-success btn-btn" href="{{ url('/brand/create') }}">
+                            <a class="btn btn-success btn-btn" href="{{ url('admin/brand/create') }}">
                                 <i class="fas fa-plus"></i> Add
                             </a>
                         </h3>
@@ -49,12 +49,12 @@
                                     <td><img src="{{ asset($b->logo) }}" alt="{{ $b->name }}" style="width: 50px; height: 50px"></td>
                                     <td class="text-left">
                                         <a class="btn btn-info btn-sm"
-                                           href="{{ url('/brand/update/'.$b->id) }}">
+                                           href="{{ url('/admin/brand/update/'.$b->id) }}">
                                             <i class="fas fa-pencil-alt"></i> Edit
                                         </a>
 
                                         <a class="btn btn-danger btn-sm"
-                                           href="{{ url('/brand/delete/' . $b->id) }}">
+                                           href="{{ url('/admin/brand/delete/' . $b->id) }}">
                                             <i class="fas fa-trash"></i> Delete
                                         </a>
                                     </td>

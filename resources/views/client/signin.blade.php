@@ -89,9 +89,6 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <input class="form-control" require type="text" placeholder="E-mail" name="txtLoginUser">
-                                        @if ($errors->has('txtLoginUser'))
-                                        <p class="text-right" style="color: red;">{{ $errors->first('txtLoginUser') }}</p>
-                                        @endif
                                     </div>
                                     <div class="col-md-12">
                                         <input class="form-control" require type="password" placeholder="Password" name="txtLoginPassword">

@@ -38,12 +38,12 @@
                                 <tr>
                                     <th scope="row">{{ $message->id }}</th>
                                     <td>{{ $message->name }}</td>
-                                    <td><a href="{{ url('feedback/detail/'.$message->id) }}">{{ $message->email }}</a>
+                                    <td><a href="{{ url('admin/feedback/detail/'.$message->id) }}">{{ $message->email }}</a>
                                     </td>
                                     <td>{{ $message->subject }}</td>
                                     <td class="text-left">
                                         <a class="btn btn-danger btn-sm"
-                                           href="{{ url('/feedback/delete/'.$message->id) }}">
+                                           href="{{ url('admin/feedback/delete/'.$message->id) }}">
                                             <i class="fas fa-trash"></i> Delete
                                         </a>
                                     </td>

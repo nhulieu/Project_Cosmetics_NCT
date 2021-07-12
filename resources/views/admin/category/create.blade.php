@@ -5,18 +5,21 @@
 @stop
 
 @section('content')
-    <form action="{{ route('createCategory') }}" method="post" >
+    <form action="{{ url('admin/category/postCreate') }}" method="post" >
         @csrf
         <div class="card-body">
             <div class="form-group">
                 <label for="txt-name">Category Name</label>
-                <input type="text" class="form-control" id="txt-name" name="label" placeholder="Input Category">
+                <input type="text" class="form-control" id="txt-name" name="name" placeholder="Input Category">
+            </div><div class="form-group">
+                <label for="txt-name">Description</label>
+                <input type="text" class="form-control" id="txt-name" name="description" placeholder="Description">
             </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{ url('/category') }}" class="btn btn-danger">Cancel</a>
+            <a href="{{ url('/admin/category') }}" class="btn btn-danger">Cancel</a>
         </div>
     </form>
 @stop
