@@ -392,23 +392,4 @@ class ClientController extends Controller
         $products = $product_query->paginate(9)->withQueryString();
         return view("client.product", ["products" => $products, "name" => $name, "brandInput" => $brand, "categoryInput" => $category, "from" => $from, "to" => $to, "status" => $status]);
     }
-
-    public function applyCoupon(Request $request)
-    {
-        $brand_ids = $request->ids;
-        $coupon_code = $request->code;
-        $coupon = coupon::whereIn('brand_id', $brand_ids)
-            ->where("active", "=", true)
-            ->where("retired", "=", "false")
-            ->where("code", "=", $coupon_code)
-            ->first();
-        if ($coupon !== null) {
-            if (!$coupon->active) {
-                return response()->json(["result" => [["state" => 1]]]);
-            }
-
-            return response()->json(["result" => ["state" => 0, "coupon" => $coupon]]);
-        }
-        return response()->json(["result" => [["state" => 2]]]);
-    }
 }
