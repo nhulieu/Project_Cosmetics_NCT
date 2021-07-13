@@ -40,7 +40,7 @@
                                             <td>{{$wishItem->product->name}}</td>
                                             <td>{{$wishItem->created_at}}</td>
                                             <td>${{$wishItem->product->price}}</td>
-                                            <td>{{$wishItem->product->status}}</td>
+                                            <td>{{$wishItem->product->status == 1 ? Available : Unvailable}}</td>
                                             <td>
                                                 <a href="{{url('/product-details/'.$wishItem->product->id)}}" class="btn">View</a>
                                             </td>
@@ -170,8 +170,17 @@
                                             <td>#{{$order->id}}</td>
                                             <td>{{$order->order_date}}</td>
                                             <td>${{$order->total()}}</td>
-                                            <td>{{$order->status}}</td>
-                                            <td><a href="{{url('/order-details/'.$order->id)}}" class="btn">View</a></td>
+                                            <td>
+                                                @switch($order->status)
+                                                    @case(0)
+                                                        Credit Card
+                                                    @break
+                                                    @case(1)
+                                                        COD
+                                                    @break
+                                                @endswitch
+                                            </td>
+                                            <td><a href="{{url('/check-bill/'.$order->id)}}" class="btn">View</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

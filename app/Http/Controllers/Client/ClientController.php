@@ -272,7 +272,18 @@ class ClientController extends Controller
         if($id === null){
             redirect("/");
         }
-        return view("client.bill",["order"=>order::find($id)]);
+
+        $username = $request->session()->get("user");
+        if($username == null){
+            return redirect("/");
+        }
+        $user = user::where("username", "=", $username)->first();
+        $order = order::find($id);
+        if($order->user_id !== $user->id){
+            return redirect("/");
+        }
+
+        return view("client.bill",["order"=>$order]);
     }
 
     public function goBill(Request $request){

@@ -171,9 +171,8 @@
                 }).done(function(response) {
                     //console.log(response.result);
                     $.shoppingcart('clear');
-                    location.href = "/";
-                    alertify.success("Sign out success !", "1", function(e){
-
+                    alertify.success("Sign out success ! Redirect to home page", "1", function(e){
+                        location.href = "/";
                     });
                 }).fail(function(error){
                     console.log(error);
