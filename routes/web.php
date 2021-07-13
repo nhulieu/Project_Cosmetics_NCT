@@ -32,7 +32,7 @@ Route::post('/signup', [ClientController::class, "postSignup"]);
 Route::get('/update-account', [ClientController::class, "account"]);
 Route::post("/update-account", [ClientController::class, "updateAccountDetails"]);
 
-Route::get('//update-password', [ClientController::class, "account"]);
+Route::get('/update-password', [ClientController::class, "account"]);
 Route::post("/update-password", [ClientController::class, "updateAccountPassword"]);
 
 Route::get('/', [ClientController::class, "home"]);
@@ -46,7 +46,9 @@ Route::get('/about', [ClientController::class, "about"]);
 Route::get('/my-account', [ClientController::class, "account"]);
 Route::get('/order', [ClientController::class, "order"]);
 Route::get('/checkout', [ClientController::class, "checkout"]);
-Route::post('//go-bill', [ClientController::class, "goBill"]);
+Route::get('/check-bill/{id}', [ClientController::class, "checkBill"]);
+Route::get('/go-bill', [ClientController::class, "home"]);
+Route::post('/go-bill', [ClientController::class, "goBill"]);
 Route::post('/update-order', [ClientController::class, "updateOrder"]);
 Route::get('/order-details/{id}', [ClientController::class, "orderDetails"]);
 Route::get('/product-details/{id}', [ClientController::class, "productDetails"]);

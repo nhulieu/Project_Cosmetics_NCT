@@ -54,39 +54,39 @@
                             <h2>Grand Total<span>${{number_format(json_decode($order)->totalPrice-$coupon, 2)}}</span></h2>
                         </div>
 
-                        <form class="checkout-payment" action="/go-bill" method="post">
+                        <form class="checkout-payment" onsubmit="handleGoBill(this)">
                             @csrf
                             <div class="payment-methods">
                                 <h1>Payment Methods</h1>
                                 <div class="payment-method">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="payment-1" name="paymentMethod">
+                                        <input type="radio"required class="custom-control-input" id="payment-1" value="0" name="paymentMethod">
                                         <label class="custom-control-label" for="payment-1">Credit Card</label>
                                     </div>
                                     <div class="payment-content" id="payment-1-show">
                                         <p>
                                         <div class="col-md-12">
                                             <label>Owner</label>
-                                            <input type="text" class="form-control" required placeholder="Owner" name="owner">
+                                            <input type="text" class="form-control" placeholder="Owner" name="owner">
                                         </div>
                                         <div class="col-md-12">
                                             <label>Card Number</label>
-                                            <input type="number" class="form-control" required placeholder="Card Number" name="card_number">
+                                            <input type="number" minlength="16" maxlength="16" class="form-control" placeholder="Card Number" name="card_number">
                                         </div>
                                         <div class="col-md-8">
                                             <label>Expiration</label>
-                                            <input type="date" class="form-control" required placeholder="Expiration" name="expiration">
+                                            <input type="date" class="form-control" placeholder="Expiration" name="expiration">
                                         </div>
-                                        <div class="col-md-4">
-                                            <label>Expiration</label>
-                                            <input type="number" class="form-control" required placeholder="Security Code" name="security_code">
+                                        <div class="col-md-8">
+                                            <label>Security</label>
+                                            <input type="number" class="form-control" minlength="3" maxlength="3" placeholder="Security Code" name="security_code">
                                         </div>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="payment-method">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="payment-2" name="paymentMethod">
+                                        <input type="radio" required class="custom-control-input" id="payment-2" value="1" name="paymentMethod">
                                         <label class="custom-control-label" for="payment-2">COD</label>
                                     </div>
                                     <div class="payment-content" id="payment-2-show">
@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                             <div class="checkout-btn">
-                                <button type="submit">Go Bill</buttontype>
+                                <button type="submit">Go Bill</button>
                             </div>
                         </form>
                     </div>

@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use App\Models\brand;
-use App\Models\image;
 use App\Models\invoice;
+use App\Models\order_item;
 use App\Models\review;
-use App\Models\tag;
-use App\order_item;
+
+
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\coupon;
-use Illuminate\Http\Client\Events\RequestSending;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\feedback;
@@ -21,6 +17,7 @@ use App\Models\order;
 use App\Models\product;
 use App\Models\user;
 use App\Models\wishlist;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 class ClientController extends Controller
@@ -260,33 +257,57 @@ class ClientController extends Controller
         if ($user !== null) {
             $order = $request->session()->get("order");
             if($order !== null){
+                if(json_decode($order)->totalQty <= 0){
+                    return redirect("/");
+                }
                 $coupon = $request->session()->get("coupon");
                 return view("client.checkout",["user"=>user::where("username","=",$user)->first(), "order"=>$order, "coupon" => $coupon]);
             }
-            return view("client.checkout",["user"=>user::where("username","=",$user)->first(), "order"=>[], "coupon" => 0]);
+            return redirect("/");
         }
         return redirect("/signin");
     }
 
+    public function checkBill(Request  $request, $id){
+        if($id === null){
+            redirect("/");
+        }
+        return view("client.bill",["order"=>order::find($id)]);
+    }
+
     public function goBill(Request $request){
         $username = $request->session()->get("user");
-        if($username === null){
-            $products = product::all();
-            $reviews = review::all();
-            //$listItem = $this->paginate($products, 9);
-            return view("index", ["products" => $products, "reviews" => $reviews]);
+        $order = $request->session()->get("order");
+        $products = product::all();
+        $reviews = review::all();
+        if($username === null || $order === null){
+            return redirect("/");
+        }
+        if(json_decode($order)->totalQty <= 0){
+            return redirect("/");
         }
         $user = user::where("username", "=", $username)->first();
 
         $sessionOrder = json_decode($request->session()->get("order"));
+        $coupon = $request->session()->get("coupon");
+
+        //Create invoice
+        $invoice = new invoice();
+        $invoice->recipient_fname = $user->fname;
+        $invoice->recipient_lname = $user->lname;
+        $invoice->recipient_phone = $user->phone;
+        $invoice->recipient_address = $user->address;
+        $invoice->type = $request->input("paymentMethod");
+        $invoice->save();
 
         //Create Order
         $order = new order();
         $order->order_date = Carbon::now();
         $order->user_id = $user->id;
         $order->status = 1;
-        $order->id = 1;
-//        $order->save();
+        $order->coupon_value = $coupon !== null ? $coupon : 0;
+        $order->invoice_id = $invoice->id;
+        $order->save();
 
         //Create Order Item
         foreach ($sessionOrder->items as $item){
@@ -294,20 +315,13 @@ class ClientController extends Controller
             $order_item->order_id = $order->id;
             $order_item->product_id = $item->id;
             $order_item->quantity = $item->count;
-//          $order_item->save();
+            $order_item->save();
         }
-//        dd(json_decode($order));
-        dd($sessionOrder);
 
-        //Create invoice
-        $invoice = new invoice();
-        $invoice->order_id = $order->id;
-        $invoice->recipient_fname = $user->fname;
-        $invoice->recipient_lname = $user->lname;
-        $invoice->recipient_phone = $user->phone;
-        $invoice->recipient_address = $user->address;
-        $invoice->type = $request->input("paymentMethod");
-//        $invoice->save()
+        $request->session()->remove("order");
+        $request->session()->save();
+//        return view("client.bill",["order"=>$order]);
+        return response()->json(["orderId" => $order->id]);
     }
 
     public function applyCoupon(Request $request){

@@ -29,21 +29,18 @@ class CreateTableConstraint extends Migration
         Schema::table('product_tag', function (Blueprint $table) {
             $table->foreign('tag_id')->references('id')->on('tag')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('product_id')->references('id')->on('product')->onDelete('CASCADE')->onUpdate('CASCADE');
-        });     
+        });
 
         Schema::table('order', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('user')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('invoice_id')->references('id')->on('invoice')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
 
         Schema::table('order_item', function (Blueprint $table) {
             $table->foreign('order_id')->references('id')->on('order')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('product_id')->references('id')->on('product')->onDelete('CASCADE')->onUpdate('CASCADE');
-        });   
-
-        Schema::table('invoice', function (Blueprint $table) {
-            $table->foreign('order_id')->references('id')->on('order')->onDelete('CASCADE')->onUpdate('CASCADE');    
         });
-        
+
         Schema::table('review', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('user')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('product_id')->references('id')->on('product')->onDelete('CASCADE')->onUpdate('CASCADE');
@@ -52,7 +49,7 @@ class CreateTableConstraint extends Migration
         Schema::table('wishlist', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('user')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('product_id')->references('id')->on('product')->onDelete('CASCADE')->onUpdate('CASCADE');
-        });        
+        });
     }
 
     /**

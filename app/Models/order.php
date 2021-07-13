@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class order extends Model
 {
     protected $table = "order";
-    protected $fillable = ['id', 'status', 'order_date', 'created_at', 'updated_at', 'retired', 'user_id'];
+    protected $fillable = ['id', 'status', 'invoice_id','order_date', 'created_at', 'updated_at', 'retired', 'user_id'];
     public $timestamps = true;
 
     public function user()
@@ -19,7 +19,22 @@ class order extends Model
 
     public function items()
     {
-        return $this->hasMany(order_item::class);
+        return $this->hasMany(\App\Models\order_item::class);
+    }
+
+    public function invoice(){
+        return $this->belongsTo(invoice::class);
+    }
+
+    public function total(){
+        $items = $this->items()->get();
+//        dd($items);
+        $coupon = $this->coupon_value != null ? $this->coupon_value : 0;
+        $sum = 0;
+        foreach ($items as $item){
+            $sum = $sum + $item->product->price * $item->quantity;
+        }
+        return $sum - $coupon;
     }
 
     public static function getItemOrder($id)
