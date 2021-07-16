@@ -41,7 +41,7 @@
                                 <div class="ratting">
                                     @for ($i = 0; $i < $product->mark; $i++)
                                         <i class="fa fa-star"></i>
-                                        @endfor
+                                    @endfor
                                 </div>
                                 <div class="price">
                                     <h4>Price:</h4>
@@ -83,23 +83,6 @@
                                     <h4>Brand:</h4>
                                     <button type="button" class="btn btn-success">{{$product->brand->name}}</button>
                                 </div>
-                                <!-- <div class="p-size">
-                                        <h4>Size:</h4>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn">S</button>
-                                            <button type="button" class="btn">M</button>
-                                            <button type="button" class="btn">L</button>
-                                            <button type="button" class="btn">XL</button>
-                                        </div>
-                                    </div> -->
-                                <!-- <div class="p-color">
-                                        <h4>Color:</h4>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn">White</button>
-                                            <button type="button" class="btn">Black</button>
-                                            <button type="button" class="btn">Blue</button>
-                                        </div>
-                                    </div> -->
                                 <div class="action">
                                     <button productid="{{$product->id}}" class="btn add-to-wishlist"><i class="fa fa-heart"></i>Add to Wishlist</button>
                                     <button  product="{{$product->toJson()}}"
@@ -124,7 +107,7 @@
                                 <a class="nav-link" data-toggle="pill" href="#specification">Specification</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#reviews">Reviews (1)</a>
+                                <a class="nav-link" data-toggle="pill" href="#reviews" id="reviews_count">Reviews</a>
                             </li>
                         </ul>
 
@@ -144,42 +127,41 @@
 
                             </div>
                             <div id="reviews" class="container tab-pane fade">
-                                <div class="reviews-submitted">
-                                    <div class="reviewer">Phasellus Gravida - <span>01 Jan 2020</span></div>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque laudantium, totam rem aperiam.
-                                    </p>
+                                <div id="review_list">
+                                    @foreach($product->reviews as $review)
+                                        <div class="reviews-submitted">
+                                            <div class="reviewer">{{$review->user->lname." ".$review->user->fname}} - <span>{{$review->created_at}}</span></div>
+                                            <div class="ratting">
+                                                @for ($i = 0; $i < $review->mark; $i++)
+                                                    <i class="fa fa-star"></i>
+                                                @endfor
+                                            </div>
+                                            <p>
+                                                {{$review->content}}
+                                            </p>
+                                        </div>
+                                    @endforeach
                                 </div>
+
                                 <div class="reviews-submit">
-                                    <h4>Give your Review:</h4>
-                                    <div class="ratting">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <form action="">
+                                    <h4 class="mb-2"><b>Give your Review:</b></h4>
+
+                                    <form id="review_form">
                                         <div class="row form">
-                                            <div class="col-sm-6">
-                                                <input type="text" placeholder="Name">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input type="email" placeholder="Email">
+                                            <div class="col-sm-6 mb-2" id="rating">
+                                                Your rating:
+                                                <select name="mark">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        <option value="{{$i}}">{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                                <i class="fa fa-star ratting"></i>
                                             </div>
                                             <div class="col-sm-12">
-                                                <textarea placeholder="Review"></textarea>
+                                                <textarea placeholder="Review" name="content"></textarea>
                                             </div>
                                             <div class="col-sm-12">
-                                                <button>Submit</button>
+                                                <button id="review_form_submit_btn" productId="{{$product->id}}">Submit</button>
                                             </div>
                                         </div>
                                     </form>
@@ -269,7 +251,6 @@
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        {{--                                        {{dd($item->images)}}--}}
                                         @if(isset($item->images->first()->path))
                                             <a>
                                                 <img src="/{{$item->images->first()->path}}" alt="Product Image">

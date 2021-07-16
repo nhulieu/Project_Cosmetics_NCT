@@ -417,4 +417,27 @@ class ClientController extends Controller
         $products = $product_query->paginate(9)->withQueryString();
         return view("client.product", ["products" => $products, "name" => $name, "brandInput" => $brand, "categoryInput" => $category, "from" => $from, "to" => $to, "status" => $status]);
     }
+
+    public function submitReview(Request $request, $id){
+        $username = $request->session()->get("user");
+        if($username === null){
+            return response()->json("");
+        }
+        $user = user::where("username", "=", $username)->first();
+        $review = new review();
+        $review->user_id = $user->id;
+        $review->product_id = $id;
+        $review->mark = $request->input('mark');
+        $review->content = $request->input('content');
+        $review->save();
+        $product = product::find($id);
+        $sum = 0;
+        foreach ($product->reviews as $review){
+            $sum += $review->mark;
+        }
+        $newMark = floor($sum / $product->reviews->count());
+        $product->update(['mark' => $newMark]);
+        $view = view('client.review_update')->with(['product'=> $product]);
+        return $view;
+    }
 }

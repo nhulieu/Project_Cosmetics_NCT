@@ -98,4 +98,9 @@ class product extends Model
     {
         return $this->hasMany(image::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(review::class);
+    }
 }

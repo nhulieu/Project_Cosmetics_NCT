@@ -334,6 +334,37 @@
             });
 
         }
+
+        function reviewSubmit(e){
+            e.preventDefault();
+            $form = e.currentTarget.form;
+            $id = e.currentTarget.getAttribute("productId");
+            console.log($form);
+            $.ajax({
+                url: '/submitReview/' + $id,
+                type: 'POST',
+                data: {
+                    content : $form.content.value,
+                    mark : $form.mark.value,
+                    _token : "{{csrf_token()}}"
+                }
+            }).done(function(response) {
+                console.log(response);
+                if(response === ''){
+                    location.href = '/signin';
+                }else{
+                    $('#review_list').html(response);
+                    e.currentTarget.form.reset();
+                }
+            }).fail(function(error){
+                console.log(error);
+                alertify.error("Error submit reviews !", "1");
+            });
+        }
+
+        $('#review_form_submit_btn').click(function (e){
+            reviewSubmit(e);
+        });
     </script>
 </body>
 
