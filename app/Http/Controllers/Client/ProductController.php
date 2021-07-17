@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Client;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\product;
 use Illuminate\Support\Collection;
-use App\Http\Controllers\Controller;
 
 
 class ProductController extends Controller
@@ -27,7 +26,7 @@ class ProductController extends Controller
 
     public function index(){
         $products = product::all();
-        //$listItem = $this->paginate($products, 9);        
+        //$listItem = $this->paginate($products, 9);
         return view("index",["listItem"=>$products]);
     }
 

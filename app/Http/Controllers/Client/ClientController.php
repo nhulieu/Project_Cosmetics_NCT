@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Models\invoice;
-use App\Models\order_item;
-use App\Models\review;
-
-
-use Carbon\Carbon;
-use App\Models\coupon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\coupon;
 use App\Models\feedback;
+use App\Models\invoice;
 use App\Models\order;
+use App\Models\order_item;
 use App\Models\product;
+use App\Models\review;
 use App\Models\user;
 use App\Models\wishlist;
-use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 
 class ClientController extends Controller
 {
