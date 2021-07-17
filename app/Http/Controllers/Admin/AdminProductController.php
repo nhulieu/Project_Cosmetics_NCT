@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\category;
 use App\Models\image;
 use App\Models\product;
 use App\Models\product_tag;

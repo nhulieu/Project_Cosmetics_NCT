@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\order_item;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class order extends Model
