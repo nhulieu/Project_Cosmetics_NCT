@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>',
-//    'logo_img' => '../img/logo.png',
+    'logo' => '<b>NCT</b>',
+    'logo_img' => '../img/logo.png',
     'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -240,14 +240,14 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url' => 'admin/settings',
+            'url' => 'http://127.0.0.1:8000/admin/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+//        [
+//            'text' => 'change_password',
+//            'url' => 'admin/settings',
+//            'icon' => 'fas fa-fw fa-lock',
+//        ],
         [
             'text' => 'Products',
             'icon' => 'fas fa-fw fa-share',

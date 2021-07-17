@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\OrderController;
-
+use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +58,9 @@ Route::post('/submitReview/{id}', [ClientController::class, "submitReview"]);
 
 Route::prefix('admin')->name('admin')->middleware('checkUser')
     ->group(function () {
+        //profile
+        Route::get('/profile', [UserController::class, 'profile']);
+        Route::post('/updateProfile', [UserController::class, 'updatePasswordProfile']);
         //Category
         Route::get('/category', [CategoryController::class, 'home']);
         Route::get('/category/create', [CategoryController::class, 'create']);

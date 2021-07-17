@@ -35,19 +35,19 @@ class TagController extends Controller
 
     public function postUpdate(Request $request, $id)
     {
-        $brand = $request->all();
+        $tag = $request->all();
         $b = tag::where('id', $id);
         $b->update([
-            'label' => $brand['label'],
-            'description' => $brand['description']
+            'label' => $tag['label'],
+            'description' => $tag['description']
         ]);
         return redirect()->action([TagController::class, 'home']);
     }
 
     public function delete($id)
     {
-        $brand = tag::where('id', $id);
-        $brand->update(['retired' => '1']);
+        $tag = tag::where('id', $id);
+        $tag->update(['retired' => '1']);
         return redirect()->action([TagController::class, 'home']);
     }
 }
