@@ -17,7 +17,7 @@ class UserController extends Controller
     public function updatePasswordProfile(Request $request) {
 
         $this->validate($request, [
-            'password' => 'required_with:confirmPassword|same:confirmPassword',
+            'password' => 'required|required_with:confirmPassword|same:confirmPassword',
             'confirmPassword' => 'required'
         ]);
 
