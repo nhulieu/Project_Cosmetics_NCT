@@ -32,7 +32,7 @@
                                 @foreach($reviews as $review)
                                     <tr>
                                         <td>{{ $review->id }}</td>
-                                        <td>{{ $review->User() }}</td>
+                                        <td>{{ $review->UserName() }}</td>
                                         <td>{{ $review->content }}</td>
                                         <td>{{ $review->mark }}</td>
                                         <td class="text-center">

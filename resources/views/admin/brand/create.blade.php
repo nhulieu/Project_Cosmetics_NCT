@@ -5,20 +5,25 @@
 @stop
 
 @section('content')
-    <form action="{{ route('createBrand') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('admin/brand/postCreate') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
                 <label for="txt-name">Brand Name</label>
-                <input type="text" class="form-control" id="txt-name" name="name" placeholder="Brand Name">
+                <input type="text" class="form-control" id="txt-name" name="name" placeholder="Brand Name" value="{{ old('name') }}">
             </div>
             <div class="form-group">
                 <label for="txt-name">Slogan</label>
-                <input type="text" class="form-control" id="txt-name" name="slogan" placeholder="Slogan">
+                <input type="text" class="form-control" id="txt-name" name="slogan" placeholder="Slogan" value="{{ old('slogan') }}">
             </div>
             <div class="form-group">
                 <label for="txt-name">Logo :</label>
                 <input type="file" id="image" name="image" placeholder="logo">
+                @error('image')
+                <span style="color: red">
+                    {{ $message }}
+                </span>
+                @enderror
             </div>
         </div>
         <!-- /.card-body -->

@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    <form action="{{ url('/brand/postUpdate/'.$brand->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('admin/brand/postUpdate/'.$brand->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -28,7 +28,7 @@
         <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{ url('/brand/') }}" class="btn btn-danger">Cancel</a>
+            <a href="{{ url('admin/brand') }}" class="btn btn-danger">Cancel</a>
         </div>
     </form>
 @stop

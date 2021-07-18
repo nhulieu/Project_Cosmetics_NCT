@@ -45,7 +45,7 @@
                                     <td>{{ $order->order_date }}</td>
                                     <td>{{ $order->order_date }}</td>
                                     <td class="text-left">
-                                        <a class="btn btn-info btn-sm" href="{{ url('cart/detail/'.$order->id) }}">
+                                        <a class="btn btn-info btn-sm" href="{{ url('admin/cart/detail/'.$order->id) }}">
                                             <i class="fas fa-pencil-alt"></i> View Detail
                                         </a>
                                     </td>

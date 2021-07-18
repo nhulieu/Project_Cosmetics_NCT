@@ -13,7 +13,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ url('product/postCreate') }}" method="post">
+                        <form role="form" action="{{ url('admin/product/postCreate') }}" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -93,7 +93,7 @@
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-warning">Reset</button>
-                                <a href="{{ url('/product') }}" class="btn btn-danger">Cancel</a>
+                                <a href="{{ url('admin/product') }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </form>
                     </div>

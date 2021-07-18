@@ -5,12 +5,13 @@
 @stop
 
 @section('content')
-    <form action="{{ url('/category/postUpdate/'.$category->id) }}" method="post" >
+    <form action="{{ url('/admin/category/postUpdate/'.$category->id) }}" method="post">
         @csrf
         <div class="card-body">
             <div class="form-group">
                 <label for="txt-name">Id</label>
-                <input type="text" class="form-control" id="id" name="id" value="{{ $category->id }}" readonly="readonly">
+                <input type="text" class="form-control" id="id" name="id" value="{{ $category->id }}"
+                       readonly="readonly">
             </div>
             <div class="form-group">
                 <label for="txt-name">Category Name</label>
@@ -18,7 +19,8 @@
             </div>
             <div class="form-group">
                 <label for="txt-name">Description</label>
-                <input type="text" class="form-control" id="description" name="description" value="{{ $category->description }}">
+                <input type="text" class="form-control" id="description" name="description"
+                       value="{{ $category->description }}">
             </div>
         </div>
         <!-- /.card-body -->

@@ -19,7 +19,7 @@
     </section>
 
     <div class="card-body">
-        <a class="btn btn-success btn-btn" href="{{ url('/product/create') }}">
+        <a class="btn btn-success btn-btn" href="{{ url('admin/product/create') }}">
             <i class="fas fa-plus"></i> Add
         </a>
         <table id="products" class="table table-bordered table-hover">
@@ -30,7 +30,6 @@
                 <th class="text-center">Name</th>
                 <th class="text-center">Category</th>
                 <th class="text-center">Brand</th>
-                <th class="text-center">Tag</th>
                 <th class="text-center">Description</th>
                 <th class="text-center">Status</th>
                 <th class="text-center">Price</th>
@@ -43,11 +42,11 @@
                     <td>
                         <div class="row">
                             <a class="btn btn-warning btn-sm" title="Detail"
-                               href="{{ url('/product/view/'. $product->id) }}">
+                               href="{{ url('/admin/product/view/'. $product->id) }}">
                                 <font style="color: white"><i class="fas fa-eye"></i></font>
                             </a>
                             <a class="btn btn-info btn-sm" title="Edit"
-                               href="{{ url('/product/update/' .$product->id) }}">
+                               href="{{ url('/admin/product/update/' .$product->id) }}">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                             <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()" href="">
@@ -56,11 +55,11 @@
                         </div>
                         <div class="row">
                             <a class="btn btn-primary btn-sm" title="Image" onclick=""
-                               href="{{ url('/product/image/' . $product->id) }}">
+                               href="{{ url('/admin/product/image/' . $product->id) }}">
                                 <i class="fa fa-image" aria-hidden="true"></i>
                             </a>
                             <a class="btn btn-dark btn-sm" title="Review" onclick=""
-                               href="{{ url('product/review/' . $product->id) }}">
+                               href="{{ url('/admin/product/review/' . $product->id) }}">
                                 <i class="fas fa-comments" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -68,8 +67,7 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->getCategory() }}</td>
                     <td>{{ $product->getBrand() }}</td>
-                    <td>{{ $product->getTag() }}</td>
-                    <td title="{{ $product->description }}">{{ $product->description }}</td>
+                    <td title="{{ $product->description }}">{...}</td>
                     <td>{{ $product->getStatus() }}</td>
                     <td>{{ $product->price." $"}}</td>
 

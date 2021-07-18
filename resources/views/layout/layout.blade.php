@@ -8,7 +8,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="eCommerce HTML Template Free Download" name="keywords">
     <meta content="eCommerce HTML Template Free Download" name="description">
-
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
 
@@ -107,7 +106,7 @@
                 brand_id : $jsonObj.brand_id,
                 count : parseInt($qty)
             }
-            console.log($product);
+            // console.log($product);
             if($.shoppingcart('add',$product)){
                 $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
                 $.ajax({
@@ -133,6 +132,7 @@
         $(".remove-item").click(function(e){
             $item = JSON.parse(e.currentTarget.getAttribute("product"));
             $oldAmount = $.shoppingcart('getCount');
+            $coupon = $('#coupon_value').html();
             if($.shoppingcart('remove', $item)){
                $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
                 $.ajax({
@@ -147,8 +147,14 @@
                         _token : "{{csrf_token()}}"
                     }
                 }).done(function(response) {
-                    //console.log(response.result);
+                    e.currentTarget.parentElement.parentElement.hidden = true;
                     alertify.notify("Removed " + $oldAmount + " item(s)");
+                    $('#order_total_value').html("$" + parseFloat($.shoppingcart("getPrice")).toFixed(2));
+                    $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) + parseFloat($coupon)).toFixed(2));
+                    if($.shoppingcart('getCount') <= 0){
+                        $('#checkout_btn')[0].setAttribute("disabled", "disabled");
+                        $('#order_grand_total_value').html("$" + 0);
+                    }
                 }).fail(function(error){
                     console.log(error);
                 });
@@ -164,7 +170,7 @@
                 }).done(function(response) {
                     //console.log(response.result);
                     $.shoppingcart('clear');
-                    alertify.success("Sign out success !", "1", function(e){
+                    alertify.success("Sign out success ! Redirect to home page", "1", function(e){
                         location.href = "/";
                     });
                 }).fail(function(error){
@@ -184,7 +190,7 @@
         function changeQuantity(newQty, btn){
             $id = btn.getAttribute('prdid');
             $prd = $.shoppingcart('getById', $id);
-            $coupon = $('#coupon-value').html();
+            $coupon = $('#coupon_value').html();
             //console.log($prd);
             $canUpdate = false;
             if(newQty == null){
@@ -224,9 +230,15 @@
                         }
                     }).done(function(response) {
                         //console.log("Update Quantity success");
-                        $('#item-total-price-'+$id).html("$" + ($prd.price * $prd.count * (1 - $prd.discount/100)));
-                        $('#order_total-value').html("$" + ($.shoppingcart("getPrice")));
-                        $('#order_grand_total-value').html("$" + (parseInt($.shoppingcart("getPrice")) + $coupon));
+                        $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
+                        $('#item-total-price-'+$id).html("$" + ($prd.price * $prd.count * (1 - $prd.discount/100)).toFixed(2));
+                        $('#order_total_value').html("$" + parseFloat($.shoppingcart("getPrice")).toFixed(2));
+                        $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) + parseFloat($coupon)).toFixed(2));
+                        if($.shoppingcart('getCount') <= 0) {
+                            $('#checkout_btn')[0].setAttribute("disabled", "disabled");
+                        }else{
+                            $('#checkout_btn')[0].removeAttribute("disabled");
+                        }
                     }).fail(function(error){
                         console.log(error);
                     });
@@ -256,10 +268,10 @@
                     switch (parseInt(response.result.state)){
                         case 0:
                             alertify.success("Apply coupon success!");
-                            $('#coupon-value').html(response.result.coupon.discount);
-                            $coupon = $('#coupon-value').html();
-                            $('#order_total-value').html("$" + ($.shoppingcart("getPrice")));
-                            $('#order_grand_total-value').html("$" + (parseInt($.shoppingcart("getPrice")) - $coupon));
+                            $('#coupon_value').html(response.result.coupon.discount);
+                            $coupon = $('#coupon_value').html();
+                            $('#order_total_value').html("$" +  ( $.shoppingcart("getPrice").toFixed(2)));
+                            $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) + parseFloat($coupon)).toFixed(2));
                             break;
                         case 1:
                             alertify.error("The coupon has been expired!");
@@ -287,6 +299,71 @@
             $form.from.value = "";
             $form.to.value = "";
         })
+
+        $("input[name='paymentMethod']").change(function(e){
+            $form = e.target.form;
+            if(e.target.value === "0"){
+                $form.owner.setAttribute("required", "");
+                $form.card_number.setAttribute("required", "");
+                $form.security_code.setAttribute("required", "");
+            }else{
+                $form.owner.removeAttribute("required");
+                $form.card_number.removeAttribute("required");
+                $form.security_code.removeAttribute("required");
+            }
+        })
+
+        function handleGoBill(target){
+            $form = target;
+            $.ajax({
+                url: '/go-bill',
+                type: 'POST',
+                data: {
+                    paymentMethod : $form.paymentMethod.value,
+                    _token : "{{csrf_token()}}"
+                }
+            }).done(function(response) {
+                $.shoppingcart("clear");
+                location.href = "/check-bill/" + response.orderId;
+            }).fail(function(error){
+                console.log(error);
+                alertify.error("Error submit order, redirected to home !", "1", function(e){
+                    location.href = "/";
+                });
+            });
+
+        }
+
+        function reviewSubmit(e){
+            e.preventDefault();
+            $form = e.currentTarget.form;
+            $id = e.currentTarget.getAttribute("productId");
+            console.log($form);
+            $.ajax({
+                url: '/submitReview/' + $id,
+                type: 'POST',
+                data: {
+                    content : $form.content.value,
+                    mark : $form.mark.value,
+                    _token : "{{csrf_token()}}"
+                }
+            }).done(function(response) {
+                console.log(response);
+                if(response === ''){
+                    location.href = '/signin';
+                }else{
+                    $('#review_list').html(response);
+                    e.currentTarget.form.reset();
+                }
+            }).fail(function(error){
+                console.log(error);
+                alertify.error("Error submit reviews !", "1");
+            });
+        }
+
+        $('#review_form_submit_btn').click(function (e){
+            reviewSubmit(e);
+        });
     </script>
 </body>
 

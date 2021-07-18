@@ -21,44 +21,34 @@
                     <div class="tab-pane fade" id="signup-tab" role="tabpanel" aria-labelledby="signup-nav">
                     @endif
                         <div class="register-form">
-                            <h4>Sign Up</h4>
-                            <form id="register-form" action="signup" method="post">
+                            <h2>Join with us</h2>
+                            <br>
+                            <form id="register-form" action="signup" method="post" autocomplete="off">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>First Name</label>
-                                        <input class="form-control" type="text" placeholder="First Name" name="txtFirstName">
-                                        @if ($errors->has('txtFirstName'))
-                                        <span class="pull-right" style="color: red">{{ $errors->first('txtFirstName') }}</span>
-                                        @endif
+                                        <input class="form-control" type="text" placeholder="First Name" required name="txtFirstName">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Last Name</label>
-                                        <input class="form-control" type="text" placeholder="Last Name" name="txtLastName">
+                                        <input class="form-control" type="text" required placeholder="Last Name" name="txtLastName">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Username</label>
-                                        <input class="form-control" type="text" placeholder="Username" name="txtUserName">
+                                        <input class="form-control" type="text" required placeholder="Username" name="txtUserName" >
                                     </div>
                                     <div class="col-md-6">
-                                        <label>E-mail</label>
-                                        <input class="form-control" type="email" placeholder="E-mail" name="txtEmail">
+                                        <input class="form-control" type="email" required placeholder="E-mail" name="txtEmail">
                                     </div>
                                     <div class="col-md-12">
-                                        <label>Mobile No</label>
-                                        <input class="form-control" type="tel" placeholder="Mobile No" name="txtPhone">
+                                        <input class="form-control" type="tel" required placeholder="Mobile No" name="txtPhone">
                                     </div>
                                     <div class="col-md-12">
-                                        <label>Address</label>
-                                        <input class="form-control" type="text" placeholder="Address" name="txtAddress">
+                                        <input class="form-control" type="text" required placeholder="Address" name="txtAddress">
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label>Password</label>
                                         <input id="password" class="form-control" required type="password" placeholder="Password" name="txtAccountPass">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Retype Password</label>
                                         <input id="confirm-password" class="form-control" required type="password" placeholder="Password" name="txtAccountPassRepeat">
                                     </div>
                                     @switch($status)
@@ -83,18 +73,16 @@
                     <div class="tab-pane fade show active" id="signin-tab" role="tabpanel" aria-labelledby="signin-nav">
                     @endif
                         <div class="login-form">
-                            <h4>Sign In</h4>
+                            <h2>Welcome Back</h2>
+                            <br>
                             <form action="/signin" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="form-control" require type="text" placeholder="E-mail" name="txtLoginUser">
-                                        @if ($errors->has('txtLoginUser'))
-                                        <p class="text-right" style="color: red;">{{ $errors->first('txtLoginUser') }}</p>
-                                        @endif
+                                        <input class="form-control" required type="text" placeholder="E-mail" name="txtLoginUser">
                                     </div>
                                     <div class="col-md-12">
-                                        <input class="form-control" require type="password" placeholder="Password" name="txtLoginPassword">
+                                        <input class="form-control" required type="password" placeholder="Password" name="txtLoginPassword">
 
                                     </div>
                                     <div class="col-md-12">

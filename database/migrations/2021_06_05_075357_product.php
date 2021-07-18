@@ -18,7 +18,7 @@ class Product extends Migration
             $table->string('name', 250)->nullable();
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('brand_id')->unsigned()->nullable();
-            $table->longText('description')->nullable();            
+            $table->longText('description')->nullable();
             $table->integer('status')->nullable();
             $table->float('price')->nullable();
             $table->integer('discount')->nullable();
@@ -28,7 +28,7 @@ class Product extends Migration
             $table->integer('mark')->nullable();
             $table->boolean('retired')->default(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));       
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

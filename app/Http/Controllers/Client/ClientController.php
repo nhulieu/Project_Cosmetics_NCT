@@ -2,33 +2,29 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use App\Models\brand;
-use App\Models\image;
-use App\Models\review;
-use App\Models\tag;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\coupon;
-use Illuminate\Http\Client\Events\RequestSending;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\coupon;
 use App\Models\feedback;
+use App\Models\invoice;
 use App\Models\order;
+use App\Models\order_item;
 use App\Models\product;
+use App\Models\review;
 use App\Models\user;
 use App\Models\wishlist;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 
 class ClientController extends Controller
 {
     public function home()
     {
         $products = product::all();
-        $users = user::all();
         $reviews = review::all();
         //$listItem = $this->paginate($products, 9);
-        return view("index", ["products" => $products, "reviews" => $reviews, "users" => $users]);
+        return view("index", ["products" => $products, "reviews" => $reviews]);
     }
 
     public function signin()
@@ -36,14 +32,16 @@ class ClientController extends Controller
         return view("client.signin", ["isSignup" => true, "status" => "0"]);
     }
 
-    public function signout(Request $request){
-        if($request->session()->get("user")[0]){
-            $request->session()->forget(["user", "userFullname","wishlistAmount", "order"]);
+    public function signout(Request $request)
+    {
+        if ($request->session()->get("user")[0]) {
+            $request->session()->forget(["user", "userFullname", "wishlistAmount", "order"]);
         }
-        return response()->json(["result"=>"Sign out success"]);
+        return response()->json(["result" => "Sign out success"]);
     }
 
-    public function postSignup(Request $request){
+    public function postSignup(Request $request)
+    {
         $fname = $request->input('txtFirstName');
         $lname = $request->input('txtLastName');
         $email = $request->input('txtEmail');
@@ -54,8 +52,8 @@ class ClientController extends Controller
 
         $duplicate_email_user = user::where("email", "=", $email)->first();
         $duplicate_username_user = user::where("username", "=", $username)->first();
-        if($duplicate_email_user != null && $duplicate_username_user != null){
-            return view("client.signin", ["isSignup"=>true,"status"=>"1"]);
+        if ($duplicate_email_user != null && $duplicate_username_user != null) {
+            return view("client.signin", ["isSignup" => true, "status" => "1"]);
         }
 
         // login table
@@ -82,16 +80,16 @@ class ClientController extends Controller
         }
 
         $final_user = $queryUser->first();
-        if($final_user != null){
-            if($password === $final_user->password){
+        if ($final_user != null) {
+            if ($password === $final_user->password) {
                 $request->session()->put("user", $final_user->username);
-                $request->session()->put("userFullname", $final_user->fname." ".$final_user->lname);
+                $request->session()->put("userFullname", $final_user->fname . " " . $final_user->lname);
                 $request->session()->put("wishlistAmount", $final_user->wishlists->count());
                 $request->session()->save();
                 // dd($request->session()->get("user"));
-                if ($final_user->type==1){
-                    return redirect("/product");
-                }else{
+                if ($final_user->type == 1) {
+                    return redirect("admin/product");
+                } else {
                     return redirect("/");
                 }
             } else {
@@ -103,9 +101,10 @@ class ClientController extends Controller
 
     }
 
-    public function updateAccountDetails(Request $request){
+    public function updateAccountDetails(Request $request)
+    {
         $username = $request->session()->get("user");
-        if(user::where("username", "=", $username)->first() != null){
+        if (user::where("username", "=", $username)->first() != null) {
             user::where("username", "=", $username)->update([
                 "fname" => $request->input('txtFirstName'),
                 "lname" => $request->input('txtLastName'),
@@ -113,25 +112,26 @@ class ClientController extends Controller
                 "phone" => $request->input('txtPhone'),
                 "address" => $request->input('txtAddress')
             ]);
-            return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"2", "active"=>"0"]);
+            return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "2", "active" => "0"]);
         }
-        return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"1"]);
+        return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "1"]);
     }
 
-    public function updateAccountPassword(Request $request){
+    public function updateAccountPassword(Request $request)
+    {
         $currentPassword = $request->input('txtCurrentPassword');
         $newPassword = $request->input('txtNewPassword');
         $username = $request->session()->get("user");
-        $user = user::where("username","=",$username)->first();
-        if($user !== null){
-            if($user->password === $currentPassword){
-                user::where("username","=",$username)->update(["password"=>$newPassword]);
-                return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"4"]);
-            }else{
-                return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"5"]);
+        $user = user::where("username", "=", $username)->first();
+        if ($user !== null) {
+            if ($user->password === $currentPassword) {
+                user::where("username", "=", $username)->update(["password" => $newPassword]);
+                return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "4"]);
+            } else {
+                return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "5"]);
             }
         }
-        return view("client.account",["user"=>user::where("username", "=", $username)->first(), "status"=>"3"]);
+        return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "3"]);
     }
 
     public function contact()
@@ -139,7 +139,8 @@ class ClientController extends Controller
         return view("client.contact");
     }
 
-    public function postContact(Request $request) {
+    public function postContact(Request $request)
+    {
         $message = $request->all();
         $feedback = new feedback();
         $feedback->name = $message['name'];
@@ -147,7 +148,7 @@ class ClientController extends Controller
         $feedback->subject = $message['subject'];
         $feedback->message = $message['message'];
         $feedback->save();
-        return redirect('contact')->with('success','Your message was sent success');
+        return redirect('contact')->with('success', 'Your message was sent success');
     }
 
     public function about()
@@ -158,23 +159,24 @@ class ClientController extends Controller
     public function wishlist(Request $request)
     {
         $user = $request->session()->get("user");
-        if($user !== null){
+        if ($user !== null) {
 
-            return view("client.account",["user"=>user::where("username","=",$user)->first(), "status"=>"0", "active"=>"4"]);
+            return view("client.account", ["user" => user::where("username", "=", $user)->first(), "status" => "0", "active" => "4"]);
         }
         return view("client.signin", ["isSignup" => false, "status" => "0"]);
     }
 
-    public function addWishlist(Request $request, $id){
+    public function addWishlist(Request $request, $id)
+    {
         $username = $request->session()->get('user');
-        if($username === null){
+        if ($username === null) {
             return Redirect("/sigin");
         }
 
         $user = user::where("username", "=", $username)->first();
 
-        if($user === null){
-            return response()->json(["result"=>0]);
+        if ($user === null) {
+            return response()->json(["result" => 0]);
         }
         //dd($user->wishlists->count);
         // $request->session()->put("wishlistAmount", $user->wishlists->count());
@@ -182,41 +184,42 @@ class ClientController extends Controller
 
         $existed_wish_item = wishlist::where([["user_id", "=", $user->id], ["product_id", "=", $id]])->first();
 
-        if($existed_wish_item !== null){
+        if ($existed_wish_item !== null) {
             $request->session()->put("wishlistAmount", $user->wishlists->count());
-            return response()->json(["result"=>$user->wishlists->count()]);
+            return response()->json(["result" => $user->wishlists->count()]);
         }
         $wish_item = new wishlist();
         $wish_item->user_id = $user->id;
         $wish_item->product_id = $id;
         $wish_item->save();
         $request->session()->put("wishlistAmount", $user->wishlists->count());
-        return response()->json(["result"=>$user->wishlists->count()]);
+        return response()->json(["result" => $user->wishlists->count()]);
     }
 
-    public function deleteWishlist(Request $request, $id){
+    public function deleteWishlist(Request $request, $id)
+    {
         $username = $request->session()->get('user');
-        if($username === null){
+        if ($username === null) {
             return Redirect("/sigin");
         }
 
         $user = user::where("username", "=", $username)->first();
-        if($user === null){
-            return response()->json(["result"=>0]);
+        if ($user === null) {
+            return response()->json(["result" => 0]);
         }
 
         wishlist::find($id)->delete();
         $request->session()->put("wishlistAmount", $user->wishlists->count());
-        return response()->json(["result"=>$user->wishlists->count()]);
+        return response()->json(["result" => $user->wishlists->count()]);
 
     }
 
     public function account(Request $request)
     {
         $user = $request->session()->get("user");
-        if($user !== null){
+        if ($user !== null) {
 
-            return view("client.account",["user"=>user::where("username","=",$user)->first(), "status"=>"0", "active"=>"0"]);
+            return view("client.account", ["user" => user::where("username", "=", $user)->first(), "status" => "0", "active" => "0"]);
         }
         return view("index");
     }
@@ -224,30 +227,135 @@ class ClientController extends Controller
     public function order(Request $request)
     {
         $user = $request->session()->get("user");
-
+        $request->session()->put("coupon", 0);
+        $request->session()->save();
         if ($user !== null) {
             $order = $request->session()->get("order");
 
-            if($order !== null){
-                return view("client.order", ["order"=>$order]);
+            if ($order !== null) {
+                return view("client.order", ["order" => $order]);
             }
-            return view("client.order", ["totalQty"=> 0, "totalPrice"=> 0, "order"=>"[]"]);
+            return view("client.order", ["totalQty" => 0, "totalPrice" => 0, "order" => "[]"]);
         }
         return redirect("/signin");
     }
 
-    public function updateOrder(Request $request){
+    public function updateOrder(Request $request)
+    {
         $order = $request->input("order");
-        $request->session()->put("order",json_encode($order));
+        $request->session()->put("order", json_encode($order));
         $request->session()->save();
-        return response()->json(["result"=>$order]);
+        return response()->json(["result" => $order]);
+    }
+
+    public function checkout(Request $request){
+        $user = $request->session()->get("user");
+
+        if ($user !== null) {
+            $order = $request->session()->get("order");
+            if($order !== null){
+                if(json_decode($order)->totalQty <= 0){
+                    return redirect("/");
+                }
+                $coupon = $request->session()->get("coupon");
+                return view("client.checkout",["user"=>user::where("username","=",$user)->first(), "order"=>$order, "coupon" => $coupon]);
+            }
+            return redirect("/");
+        }
+        return redirect("/signin");
+    }
+
+    public function checkBill(Request  $request, $id){
+        if($id === null){
+            redirect("/");
+        }
+
+        $username = $request->session()->get("user");
+        if($username == null){
+            return redirect("/");
+        }
+        $user = user::where("username", "=", $username)->first();
+        $order = order::find($id);
+        if($order->user_id !== $user->id){
+            return redirect("/");
+        }
+
+        return view("client.bill",["order"=>$order]);
+    }
+
+    public function goBill(Request $request){
+        $username = $request->session()->get("user");
+        $order = $request->session()->get("order");
+        $products = product::all();
+        $reviews = review::all();
+        if($username === null || $order === null){
+            return redirect("/");
+        }
+        if(json_decode($order)->totalQty <= 0){
+            return redirect("/");
+        }
+        $user = user::where("username", "=", $username)->first();
+
+        $sessionOrder = json_decode($request->session()->get("order"));
+        $coupon = $request->session()->get("coupon");
+
+        //Create invoice
+        $invoice = new invoice();
+        $invoice->recipient_fname = $user->fname;
+        $invoice->recipient_lname = $user->lname;
+        $invoice->recipient_phone = $user->phone;
+        $invoice->recipient_address = $user->address;
+        $invoice->type = $request->input("paymentMethod");
+        $invoice->save();
+
+        //Create Order
+        $order = new order();
+        $order->order_date = Carbon::now();
+        $order->user_id = $user->id;
+        $order->status = 1;
+        $order->coupon_value = $coupon !== null ? $coupon : 0;
+        $order->invoice_id = $invoice->id;
+        $order->save();
+
+        //Create Order Item
+        foreach ($sessionOrder->items as $item){
+            $order_item = new order_item();
+            $order_item->order_id = $order->id;
+            $order_item->product_id = $item->id;
+            $order_item->quantity = $item->count;
+            $order_item->save();
+        }
+
+        $request->session()->remove("order");
+        $request->session()->save();
+//        return view("client.bill",["order"=>$order]);
+        return response()->json(["orderId" => $order->id]);
+    }
+
+    public function applyCoupon(Request $request){
+        $brand_ids = $request->ids;
+        $coupon_code = $request->code;
+        $coupon = coupon::whereIn('brand_id', $brand_ids)
+            ->where("active","=", true)
+            ->where("retired", "=", "false")
+            ->where("code","=",$coupon_code)
+            ->first();
+        if($coupon !== null){
+            if(!$coupon->active){
+                return response()->json(["result"=>[["state" => 1]]]);
+            }
+            $request->session()->put("coupon", $coupon->discount);
+            $request->session()->save();
+            return response()->json(["result"=>["state" => 0, "coupon" => $coupon]]);
+        }
+        return response()->json(["result"=>[["state" => 2]]]);
     }
 
     public function orderDetails(Request $request, $id)
     {
         $user = $request->session()->get("user");
         if ($user !== null) {
-            return view("client.order_details",["order" => order::find($id)]);
+            return view("client.order_details", ["order" => order::find($id)]);
         }
         return view("index");
     }
@@ -272,7 +380,7 @@ class ClientController extends Controller
         $to = null;
         $status = null;
         $tag = null;
-        if(count($request->query()) > 0){
+        if (count($request->query()) > 0) {
             $name = $request->input("name");
             $brand = $request->input("brand");
             $category = $request->input("category");
@@ -280,48 +388,53 @@ class ClientController extends Controller
             $to = $request->input("to");
             $status = $request->input("status");
             $tag = $request->input("tag");
-            if($name != null){
+            if ($name != null) {
                 $product_query->where('name', 'LIKE', '%' . $name . '%');
             }
-            if($brand != null){
-                $product_query->where('brand_id','=', $brand);
+            if ($brand != null) {
+                $product_query->where('brand_id', '=', $brand);
             }
-            if($category != null){
-                $product_query->where('category_id','=', $category);
+            if ($category != null) {
+                $product_query->where('category_id', '=', $category);
             }
-            if($from != null){
-                $product_query->where('price','>=', $from);
+            if ($from != null) {
+                $product_query->where('price', '>=', $from);
             }
-            if($to != null){
-                $product_query->where('price','<=', $to);
+            if ($to != null) {
+                $product_query->where('price', '<=', $to);
             }
-            if($status != null){
-                $product_query->where('status','<=', $status);
+            if ($status != null) {
+                $product_query->where('status', '<=', $status);
             }
-            if($tag != null){
-                $product_query->leftJoin('product_tag', 'product_tag.product_id', '=', 'product.id')->where("tag_id","=", $tag);
+            if ($tag != null) {
+                $product_query->leftJoin('product_tag', 'product_tag.product_id', '=', 'product.id')->where("tag_id", "=", $tag);
             }
         }
 
         $products = $product_query->paginate(9)->withQueryString();
-        return view("client.product", ["products" => $products, "name" => $name, "brandInput" => $brand, "categoryInput" => $category, "from" => $from, "to" => $to, "status" => $status ]);
+        return view("client.product", ["products" => $products, "name" => $name, "brandInput" => $brand, "categoryInput" => $category, "from" => $from, "to" => $to, "status" => $status]);
     }
 
-    public function applyCoupon(Request $request){
-        $brand_ids = $request->ids;
-        $coupon_code = $request->code;
-        $coupon = coupon::whereIn('brand_id', $brand_ids)
-            ->where("active","=", true)
-            ->where("retired", "=", "false")
-            ->where("code","=",$coupon_code)
-            ->first();
-        if($coupon !== null){
-            if(!$coupon->active){
-                return response()->json(["result"=>[["state" => 1]]]);
-            }
-
-            return response()->json(["result"=>["state" => 0, "coupon" => $coupon]]);
+    public function submitReview(Request $request, $id){
+        $username = $request->session()->get("user");
+        if($username === null){
+            return response()->json("");
         }
-        return response()->json(["result"=>[["state" => 2]]]);
+        $user = user::where("username", "=", $username)->first();
+        $review = new review();
+        $review->user_id = $user->id;
+        $review->product_id = $id;
+        $review->mark = $request->input('mark');
+        $review->content = $request->input('content');
+        $review->save();
+        $product = product::find($id);
+        $sum = 0;
+        foreach ($product->reviews as $review){
+            $sum += $review->mark;
+        }
+        $newMark = floor($sum / $product->reviews->count());
+        $product->update(['mark' => $newMark]);
+        $view = view('client.review_update')->with(['product'=> $product]);
+        return $view;
     }
 }

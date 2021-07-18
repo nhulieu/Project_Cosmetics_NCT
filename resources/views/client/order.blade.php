@@ -6,7 +6,7 @@
     <div class="breadcrumb-wrap">
         <div class="container-fluid">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item active">Orders</li>
             </ul>
         </div>
@@ -42,8 +42,8 @@
                                                     <p>{{$item->name}}</p>
                                                 </div>
                                             </td>
-                                            <td>${{$item->price}}</td>
-                                            <td>{{$item->discount}}%</td>
+                                            <td>${{number_format($item->price, 2)}}</td>
+                                            <td>{{$item->discount ? number_format($item->discount, 2) : 0}}%</td>
                                             <td>
                                                 <div class="qty">
                                                     <button class="btn-minus item-qty-minus" prdid="{{$item->id}}" onclick="changeQuantity(-1, this)"><i class="fa fa-minus"></i></button>
@@ -51,7 +51,7 @@
                                                     <button class="btn-plus item-qty-plus" prdid="{{$item->id}}" onclick="changeQuantity(1, this)"><i class="fa fa-plus"></i></button>
                                                 </div>
                                             </td>
-                                            <td id="{{'item-total-price-'.$item->id}}">${{$item->price * $item->count * (1 - $item->discount/100)}}</td>
+                                            <td id="{{'item-total-price-'.$item->id}}">${{number_format(($item->price * $item->count * (1 - $item->discount/100)), 2) }}</td>
                                             <td><button product="{{json_encode($item)}}" class="remove-item"><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                     @endforeach
@@ -75,18 +75,18 @@
                                     <div class="cart-content">
                                         <h1>Cart Summary</h1>
                                         @if(isset(json_decode($order)->items))
-                                            <p>Sub Total<span id="order_total-value">${{json_decode($order)->totalPrice}}</span></p>
-                                            <p>Coupon<span>-$<b id="coupon-value">0</b></span></p>
-                                            <h2>Grand Total<span id="order_grand_total-value">${{json_decode($order)->totalPrice}}</span></h2>
+                                            <p>Sub Total<span id="order_total_value">${{number_format(json_decode($order)->totalPrice, 2)}}</span></p>
+                                            <p>Coupon<span>-$<b id="coupon_value">0</b></span></p>
+                                            <h2>Grand Total<span id="order_grand_total_value">${{number_format(json_decode($order)->totalPrice, 2)}}</span></h2>
                                         @else
                                             <p>Sub Total<span>$0</span></p>
-                                            <p>Shipping Cost<span>$0</span></p>
+                                            <p>Shipping Cost<span id="coupon_value">$<b id="coupon_value">0</b></span></p>
                                             <h2>Grand Total<span>$0</span></h2>
                                         @endif
                                     </div>
                                     <div class="cart-btn">
                                         <button onclick="location.href='/product-list'">Continue</button>
-                                        <button>Checkout</button>
+                                        <button id="checkout_btn" onclick="location.href='/checkout'">Checkout</button>
                                     </div>
                                 </div>
                             </div>
