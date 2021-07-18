@@ -23,7 +23,8 @@
                                 <a class="nav-link" href="#best-sale"><i class="fa fa-shopping-bag"></i>Best Selling</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#new-arrival"><i class="fa fa-plus-square"></i>New Arrivals</a>
+                                <a class="nav-link" href="#new-arrival"><i class="fa fa-plus-square"></i>New
+                                    Arrivals</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Beauty</a>
@@ -32,7 +33,8 @@
                                 <a class="nav-link" href="#fashion-beauty"><i class="fa fa-tshirt"></i>Famous Brands</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-cart-plus"></i>Accessories</a>
+                                <a class="nav-link" href="#fashion-beauty"><i
+                                        class="fa fa-cart-plus"></i>Accessories</a>
                             </li>
                         </ul>
                     </nav>
@@ -40,21 +42,21 @@
                 <div class="col-md-6">
                     <div class="header-slider normal-slider">
                         <div class="header-slider-item">
-                            <img src="img/slider-1.png" alt="Slider Image" />
+                            <img src="img/slider-1.png" alt="Slider Image"/>
                             <div class="header-slider-caption">
                                 <p>The best-buy brand</p>
                                 <a class="btn" href="/product-list"><i class="fa fa-shopping-cart"></i>Shop Now</a>
                             </div>
                         </div>
                         <div class="header-slider-item">
-                            <img src="img/slider-2.png" alt="Slider Image" />
+                            <img src="img/slider-2.png" alt="Slider Image"/>
                             <div class="header-slider-caption">
                                 <p>The best sale all the time</p>
                                 <a class="btn" href="/product-list"><i class="fa fa-shopping-cart"></i>Shop Now</a>
                             </div>
                         </div>
                         <div class="header-slider-item">
-                            <img src="img/slider-3.png" alt="Slider Image" />
+                            <img src="img/slider-3.png" alt="Slider Image"/>
                             <div class="header-slider-caption">
                                 <p>It's your shopping time</p>
                                 <a class="btn" href="/product-list"><i class="fa fa-shopping-cart"></i>Shop Now</a>
@@ -65,13 +67,13 @@
                 <div class="col-md-3">
                     <div class="header-img">
                         <div class="img-item">
-                            <img src="img/category-1.png" />
+                            <img src="img/category-1.png"/>
                             <a class="img-text" href="/product-list">
                                 <p>Click here to buy</p>
                             </a>
                         </div>
                         <div class="img-item">
-                            <img src="img/category-2.png" />
+                            <img src="img/category-2.png"/>
                             <a class="img-text" href="/product-list">
                                 <p>Click here to buy</p>
                             </a>
@@ -88,7 +90,8 @@
         <div class="container-fluid">
             <div class="brand-slider">
                 @foreach(\App\Models\brand::all() as $brand)
-                    <a class="brand-item" href="{{url('/product-list?brand='.$brand->id)}}"><img src="{{$brand->logo}}" alt=""/></a>
+                    <a class="brand-item" href="{{url('/product-list?brand='.$brand->id)}}"><img src="{{$brand->logo}}"
+                                                                                                 alt=""/></a>
                 @endforeach
             </div>
         </div>
@@ -146,7 +149,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="category-item ch-400">
-                        <img src="img/category-3.png" />
+                        <img src="img/category-3.png"/>
                         <a class="category-name" href="/product-list">
                             <p>For more info, click here</p>
                         </a>
@@ -154,13 +157,13 @@
                 </div>
                 <div class="col-md-3">
                     <div class="category-item ch-250">
-                        <img src="img/category-4.jpg" />
+                        <img src="img/category-4.jpg"/>
                         <a class="category-name" href="/product-list">
                             <p>For more info, click here</p>
                         </a>
                     </div>
                     <div class="category-item ch-150">
-                        <img src="img/category-5.png" />
+                        <img src="img/category-5.png"/>
                         <a class="category-name" href="/product-list">
                             <p>For more info, click here</p>
                         </a>
@@ -168,13 +171,13 @@
                 </div>
                 <div class="col-md-3">
                     <div class="category-item ch-150">
-                        <img src="img/category-6.jpg" />
+                        <img src="img/category-6.jpg"/>
                         <a class="category-name" href="/product-list">
                             <p>For more info, click here</p>
                         </a>
                     </div>
                     <div class="category-item ch-250">
-                        <img src="img/category-7.png" />
+                        <img src="img/category-7.png"/>
                         <a class="category-name" href="/product-list">
                             <p>For more info, click here</p>
                         </a>
@@ -182,7 +185,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="category-item ch-400">
-                        <img src="img/category-8.jpg" />
+                        <img src="img/category-8.jpg"/>
                         <a class="category-name" href="/product-list">
                             <p>For more info, click here</p>
                         </a>
@@ -216,34 +219,38 @@
             </div>
             <div class="row align-items-center product-slider product-slider-4">
                 @foreach($products as $item)
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="{{url('/product-details/'.$item->id)}}">{{$item->name}}</a>
-                            <div class="ratting">
-                                @for($i=0; $i < $item->mark; $i++)
-                                    <i class="fa fa-star"></i>
-                                @endfor
+                    @if($item->mark >=4)
+                        <div class="col-lg-3">
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="{{url('/product-details/'.$item->id)}}">{{$item->name}}</a>
+                                    <div class="ratting">
+                                        @for($i=0; $i < $item->mark; $i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                    </div>
+                                </div>
+                                <div class="product-image">
+                                    @if(isset($item->images->first()->path))
+                                        <a>
+                                            <img src="{{$item->images->first()->path}}" alt="Product Image">
+                                        </a>
+                                    @endif
+                                    <div class="product-action">
+                                        <a product="{{$item->toJson()}}" class="btn add-to-cart"><i
+                                                class="fa fa-cart-plus"></i></a>
+                                        <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>
+                                        <a href="{{url('/product-details/'.$item->id)}}"><i
+                                                class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h3><span>$</span>{{$item->price}}</h3>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="product-image">
-                            @if(isset($item->images->first()->path))
-                                <a>
-                                    <img src="{{$item->images->first()->path}}" alt="Product Image">
-                                </a>
-                            @endif
-                            <div class="product-action">
-                                <a product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>
-                                <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>
-                                <a href="{{url('/product-details/'.$item->id)}}"><i class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3><span>$</span>{{$item->price}}</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                        </div>
-                    </div>
-                </div>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -276,34 +283,38 @@
             </div>
             <div class="row align-items-center product-slider product-slider-4">
                 @foreach($products as $item)
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="{{url('/product-details/'.$item->id)}}">{{$item->name}}</a>
-                                <div class="ratting">
-                                    @for($i=0; $i < $item->mark; $i++)
-                                        <i class="fa fa-star"></i>
-                                    @endfor
+                    @if($item->created_at->month==7)
+                        <div class="col-lg-3">
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="{{url('/product-details/'.$item->id)}}">{{$item->name}}</a>
+                                    <div class="ratting">
+                                        @for($i=0; $i < $item->mark; $i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-image">
-                                @if(isset($item->images->first()->path))
-                                    <a>
-                                        <img src="{{$item->images->first()->path}}" alt="Product Image">
-                                    </a>
-                                @endif
-                                <div class="product-action">
-                                    <a product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>
-                                    <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>
-                                    <a href="{{url('/product-details/'.$item->id)}}"><i class="fa fa-search"></i></a>
+                                <div class="product-image">
+                                    @if(isset($item->images->first()->path))
+                                        <a>
+                                            <img src="{{$item->images->first()->path}}" alt="Product Image">
+                                        </a>
+                                    @endif
+                                    <div class="product-action">
+                                        <a product="{{$item->toJson()}}" class="btn add-to-cart"><i
+                                                class="fa fa-cart-plus"></i></a>
+                                        <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>
+                                        <a href="{{url('/product-details/'.$item->id)}}"><i
+                                                class="fa fa-search"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>{{$item->price}}</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                <div class="product-price">
+                                    <h3><span>$</span>{{$item->price}}</h3>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -315,25 +326,25 @@
         <div class="container-fluid">
             <div class="row align-items-center review-slider normal-slider">
                 @foreach($reviews as $review)
-                <div class="col-md-6">
-                    <div class="review-slider-item">
-                        <div class="review-img">
-                            <img src="https://i.pravatar.cc/150?img={{$review->user->id+2}}" alt="Image">
-                        </div>
-                        <div class="review-text">
-                            <h2>{{$review->user->username}}</h2>
-                            <h3>{{$review->user->email}}</h3>
-                            <div class="ratting">
-                                @for($i=0; $i < $review->mark; $i++)
-                                    <i class="fa fa-star"></i>
-                                @endfor
+                    <div class="col-md-6">
+                        <div class="review-slider-item">
+                            <div class="review-img">
+                                <img src="https://i.pravatar.cc/150?img={{$review->user->id+2}}" alt="Image">
                             </div>
-                            <p>
-                                {{$review->content}}
-                            </p>
+                            <div class="review-text">
+                                <h2>{{$review->user->username}}</h2>
+                                <h3>{{$review->user->email}}</h3>
+                                <div class="ratting">
+                                    @for($i=0; $i < $review->mark; $i++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
+                                </div>
+                                <p>
+                                    {{$review->content}}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
