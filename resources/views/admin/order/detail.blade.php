@@ -30,7 +30,7 @@
                                 <tbody>
                                 @foreach($item as $item)
                                     <tr>
-                                        <td>{{ $item->product()->name }}</td>
+                                        <td>{{ $item->products()->name }}</td>
                                         <td>{{ $item->quantity }}</td>
                                     </tr>
                                 @endforeach

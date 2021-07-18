@@ -12,7 +12,8 @@
     <link href="../img/favicon.ico" rel="icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +21,11 @@
     <link href="{{ asset('lib/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/slick/slick-theme.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    {{-- CleaveJS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"
+        integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/alertify.css') }}" />
     <!-- include a theme, can be included into the core instead of 2 separate files -->
@@ -50,12 +56,13 @@
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('lib/shoppingcart/jquery.shoppingcart.js')}}"></script>
-    <script src="{{ asset('lib/alertifyjs/alertify.js')}}"></script>
+    <script src="{{ asset('lib/shoppingcart/jquery.shoppingcart.js') }}"></script>
+    <script src="{{ asset('lib/alertifyjs/alertify.js') }}"></script>
     <script src="{{ asset('js/bootstrap-show-password.min.js') }}"></script>
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
@@ -68,13 +75,13 @@
                 type: 'GET',
                 data: {}
             }).done(function(response) {
-                if(response.result === ""){
+                if (response.result === "") {
                     location.href = "/signin";
-                }else{
+                } else {
                     $('#wishlist-amount').html(response.result)
                     alertify.notify("Added 1 item to Wishlist");
                 }
-            }).fail(function(error){
+            }).fail(function(error) {
                 console.log(error);
             });
         });
@@ -90,194 +97,191 @@
             }).done(function(response) {
                 $('#wishlist-amount').html(response.result)
                 e.currentTarget.parentElement.parentElement.hidden = true;
-            }).fail(function(error){
+            }).fail(function(error) {
                 console.log(error);
             });
         });
 
-        $(".add-to-cart").click(function(e){
-            $goToOrderDetail = e.currentTarget.getAttribute("buyNow")
+        $(".add-to-cart").click(function(e) {
             $qtyInput = $("#product-qty")[0];
             $qty = 1;
-            if($qtyInput != null){
+            if ($qtyInput != null) {
                 $qty = $qtyInput.value;
             }
             $jsonObj = JSON.parse(e.currentTarget.getAttribute("product"));
             $product = {
-                id : $jsonObj.id,
-                name : $jsonObj.name,
-                price : $jsonObj.price,
-                discount : $jsonObj.discount,
-                brand_id : $jsonObj.brand_id,
-                count : parseInt($qty)
+                id: $jsonObj.id,
+                name: $jsonObj.name,
+                price: $jsonObj.price,
+                discount: $jsonObj.discount,
+                brand_id: $jsonObj.brand_id,
+                count: parseInt($qty)
             }
             // console.log($product);
-            if($.shoppingcart('add',$product)){
+            if ($.shoppingcart('add', $product)) {
                 $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
                 $.ajax({
                     url: '/update-order',
                     type: 'POST',
                     data: {
-                        order : {
-                            totalQty : $.shoppingcart('getCount'),
-                            totalPrice : $.shoppingcart('getPrice'),
-                            items : $.shoppingcart('getAll')
+                        order: {
+                            totalQty: $.shoppingcart('getCount'),
+                            totalPrice: $.shoppingcart('getPrice'),
+                            items: $.shoppingcart('getAll')
                         },
-                        _token : "{{csrf_token()}}"
+                        _token: "{{ csrf_token() }}"
                     }
                 }).done(function(response) {
                     //console.log(response.result);
                     alertify.notify("Added " + $qty + " item(s)");
-                    if($goToOrderDetail){
-                        location.href = "/order";
-                    }
-                }).fail(function(error){
+                }).fail(function(error) {
                     console.log(error);
                 });
             }
         })
 
-        $(".remove-item").click(function(e){
+        $(".remove-item").click(function(e) {
             $item = JSON.parse(e.currentTarget.getAttribute("product"));
             $oldAmount = $.shoppingcart('getCount');
             $coupon = $('#coupon_value').html();
-            if($.shoppingcart('remove', $item)){
-               $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
+            if ($.shoppingcart('remove', $item)) {
+                $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
                 $.ajax({
                     url: '/update-order',
                     type: 'POST',
                     data: {
-                        order : {
-                            totalQty : $.shoppingcart('getCount'),
-                            totalPrice : $.shoppingcart('getPrice'),
-                            items : $.shoppingcart('getAll')
+                        order: {
+                            totalQty: $.shoppingcart('getCount'),
+                            totalPrice: $.shoppingcart('getPrice'),
+                            items: $.shoppingcart('getAll')
                         },
-                        _token : "{{csrf_token()}}"
+                        _token: "{{ csrf_token() }}"
                     }
                 }).done(function(response) {
                     e.currentTarget.parentElement.parentElement.hidden = true;
                     alertify.notify("Removed " + $oldAmount + " item(s)");
                     $('#order_total_value').html("$" + parseFloat($.shoppingcart("getPrice")).toFixed(2));
-                    $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) + parseFloat($coupon)).toFixed(2));
-                    if($.shoppingcart('getCount') <= 0){
+                    $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) +
+                        parseFloat($coupon)).toFixed(2));
+                    if ($.shoppingcart('getCount') <= 0) {
                         $('#checkout_btn')[0].setAttribute("disabled", "disabled");
                         $('#order_grand_total_value').html("$" + 0);
-                        $.shoppingcart('clear');
                     }
-                }).fail(function(error){
+                }).fail(function(error) {
                     console.log(error);
                 });
             }
         });
 
-        $(".sign-out").click(function(e){
+        $(".sign-out").click(function(e) {
             alertify.confirm("Are you sure ?",
-            function(){
-                $.ajax({
-                    url: '/signout',
-                    type: 'GET'
-                }).done(function(response) {
-                    //console.log(response.result);
-                    $.shoppingcart('clear');
-                    alertify.success("Sign out success ! Redirect to home page", "1", function(e){
-                        location.href = "/";
+                function() {
+                    $.ajax({
+                        url: '/signout',
+                        type: 'GET'
+                    }).done(function(response) {
+                        //console.log(response.result);
+                        $.shoppingcart('clear');
+                        alertify.success("Sign out success ! Redirect to home page", "1", function(e) {
+                            location.href = "/";
+                        });
+                    }).fail(function(error) {
+                        console.log(error);
                     });
-                }).fail(function(error){
-                    console.log(error);
-                });
-            },
-            function(){
-            });
+                },
+                function() {});
         });
 
         $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
 
 
-        function changeQuantity(newQty, btn){
+        function changeQuantity(newQty, btn) {
             $id = btn.getAttribute('prdid');
             $prd = $.shoppingcart('getById', $id);
             $coupon = $('#coupon_value').html();
             //console.log($prd);
             $canUpdate = false;
-            if(newQty == null){
-                if(btn.value <= 99 && btn.value >= 0){
+            if (newQty == null) {
+                if (btn.value <= 99 && btn.value >= 0) {
                     btn.setAttribute("previousValue", btn.value);
                     $prd.count = btn.value;
                     $canUpdate = true;
-                }else{
+                } else {
                     btn.value = btn.getAttribute("previousValue");
                 }
-            }else{
-                if(newQty == 1 && $prd.count < 99){
+            } else {
+                if (newQty == 1 && $prd.count < 99) {
                     btn.setAttribute("previousValue", btn.value);
                     $prd.count += newQty;
                     $canUpdate = true;
-                }else if(newQty == -1 && $prd.count > 0){
+                } else if (newQty == -1 && $prd.count > 0) {
                     btn.setAttribute("previousValue", btn.value);
                     $prd.count += newQty;
                     $canUpdate = true;
-                }else{
+                } else {
                     btn.value = btn.getAttribute("previousValue");
                 }
             }
 
-            if($canUpdate){
-                if($.shoppingcart("edit", $prd)){
+            if ($canUpdate) {
+                if ($.shoppingcart("edit", $prd)) {
                     $.ajax({
                         url: '/update-order',
                         type: 'POST',
                         data: {
-                            order : {
-                                totalQty : $.shoppingcart('getCount'),
-                                totalPrice : $.shoppingcart('getPrice'),
-                                items : $.shoppingcart('getAll')
+                            order: {
+                                totalQty: $.shoppingcart('getCount'),
+                                totalPrice: $.shoppingcart('getPrice'),
+                                items: $.shoppingcart('getAll')
                             },
-                            _token : "{{csrf_token()}}"
+                            _token: "{{ csrf_token() }}"
                         }
                     }).done(function(response) {
                         //console.log("Update Quantity success");
                         $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
-                        $('#item-total-price-'+$id).html("$" + ($prd.price * $prd.count).toFixed(2));
+                        $('#item-total-price-' + $id).html("$" + ($prd.price * $prd.count).toFixed(2));
                         $('#order_total_value').html("$" + parseFloat($.shoppingcart("getPrice")).toFixed(2));
-                        $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) + parseFloat($coupon)).toFixed(2));
-                        if($.shoppingcart('getCount') <= 0) {
+                        $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) +
+                            parseFloat($coupon)).toFixed(2));
+                        if ($.shoppingcart('getCount') <= 0) {
                             $('#checkout_btn')[0].setAttribute("disabled", "disabled");
-                        }else{
+                        } else {
                             $('#checkout_btn')[0].removeAttribute("disabled");
                         }
-                    }).fail(function(error){
+                    }).fail(function(error) {
                         console.log(error);
                     });
                 }
             }
         }
 
-        function applyCoupon(){
+        function applyCoupon() {
             $code = $("#coupon-code").val();
             $ids = [];
-            $.shoppingcart("getAll").forEach(function($item, $index){
+            $.shoppingcart("getAll").forEach(function($item, $index) {
                 $ids.push($item.brand_id);
             })
-            if($ids.length > 0 && $code.length > 0){
+            if ($ids.length > 0 && $code.length > 0) {
                 $.ajax({
                     url: '/apply-coupon',
                     type: 'POST',
                     data: {
-                        code : $code,
-                        ids : $ids,
-                        _token : "{{csrf_token()}}"
+                        code: $code,
+                        ids: $ids,
+                        _token: "{{ csrf_token() }}"
                     }
                 }).done(function(response) {
                     // console.log("Apply coupon success!");
 
 
-                    switch (parseInt(response.result.state)){
+                    switch (parseInt(response.result.state)) {
                         case 0:
                             alertify.success("Apply coupon success!");
                             $('#coupon_value').html(response.result.coupon.discount);
                             $coupon = $('#coupon_value').html();
-                            $('#order_total_value').html("$" +  ( $.shoppingcart("getPrice").toFixed(2)));
-                            $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) + parseFloat($coupon)).toFixed(2));
+                            $('#order_total_value').html("$" + ($.shoppingcart("getPrice").toFixed(2)));
+                            $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) +
+                                parseFloat($coupon)).toFixed(2));
                             break;
                         case 1:
                             alertify.error("The coupon has been expired!");
@@ -287,7 +291,7 @@
                             break;
                     }
 
-                }).fail(function(error){
+                }).fail(function(error) {
                     console.log(error);
                     alertify.error("Apply coupon fail!");
                 });
@@ -295,7 +299,7 @@
             //console.log($ids);
         }
 
-        $("#reset-filter").click(function(e){
+        $("#reset-filter").click(function(e) {
             e.preventDefault();
             $form = e.target.form;
             $form.name.value = "";
@@ -306,41 +310,41 @@
             $form.to.value = "";
         })
 
-        $("input[name='paymentMethod']").change(function(e){
+        $("input[name='paymentMethod']").change(function(e) {
             $form = e.target.form;
-            if(e.target.value === "0"){
+            if (e.target.value === "0") {
                 $form.owner.setAttribute("required", "");
                 $form.card_number.setAttribute("required", "");
                 $form.security_code.setAttribute("required", "");
-            }else{
+            } else {
                 $form.owner.removeAttribute("required");
                 $form.card_number.removeAttribute("required");
                 $form.security_code.removeAttribute("required");
             }
         })
 
-        function handleGoBill(target){
+        function handleGoBill(target) {
             $form = target;
             $.ajax({
                 url: '/go-bill',
                 type: 'POST',
                 data: {
-                    paymentMethod : $form.paymentMethod.value,
-                    _token : "{{csrf_token()}}"
+                    paymentMethod: $form.paymentMethod.value,
+                    _token: "{{ csrf_token() }}"
                 }
             }).done(function(response) {
                 $.shoppingcart("clear");
                 location.href = "/check-bill/" + response.orderId;
-            }).fail(function(error){
+            }).fail(function(error) {
                 console.log(error);
-                alertify.error("Error submit order, redirected to home !", "1", function(e){
+                alertify.error("Error submit order, redirected to home !", "1", function(e) {
                     location.href = "/";
                 });
             });
 
         }
 
-        function reviewSubmit(e){
+        function reviewSubmit(e) {
             e.preventDefault();
             $form = e.currentTarget.form;
             $id = e.currentTarget.getAttribute("productId");
@@ -349,25 +353,25 @@
                 url: '/submitReview/' + $id,
                 type: 'POST',
                 data: {
-                    content : $form.content.value,
-                    mark : $form.mark.value,
-                    _token : "{{csrf_token()}}"
+                    content: $form.content.value,
+                    mark: $form.mark.value,
+                    _token: "{{ csrf_token() }}"
                 }
             }).done(function(response) {
                 console.log(response);
-                if(response === ''){
+                if (response === '') {
                     location.href = '/signin';
-                }else{
+                } else {
                     $('#review_list').html(response);
                     e.currentTarget.form.reset();
                 }
-            }).fail(function(error){
+            }).fail(function(error) {
                 console.log(error);
                 alertify.error("Error submit reviews !", "1");
             });
         }
 
-        $('#review_form_submit_btn').click(function (e){
+        $('#review_form_submit_btn').click(function(e) {
             reviewSubmit(e);
         });
     </script>

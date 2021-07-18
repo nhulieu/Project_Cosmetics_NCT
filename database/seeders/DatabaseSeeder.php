@@ -28,9 +28,12 @@ class DatabaseSeeder extends Seeder
 
 class couponSeeder extends Seeder{
     public function run(){
-//        DB::table('coupon')->insert([
-//            ["brand_id"=>"id của brand(bắt đầu từ 1","name"=>"Tên Coupon", "code"=>"Mã coupon không viết dấu cách", "description"=>"Thông tin coupon", "start_date"=>"yyyy-mm-dd", "end_date"=>"yyyy-mm-dd"],
-//        ]);
+      DB::table('coupon')->insert([
+          ["brand_id"=>"1","name"=>"VASELINE", "code"=>"VASELINE10", "description"=>"discount Vaseline product ", "start_date"=>"2021-01-01", "end_date"=>"2021-12-31"],
+          ["brand_id"=>"2","name"=>"Bath and body work", "code"=>"BBW10", "description"=>"discount BB&W product ", "start_date"=>"2021-01-01", "end_date"=>"2021-12-31"],
+          ["brand_id"=>"3","name"=>"Hatomugi", "code"=>"HATO10", "description"=>"discount Hatomugi product ", "start_date"=>"2021-01-01", "end_date"=>"2021-12-31"],
+          ["brand_id"=>"4","name"=>"Nivea", "code"=>"NIVEA10", "description"=>"discount NIVEA product ", "start_date"=>"2021-01-01", "end_date"=>"2021-12-31"],
+       ]);
     }
 }
 
@@ -482,7 +485,7 @@ Ingredient : Water / Aqua / Eau, Titanium Dioxide (Ci 77891), Butylene Glycol, V
 How to Use : Take an appropriate amount of body lotion and spread it all over the body. Gently massage until the essence is fully absorbed into the skin.
 
 Ingredient : Water, glycerin, coix seed extract, Squalane, hyaluronic acid Na, carbomer, betaine, dimethicone, steareth - 6, EDTA-4Na, hydroxide Na, phenoxyethanol, mineral oil, BG, benzoic acid Na, methylparaben, fragrance.
-","status"=>"1","price"=>"139000","discount"=>"10","quantity"=>"4","tax"=>"5","feature"=>"","mark"=>"4"]	,
+","status"=>"1","price"=>"6","discount"=>"10","quantity"=>"4","tax"=>"5","feature"=>"","mark"=>"4"]	,
 
             ["name"=>"VITALUMIÈRE AQUA - CHANEL","category_id"=>"17","brand_id"=>"17","description"=>"With a soft, water-light texture and light-to-medium coverage, the tiniest drop of this hybrid fluid foundation creates a natural-looking glow. Skin looks refined and feels refreshed, for an exquisite makeup experience.
 
@@ -631,8 +634,8 @@ How to Use : Use directly on lips to moisturize lips immediately, reduce dryness
 
 Ingredient : G20167141 Canola Oil, Ricinus Communis Seed Oil/Castor Seed Oil, Caprylic/Capric Triglyceride, Polyglyceryl-2 Triisostearate, Helianthus Annuus Seed Cera/ Sunflower Seed Wax, Bis-Behenyl/Isostearyl/Phytostearyl Dimer Dilnoleyl Dimer Dilinoleate, Cetyl Palmate, Cera Alba/Beeswax, Helianthus Annuus Seed Oil/Sunflower Seed Oil, Silica, Alumina, Aluminium Hydroxide, Tocopherol, Cocos Nucifera Oil/Coconut Oil, Citric Acid, Parfum/Fragrance, [+/- May contain: CI 15850/ Red 7, CI 15985/ Yellow 6 Lake, CI 45410/Red 28 Lake, CI 45380/Red 22 Lake, CI 77891/ Titanium Dioxide, CI 75470/ Carmine, CI 77492/ Iron Oxides] Code F.I.L.: B226208/1.","status"=>"1","price"=>"5.2","discount"=>"2","quantity"=>"34","tax"=>"14","feature"=>"","mark"=>"4"],
 
-            ["name"=>"Maybelline Light Brown Double Head Eyebrow Pencil 0.16gDefine & Blend Brow Pencil Natural Blend Hydrating Lip Balm
-","category_id"=>"5","brand_id"=>"13","description"=>"If the eyes are the window to the soul, then the eyebrows hold an important position in creating the facial expression. The eyes will look much more attractive when above are thick, dense and sharp eyebrows. However, if you happen to own a pair of eyebrows that are sparse, pale and too thin, you can still be completely assured because there is a Maybelline Define & Blend Brow Pencil 2-Headed Eyebrow Pencil that helps conceal unnecessary defects. have this. The product is designed with a convenient screw pen with a diagonal pencil tip and a brush head design that helps to draw and blend eyebrows easily and accurately.
+            ["name"=>"Maybelline Light Brown Double Head Eyebrow Pencil 0.16gDefine & Blend Brow Pencil Natural Blend Hydrating
+","category_id"=>"29","brand_id"=>"15","description"=>"If the eyes are the window to the soul, then the eyebrows hold an important position in creating the facial expression. The eyes will look much more attractive when above are thick, dense and sharp eyebrows. However, if you happen to own a pair of eyebrows that are sparse, pale and too thin, you can still be completely assured because there is a Maybelline Define & Blend Brow Pencil 2-Headed Eyebrow Pencil that helps conceal unnecessary defects. have this. The product is designed with a convenient screw pen with a diagonal pencil tip and a brush head design that helps to draw and blend eyebrows easily and accurately.
 
 How to Use : Shape the eyebrow shape suitable for the face. Fill in the pale parts and shape the tail of the eyebrown. Blend and brush evenly with the brush head.
 

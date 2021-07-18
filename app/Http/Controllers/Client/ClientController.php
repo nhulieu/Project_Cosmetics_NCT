@@ -74,7 +74,7 @@ class ClientController extends Controller
         $user->address = $address;
         $user->phone = $phone;
         $user->save();
-        return view("client.signin", ["isSignup" => true, "status" => "2"]);
+        return view("client.signin", ["isSignup" => false, "status" => "2"]);
     }
 
     public function postSignin(Request $request)

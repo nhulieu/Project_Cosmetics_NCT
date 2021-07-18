@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\order_item;
+use App\Models\order_item;
 use Illuminate\Database\Eloquent\Model;
 
 class order extends Model
@@ -36,10 +36,9 @@ class order extends Model
         return $sum - $coupon;
     }
 
-    public static function getItemOrder($id)
-    {
-        $getItemOrder = order_item::where("order_id", "=", $id)->get();
-        return $getItemOrder;
+    public static function getItemCart($id){
+        $getItemCart = order_item::where("order_id", "=", $id)->get();
+        return  $getItemCart;
     }
 
     public function getNameOfUser()

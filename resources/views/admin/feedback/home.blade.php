@@ -28,7 +28,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <th>View</th>
                                 <th>Subject</th>
                                 <th>Actions</th>
                             </tr>
@@ -38,7 +38,9 @@
                                 <tr>
                                     <th scope="row">{{ $message->id }}</th>
                                     <td>{{ $message->name }}</td>
-                                    <td><a href="{{ url('admin/feedback/detail/'.$message->id) }}">{{ $message->email }}</a>
+                                    <td><a class="btn btn-info btn-sm"
+                                           href="{{ url('admin/feedback/detail/'.$message->id) }}"><i
+                                                class="fas fa-pencil-alt"></i> View detail</a>
                                     </td>
                                     <td>{{ $message->subject }}</td>
                                     <td class="text-left">
