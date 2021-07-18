@@ -29,9 +29,12 @@ class DatabaseSeeder extends Seeder
 
 class couponSeeder extends Seeder{
     public function run(){
-//        DB::table('coupon')->insert([
-//            ["brand_id"=>"id của brand(bắt đầu từ 1","name"=>"Tên Coupon", "code"=>"Mã coupon không viết dấu cách", "description"=>"Thông tin coupon", "start_date"=>"yyyy-mm-dd", "end_date"=>"yyyy-mm-dd"],
-//        ]);
+      DB::table('coupon')->insert([
+          ["brand_id"=>"1","name"=>"VASELINE", "code"=>"VASELINE10", "description"=>"discount Vaseline product ", "start_date"=>"2021-01-01", "end_date"=>"2021-12-31"],
+          ["brand_id"=>"2","name"=>"Bath and body work", "code"=>"BBW10", "description"=>"discount BB&W product ", "start_date"=>"2021-01-01", "end_date"=>"2021-12-31"],
+          ["brand_id"=>"3","name"=>"Hatomugi", "code"=>"HATO10", "description"=>"discount Hatomugi product ", "start_date"=>"2021-01-01", "end_date"=>"2021-12-31"],
+          ["brand_id"=>"4","name"=>"Nivea", "code"=>"NIVEA10", "description"=>"discount NIVEA product ", "start_date"=>"2021-01-01", "end_date"=>"2021-12-31"],
+       ]);
     }
 }
 
