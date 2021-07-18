@@ -78,8 +78,10 @@
                 if (response.result === "") {
                     location.href = "/signin";
                 } else {
-                    $('#wishlist-amount').html(response.result)
-                    alertify.notify("Added 1 item to Wishlist");
+                    if(response.result !== ""){
+                        $('#wishlist-amount').html(response.result)
+                        alertify.success("Added 1 item to Wishlist");
+                    }
                 }
             }).fail(function(error) {
                 console.log(error);
@@ -97,6 +99,7 @@
             }).done(function(response) {
                 $('#wishlist-amount').html(response.result)
                 e.currentTarget.parentElement.parentElement.hidden = true;
+                alertify.success("Successfully remove item from wishlist !");
             }).fail(function(error) {
                 console.log(error);
             });
@@ -104,6 +107,8 @@
 
         $(".add-to-cart").click(function(e) {
             $qtyInput = $("#product-qty")[0];
+            $goToOrderDetail = e.currentTarget.getAttribute("buyNow")
+            $canBuy = e.currentTarget.getAttribute("canBuy");
             $qty = 1;
             if ($qtyInput != null) {
                 $qty = $qtyInput.value;
@@ -117,26 +122,31 @@
                 brand_id: $jsonObj.brand_id,
                 count: parseInt($qty)
             }
-            // console.log($product);
-            if ($.shoppingcart('add', $product)) {
-                $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
-                $.ajax({
-                    url: '/update-order',
-                    type: 'POST',
-                    data: {
-                        order: {
-                            totalQty: $.shoppingcart('getCount'),
-                            totalPrice: $.shoppingcart('getPrice'),
-                            items: $.shoppingcart('getAll')
-                        },
-                        _token: "{{ csrf_token() }}"
-                    }
-                }).done(function(response) {
-                    //console.log(response.result);
-                    alertify.notify("Added " + $qty + " item(s)");
-                }).fail(function(error) {
-                    console.log(error);
-                });
+            if($canBuy) {
+                if ($.shoppingcart('add', $product)) {
+                    $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
+                    $.ajax({
+                        url: '/update-order',
+                        type: 'POST',
+                        data: {
+                            order: {
+                                totalQty: $.shoppingcart('getCount'),
+                                totalPrice: $.shoppingcart('getPrice'),
+                                items: $.shoppingcart('getAll')
+                            },
+                            _token: "{{ csrf_token() }}"
+                        }
+                    }).done(function (response) {
+                        alertify.notify("Added " + $qty + " item(s)");
+                        if ($goToOrderDetail) {
+                            location.href = "/order";
+                        }
+                    }).fail(function (error) {
+                        console.log(error);
+                    });
+                }
+            }else{
+                alertify.error("The chosen product is not available from now !");
             }
         })
 
@@ -166,6 +176,7 @@
                     if ($.shoppingcart('getCount') <= 0) {
                         $('#checkout_btn')[0].setAttribute("disabled", "disabled");
                         $('#order_grand_total_value').html("$" + 0);
+                        $.shoppingcart('clear');
                     }
                 }).fail(function(error) {
                     console.log(error);
@@ -239,7 +250,7 @@
                     }).done(function(response) {
                         //console.log("Update Quantity success");
                         $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
-                        $('#item-total-price-' + $id).html("$" + ($prd.price * $prd.count).toFixed(2));
+                        $('#item-total-price-'+$id).html("$" + ($prd.price * $prd.count).toFixed(2));
                         $('#order_total_value').html("$" + parseFloat($.shoppingcart("getPrice")).toFixed(2));
                         $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) +
                             parseFloat($coupon)).toFixed(2));
@@ -373,6 +384,20 @@
 
         $('#review_form_submit_btn').click(function(e) {
             reviewSubmit(e);
+        });
+
+        $('#check-email-form').on('submit', function(e){
+            $form = e.currentTarget;
+            $.ajax({
+                url: '/check-email',
+                type: 'POST',
+                data: {
+                    email : $form.email.value,
+                    _token: "{{ csrf_token() }}"
+                }
+            }).done(function(response) {
+
+            })
         });
     </script>
 </body>

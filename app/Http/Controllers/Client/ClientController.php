@@ -27,8 +27,12 @@ class ClientController extends Controller
         return view("index");
     }
 
-    public function signin()
+    public function signin(Request $request)
     {
+        $username = $request->session()->get("user");
+        if($username !== null){
+            return redirect('/');
+        }
         return view("client.signin", ["isSignup" => false, "status" => "0"]);
     }
 
@@ -133,12 +137,12 @@ class ClientController extends Controller
         if ($user !== null) {
             if ($user->password === $currentPassword) {
                 user::where("username", "=", $username)->update(["password" => $newPassword]);
-                return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "4"]);
+                return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "4", "active" => "0"]);
             } else {
-                return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "5"]);
+                return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "5", "active" => "0"]);
             }
         }
-        return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "3"]);
+        return view("client.account", ["user" => user::where("username", "=", $username)->first(), "status" => "3", "active" => "0"]);
     }
 
     public function contact()
@@ -190,7 +194,7 @@ class ClientController extends Controller
 
         if ($existed_wish_item !== null) {
             $request->session()->put("wishlistAmount", $user->wishlists->count());
-            return response()->json(["result" => $user->wishlists->count()]);
+            return response()->json(["result" => ""]);
         }
         $wish_item = new wishlist();
         $wish_item->user_id = $user->id;
@@ -225,7 +229,7 @@ class ClientController extends Controller
 
             return view("client.account", ["user" => user::where("username", "=", $user)->first(), "status" => "0", "active" => "0"]);
         }
-        return view("index");
+        return redirect("/signin");
     }
 
     public function order(Request $request)
@@ -371,7 +375,7 @@ class ClientController extends Controller
         if ($product->retired) {
             return view("index");
         }
-        return view("client.product_details", ["product" => $product, "products" => $products]);
+        return view("client.product_details", ["product" => $product]);
     }
 
     public function product(Request $request)
@@ -412,16 +416,13 @@ class ClientController extends Controller
                 $product_query->where('price', '<=', $to);
             }
             if ($status != null) {
-                $product_query->where('status', '<=', $status);
+                $product_query->where('status', '=', $status);
             }
             if ($tag != null) {
                 $product_query->leftJoin('product_tag', 'product_tag.product_id', '=', 'product.id')->where("tag_id", "=", $tag);
             }
             if($mark != null){
                 $product_query->where('mark', '>=', $mark);
-            }
-            if($newArrival){
-                $product_query->where('status', '=', 2);
             }
         }
 
@@ -450,5 +451,14 @@ class ClientController extends Controller
         $product->update(['mark' => $newMark]);
         $view = view('client.review_update')->with(['product'=> $product]);
         return $view;
+    }
+
+    public function checkEmail(Request $request){
+        $email = $request->input("emailToCheck");
+        $user = user::where("email", "=", $email)->first();
+        if($user === null){
+            return response()->json(["result"=>"Account with this email doesn't exist !"]);
+        }
+        return response()->json(["result"=>"Account with this email doesn't exist !"]);
     }
 }

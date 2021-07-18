@@ -42,7 +42,7 @@
                                                     <p>{{$item->name}}</p>
                                                 </div>
                                             </td>
-                                            <td>${{number_format($item->price, 2)}}</td>
+                                            <td>${{number_format($item->price * 100 / (100 - $item->discount), 2)}}</td>
                                             <td>{{$item->discount ? number_format($item->discount, 2) : 0}}%</td>
                                             <td>
                                                 <div class="qty">

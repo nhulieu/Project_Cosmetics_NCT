@@ -21,7 +21,7 @@
                     <div class="tab-content">
                         {{--Active 4--}}
                         <div class="tab-pane fade {{$active == 4 ? 'show active' : ''}}" id="wishlist-tab" role="tabpanel" aria-labelledby="wishlist-nav">
-                            <h4>Wistlist</h4>
+                            <h2 class="mb-4"><b>Wistlist</b></h2>
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead class="thead-dark">
@@ -39,7 +39,21 @@
                                             <td>{{$wishItem->product->name}}</td>
                                             <td>{{$wishItem->created_at}}</td>
                                             <td>${{$wishItem->product->price}}</td>
-                                            <td>{{$wishItem->product->status == 1 ? "Available" : "Unvailable"}}</td>
+                                            <td>
+                                                @switch($wishItem->product->status)
+                                                    @case(0)
+                                                        Unavailable
+                                                    @break
+
+                                                    @case(1)
+                                                        Available
+                                                    @break
+
+                                                    @case(2)
+                                                        Incoming
+                                                    @break
+                                                @endswitch
+                                            </td>
                                             <td>
                                                 <a href="{{url('/product-details/'.$wishItem->product->id)}}" class="btn">View</a>
                                             </td>
@@ -54,7 +68,7 @@
                         </div>
                         {{--Active 0--}}
                         <div class="tab-pane fade {{$active == 0 ? 'show active' : ''}}" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
-                            <h4>Account Details</h4>
+                            <h2 class="mb-4"><b>Account Details</b></h2>
                             <form id="register-form" action="/update-account" method="post">
                                 @csrf
                                 <div class="row">
@@ -97,7 +111,7 @@
                                 </div>
                             </form>
                             <br />
-                            <h4>Password change</h4>
+                            <h2 class="mb-4"><b>Password change</b></h2>
                             <form action="/update-password" method="post">
                                 @csrf
                                 <div class="row">
@@ -152,7 +166,7 @@
                         {{--Active 1--}}
                         <div class="tab-pane fade {{$active == 1 ? 'show active' : ''}}" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
                             <div class="table-responsive">
-                                <h4 class="mb-2">Orders History</h4>
+                                <h2 class="mb-4"><b>Orders History</b></h2>
                                 <table class="table table-bordered">
                                     <thead class="thead-dark">
                                     <tr>
@@ -188,11 +202,11 @@
                         </div>
                         {{--Active 3--}}
                         <div class="tab-pane fade {{$active == 3 ? 'show active' : ''}}" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
-                            <h4>Address</h4>
+                            <h2 class="mb-4"><b>Address</b></h2>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5>Payment Address</h5>
-                                    <p>{{$user->address}}</p>
+                                    <label>Main Address</label>
+                                    <input value="{{$user->address}}" class="form-control" type="text" readonly>
                                 </div>
                             </div>
                         </div>

@@ -45,9 +45,9 @@
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <select name="status" id="" class="form-control">
+                                        <option value="0">Unavailable</option>
                                         <option value="1">Available</option>
-                                        <option value="2">Unavailable</option>
-                                        <option value="3">Incoming</option>
+                                        <option value="2">Incoming</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

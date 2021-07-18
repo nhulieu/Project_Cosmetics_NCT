@@ -52,11 +52,11 @@
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <select name="status" id="" class="form-control">
+                                        <option @if ($product->status == "0") selected @endif value="0">Unavailable
+                                        </option>
                                         <option @if ($product->status == "1") selected @endif value="1">Available
                                         </option>
-                                        <option @if ($product->status == "2") selected @endif value="2">Unavailable
-                                        </option>
-                                        <option @if ($product->status == "3") selected @endif value="3">Incoming
+                                        <option @if ($product->status == "2") selected @endif value="2">Incoming
                                         </option>
                                     </select>
                                 </div>

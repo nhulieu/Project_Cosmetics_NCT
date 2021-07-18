@@ -96,6 +96,11 @@
                                                     @else
                                                         <option value="0" class="dropdown-item">Unavailable</option>
                                                     @endif
+                                                        @if($status == "2")
+                                                            <option selected value="2" class="dropdown-item">Incoming</option>
+                                                        @else
+                                                            <option value="2" class="dropdown-item">Incoming</option>
+                                                        @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -136,7 +141,7 @@
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span>{{number_format($item->price - ($item->price * $item->discount / 100), 2)}}</h3>
-                                        <a buyNow="true" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a buyNow="true" canBuy="{{$item->status == 1 ? true : false}}" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +179,7 @@
                                     <a class="nav-link" href="/product-list?mark=4"><i class="fa fa-shopping-bag"></i>Best Selling</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/product-list?newArrival=true"><i class="fa fa-plus-square"></i>New Arrivals</a>
+                                    <a class="nav-link" href="/product-list?status=2"><i class="fa fa-plus-square"></i>New Arrivals</a>
                                 </li>
 {{--                                <li class="nav-item">--}}
 {{--                                    <a class="nav-link" href="#"><i class="fa fa-female"></i>Beauty</a>--}}

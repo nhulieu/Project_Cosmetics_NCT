@@ -37,6 +37,8 @@ Route::post("/update-account", [ClientController::class, "updateAccountDetails"]
 Route::get('/update-password', [ClientController::class, "account"]);
 Route::post("/update-password", [ClientController::class, "updateAccountPassword"]);
 
+Route::post("/check-email", [ClientController::class, "checkEmail"]);
+
 Route::get('/', [ClientController::class, "home"]);
 Route::get('/contact', [ClientController::class, "contact"]);
 Route::post('contact', [ClientController::class, 'postContact'])->name('postContact');

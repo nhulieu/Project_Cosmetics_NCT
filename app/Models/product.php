@@ -70,11 +70,11 @@ class product extends Model
                 return 'Available';
                 break;
 
-            case '2':
+            case '0':
                 return 'Unavailable';
                 break;
 
-            case '3':
+            case '2':
                 return 'Incoming';
                 break;
 

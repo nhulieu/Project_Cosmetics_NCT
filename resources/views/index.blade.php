@@ -23,7 +23,7 @@
                                 <a class="nav-link" href="/product-list?mark=4"><i class="fa fa-shopping-bag"></i>Best Selling</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/product-list?newArrival=true"><i class="fa fa-plus-square"></i>New Arrivals</a>
+                                <a class="nav-link" href="/product-list?status=2"><i class="fa fa-plus-square"></i>New Arrivals</a>
                             </li>
 {{--                            <li class="nav-item">--}}
 {{--                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Beauty</a>--}}
@@ -241,7 +241,7 @@
                         </div>
                         <div class="product-price">
                             <h3><span>$</span>{{number_format($item->price * (100 - $item->discount) / 100, 2)}}</h3>
-                            <a buyNow="true" product="{{$item->toJson()}}" class="btn add-to-cart buy-now"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            <a buyNow="true" canBuy="{{$item->status == 1 ? true : false}}" product="{{$item->toJson()}}" class="btn add-to-cart buy-now"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
                 </div>
@@ -300,22 +300,29 @@
                                                 class="fa fa-search"></i></a>
                                     </div>
                                 </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>{{$item->price}}</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
                             </div>
                             <div class="product-price">
                                 <h3><span>$</span>{{$item->price * (100 - $item->discount) / 100}}</h3>
-                                <a buyNow="true" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                <a buyNow="true" canBuy="{{$item->status == 1 ? true : false}}" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
-                    @endif
+                    </div>
                 @endforeach
             </div>
         </div>
     </div>
     <!-- Recent Product End -->
+
+    <!-- Newsletter Start -->
+    <div class="call-to-action mb-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Review from our client</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Review Start -->
     <div class="review">
@@ -334,8 +341,12 @@
                                     <i class="fa fa-star"></i>
                                 @endfor
                             </div>
+                            <p>
+                                {{$review->content}}
+                            </p>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>

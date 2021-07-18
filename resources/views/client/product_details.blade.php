@@ -95,7 +95,7 @@
                                 <div class="action">
                                     <button productid="{{$product->id}}" class="btn add-to-wishlist"><i class="fa fa-heart"></i>Add to Wishlist</button>
                                     <button  product="{{$product->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
-                                    <button buyNow="true" product="{{$product->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-bag"></i>Buy Now</button>
+                                    <button buyNow="true" canBuy="{{$product->status == 1 ? true : false}}" product="{{$product->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-bag"></i>Buy Now</button>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                     </div>
 
                     <div class="row align-items-center product-slider product-slider-3">
-                        @foreach($products as $item)
+                        @foreach(\App\Models\product::where("category_id","=",$product->category_id)->get() as $item)
                             <div class="col-lg-3">
                                 <div class="product-item">
                                     <div class="product-title">
@@ -200,7 +200,7 @@
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span>{{$item->price}}</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a buyNow="true" canBuy="{{$item->status == 1 ? true : false}}" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +219,7 @@
                                 <a class="nav-link" href="/product-list?mark=4"><i class="fa fa-shopping-bag"></i>Best Selling</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/product-list?newArrival=true"><i class="fa fa-plus-square"></i>New Arrivals</a>
+                                <a class="nav-link" href="/product-list?status=2"><i class="fa fa-plus-square"></i>New Arrivals</a>
                             </li>
 {{--                            <li class="nav-item">--}}
 {{--                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Beauty</a>--}}
@@ -236,7 +236,7 @@
 
                 <div class="sidebar-widget widget-slider">
                     <div class="sidebar-slider normal-slider">
-                        @foreach($products as $item)
+                        @foreach(\App\Models\product::where("brand_id", "=", $product->brand_id) as $item)
                             <div class="col-lg-3">
                                 <div class="product-item">
                                     <div class="product-title">
