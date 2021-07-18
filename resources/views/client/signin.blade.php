@@ -133,22 +133,23 @@
                             </form>
                             <form id="check-code-form" hidden> {{--action="/check-code" method="POST" id="checkEmailForm" hidden>--}}
                                 @csrf
-                                <div class="col-md-4">
-                                    <label><b>Please input verification code</b></label>
-                                    <input class="form-control" type="text" required placeholder="Verification Code" name="codeToCheck">
-                                    <button type="submit" class="btn">Check</button>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input hidden class="form-control" type="email" placeholder="E-mail" id="email-user" name="emailToCheck">
+                                        <label><b>Please input verification code</b></label>
+                                        <input class="form-control" type="text" required placeholder="Verification Code" name="codeToCheck">
+                                        <button type="submit" class="btn">Check</button>
+                                    </div>
                                 </div>
                             </form>
                             <form id="reset-password-form" hidden> {{--action="/update-password" method="post" hidden>--}}
                                 @csrf
                                 <div class="row">
+                                    <input hidden class="form-control" type="email" placeholder="E-mail" id="email-user" name="emailToCheck">
                                     <div class="col-md-6">
-                                        <input hidden class="form-control" type="email" placeholder="E-mail" id="email-user" name="userEmail">
-                                    </div>
-                                    <div class="col-md-6">
+                                        <label><b>New Password</b></label>
                                         <input id="password" class="form-control" required type="password" placeholder="New Password" name="txtNewPassword">
-                                    </div>
-                                    <div class="col-md-6">
+                                        <label><b>Confirm New Password</b></label>
                                         <input id="confirm-password" required class="form-control" type="password" placeholder="Confirm Password" name="txtNewPasswordConfirm">
                                     </div>
                                     <div class="col-md-12">
@@ -156,6 +157,11 @@
                                     </div>
                                 </div>
                             </form>
+                            <div class="row">
+                                <div id="reset-password-input" class="col-md-12" >
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

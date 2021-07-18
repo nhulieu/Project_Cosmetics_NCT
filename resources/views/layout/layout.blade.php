@@ -387,18 +387,75 @@
         });
 
         $('#check-email-form').on('submit', function(e){
+            e.preventDefault();
             $form = e.currentTarget;
             $.ajax({
                 url: '/check-email',
                 type: 'POST',
                 data: {
-                    email : $form.email.value,
+                    email : $form.emailToCheck.value,
                     _token: "{{ csrf_token() }}"
                 }
             }).done(function(response) {
-
-            })
+                alertify.success(response.result, "4");
+                $('#check-email-form').hide();
+                $('#check-code-form')[0].removeAttribute("hidden");
+                $('#check-code-form')[0].emailToCheck.value = $form.emailToCheck.value;
+                console.log(response.code);
+            }).fail(function(error) {
+                console.log(error);
+                alertify.error("Error when sending email !", "4");
+            });
         });
+
+        $('#check-code-form').on('submit', function(e) {
+            e.preventDefault();
+            $form = e.currentTarget;
+            $.ajax({
+                url: '/check-code',
+                type: 'POST',
+                data: {
+                    email : $form.emailToCheck.value,
+                    _token: "{{ csrf_token() }}"
+                }
+            }).done(function(response) {
+                alertify.success(response.result, "4");
+                $('#check-code-form').hide();
+                $('#reset-password-form')[0].removeAttribute("hidden");
+                $('#reset-password-form')[0].emailToCheck.value = $form.emailToCheck.value;
+            }).fail(function(error) {
+                console.log(error);
+                alertify.error("Error when confirm code !", "4");
+            });
+
+        });
+
+        $('#reset-password-form').on('submit', function(e) {
+            e.preventDefault();
+            $form = e.currentTarget;
+            $.ajax({
+                url: '/reset-password',
+                type: 'POST',
+                data: {
+                    email : $form.emailToCheck.value,
+                    password : $form.txtNewPassword.value,
+                    confirmPassword : $form.txtNewPasswordConfirm.value,
+                    _token: "{{ csrf_token() }}"
+                }
+            }).done(function(response) {
+                if(response.isSuccess){
+                    $('#reset-password-form').hide();
+                    $("#reset-password-input").html("<div class="+"'alert alert-success'><strong>"+response.message+"</strong></div>")
+                }else{
+                    $("#reset-password-input").html("<div class="+"'alert alert-danger'><strong>"+response.message+"</strong></div>")
+                }
+            }).fail(function(error) {
+                console.log(error);
+                alertify.error("Error when changing password !", "4");
+            });;
+        });
+
+
     </script>
 </body>
 

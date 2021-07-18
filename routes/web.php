@@ -38,6 +38,11 @@ Route::get('/update-password', [ClientController::class, "account"]);
 Route::post("/update-password", [ClientController::class, "updateAccountPassword"]);
 
 Route::post("/check-email", [ClientController::class, "checkEmail"]);
+Route::post("/check-code", [ClientController::class, "checkCode"]);
+Route::post("/reset-password", [ClientController::class, "resetPassword"]);
+Route::get("/check-email", [ClientController::class, "signin"]);
+Route::get("/check-code", [ClientController::class, "signin"]);
+Route::get("/reset-password", [ClientController::class, "signin"]);
 
 Route::get('/', [ClientController::class, "home"]);
 Route::get('/contact', [ClientController::class, "contact"]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\VerifyCodeMail;
 use App\Models\coupon;
 use App\Models\feedback;
 use App\Models\invoice;
@@ -14,6 +15,7 @@ use App\Models\user;
 use App\Models\wishlist;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 
@@ -454,11 +456,56 @@ class ClientController extends Controller
     }
 
     public function checkEmail(Request $request){
-        $email = $request->input("emailToCheck");
+        $email = $request->input("email");
         $user = user::where("email", "=", $email)->first();
         if($user === null){
             return response()->json(["result"=>"Account with this email doesn't exist !"]);
         }
-        return response()->json(["result"=>"Account with this email doesn't exist !"]);
+        $verification_code = random_int(100000, 999999);
+        user::where("email", "=", $email)->update(['verifyCode'=>$verification_code]);
+
+        $email_param = new \stdClass();
+        $email_param->receiver = $user->lname." ".$user->fname;
+        $email_param->code = $verification_code;
+
+        $newEmail = new VerifyCodeMail($email_param);
+        $newEmail->emailParam = $email_param;
+
+        Mail::to($email)->send($newEmail);
+
+        if (Mail::failures()) {
+            return response()->json(["result"=>"Fail to send verification code to Mail !", "code"=>$verification_code]);
+        }
+
+        return response()->json(["result"=>"A verification code has been sent to your mail !", "code"=>$verification_code]);
+    }
+
+    public function checkCode(Request $request){
+        $code = $request->input("code");
+        $email = $request->input("email");
+        $user = user::where("email", "=", $email)->first();
+        if($user !== null){
+            if($user->verifyCode === $code){
+                return response()->json(["isSuccess"=>true, "message"=>"Correct Verification Code !"]);
+            }
+            return response()->json(["isSuccess"=>false, "message"=>"Verification Code not correct!"]);
+        }
+        return response()->json(["isSuccess"=>false, "message"=>"Error verifying the code !"]);
+    }
+
+    public function resetPassword(Request $request){
+        $password = $request->input('password');
+        $confirmPassword = $request->input('confirmPassword');
+        $email = $request->input("email");
+        $user = user::where("email", "=", $email)->first();
+        if($user !== null){
+            if ($password === $confirmPassword) {
+                user::where("email", "=", $email)->update(["password" => $password]);
+                return response()->json(["isSuccess"=>true, "message"=>"Successfully changed password !"]);
+            }
+            return response()->json(["isSuccess"=>false, "message"=>"Confirm password and password must be the same !"]);
+        }
+
+        return response()->json(["isSuccess"=>false, "message"=>"Error changing the password !"]);
     }
 }
