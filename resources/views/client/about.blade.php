@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <img class="img-rounded" alt="team-photo" src="img/MEMBER.png" width="100%">
+                    <img class="img-rounded" alt="team-photo" src="img/TAI.png" width="100%">
 
                     <div class="team-member">
                         <h4>Tài Ngô</h4>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <img class="img-rounded" alt="team-photo" src="img/MEMBER.png" width="100%">
+                    <img class="img-rounded" alt="team-photo" src="img/NHU.png" width="100%">
 
                     <div class="team-member">
                         <h4>Như Liêu</h4>
