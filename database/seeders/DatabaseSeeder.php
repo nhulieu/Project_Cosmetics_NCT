@@ -23,6 +23,15 @@ class DatabaseSeeder extends Seeder
         $this->call(imageSeeder::class);
         $this->call(userSeeder::class);
         $this->call(reviewSeeder::class);
+        $this->call(couponSeeder::class);
+    }
+}
+
+class couponSeeder extends Seeder{
+    public function run(){
+//        DB::table('coupon')->insert([
+//            ["brand_id"=>"id của brand(bắt đầu từ 1","name"=>"Tên Coupon", "code"=>"Mã coupon không viết dấu cách", "description"=>"Thông tin coupon", "start_date"=>"yyyy-mm-dd", "end_date"=>"yyyy-mm-dd"],
+//        ]);
     }
 }
 
