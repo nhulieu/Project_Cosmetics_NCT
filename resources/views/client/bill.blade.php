@@ -113,9 +113,8 @@
                                 <th></th>
                                 <th></th>
                                 <th>Total</th>
-                                <th>${{$order->total()}}</th>
+                                <th>${{number_format($order->total(),2)}}</th>
                             </tr>
-
                             </tfoot>
                         </table>
                     </div>

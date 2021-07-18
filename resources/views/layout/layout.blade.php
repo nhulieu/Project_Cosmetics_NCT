@@ -96,6 +96,7 @@
         });
 
         $(".add-to-cart").click(function(e){
+            $goToOrderDetail = e.currentTarget.getAttribute("buyNow")
             $qtyInput = $("#product-qty")[0];
             $qty = 1;
             if($qtyInput != null){
@@ -127,6 +128,9 @@
                 }).done(function(response) {
                     //console.log(response.result);
                     alertify.notify("Added " + $qty + " item(s)");
+                    if($goToOrderDetail){
+                        location.href = "/order";
+                    }
                 }).fail(function(error){
                     console.log(error);
                 });
@@ -158,6 +162,7 @@
                     if($.shoppingcart('getCount') <= 0){
                         $('#checkout_btn')[0].setAttribute("disabled", "disabled");
                         $('#order_grand_total_value').html("$" + 0);
+                        $.shoppingcart('clear');
                     }
                 }).fail(function(error){
                     console.log(error);
@@ -187,10 +192,7 @@
 
         $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
 
-        // $(".item-qty").change(function(e){
-        //     $product = e.target.getAttribute("product");
-        //     console.log($product);
-        // })
+
         function changeQuantity(newQty, btn){
             $id = btn.getAttribute('prdid');
             $prd = $.shoppingcart('getById', $id);
@@ -235,7 +237,7 @@
                     }).done(function(response) {
                         //console.log("Update Quantity success");
                         $("#order-amount")[0].innerHTML = $.shoppingcart('getCount');
-                        $('#item-total-price-'+$id).html("$" + ($prd.price * $prd.count * (1 - $prd.discount/100)).toFixed(2));
+                        $('#item-total-price-'+$id).html("$" + ($prd.price * $prd.count).toFixed(2));
                         $('#order_total_value').html("$" + parseFloat($.shoppingcart("getPrice")).toFixed(2));
                         $('#order_grand_total_value').html("$" + (parseFloat($.shoppingcart("getPrice")) + parseFloat($coupon)).toFixed(2));
                         if($.shoppingcart('getCount') <= 0) {

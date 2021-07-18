@@ -159,7 +159,7 @@
                                         <th>OrderID</th>
                                         <th>Order Date</th>
                                         <th>Total Price</th>
-                                        <th>Status</th>
+                                        <th>Payment Method</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -175,7 +175,7 @@
                                                         Credit Card
                                                     @break
                                                     @case(1)
-                                                        COD
+                                                        Cash On Delivery
                                                     @break
                                                 @endswitch
                                             </td>

@@ -47,7 +47,7 @@
                                     <h4>Price:</h4>
                                     <p>
                                         @if ($product->discount > 0)
-                                        ${{$product->price - ($product->price * $product->discount / 100)}}
+                                        ${{number_format($product->price - ($product->price * $product->discount / 100), 2)}}
                                         <span>
                                             ${{$product->price}}
                                         </span>
@@ -67,12 +67,21 @@
                                 <div class="price">
                                     <h4>Status:</h4>
                                     <!-- <div class="qty"> -->
-                                    @if ($product->status == 1)
-                                    <button type="button" class="btn btn-success">Available</button>
-                                    @else
-                                    <button type="button" class="btn btn-danger">Unavailable</button>
-                                    @endif
+                                    <button type="button" class="btn btn-success">
+                                        @switch($product->status)
+                                            @case(0)
+                                            Unavailable
+                                            @break
 
+                                            @case(1)
+                                            Available
+                                            @break
+
+                                            @case(2)
+                                            Incoming
+                                            @break
+                                        @endswitch
+                                    </button>
                                     <!-- </div> -->
                                 </div>
                                 <div class="price">
@@ -85,9 +94,8 @@
                                 </div>
                                 <div class="action">
                                     <button productid="{{$product->id}}" class="btn add-to-wishlist"><i class="fa fa-heart"></i>Add to Wishlist</button>
-                                    <button  product="{{$product->toJson()}}"
-                                    class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
-                                    <button class="btn buy-now"><i class="fa fa-shopping-bag"></i>Buy Now</button>
+                                    <button  product="{{$product->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+                                    <button buyNow="true" product="{{$product->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-bag"></i>Buy Now</button>
                                 </div>
                             </div>
                         </div>
@@ -208,20 +216,20 @@
                     <nav class="navbar bg-light">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#best-sale"><i class="fa fa-shopping-bag"></i>Best Selling</a>
+                                <a class="nav-link" href="/product-list?mark=4"><i class="fa fa-shopping-bag"></i>Best Selling</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#new-arrival"><i class="fa fa-plus-square"></i>New Arrivals</a>
+                                <a class="nav-link" href="/product-list?newArrival=true"><i class="fa fa-plus-square"></i>New Arrivals</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Beauty</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-tshirt"></i>Famous Brands</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-cart-plus"></i>Accessories</a>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Beauty</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-tshirt"></i>Famous Brands</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-cart-plus"></i>Accessories</a>--}}
+{{--                            </li>--}}
                         </ul>
                     </nav>
                 </div>

@@ -51,7 +51,7 @@
                                                     <button class="btn-plus item-qty-plus" prdid="{{$item->id}}" onclick="changeQuantity(1, this)"><i class="fa fa-plus"></i></button>
                                                 </div>
                                             </td>
-                                            <td id="{{'item-total-price-'.$item->id}}">${{number_format(($item->price * $item->count * (1 - $item->discount/100)), 2) }}</td>
+                                            <td id="{{'item-total-price-'.$item->id}}">${{number_format($item->price, 2) * number_format($item->count, 2)}}</td>
                                             <td><button product="{{json_encode($item)}}" class="remove-item"><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                     @endforeach

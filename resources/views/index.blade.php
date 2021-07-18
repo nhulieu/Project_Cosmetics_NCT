@@ -20,20 +20,20 @@
                                 <a class="nav-link" href="/"><i class="fa fa-home"></i>Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#best-sale"><i class="fa fa-shopping-bag"></i>Best Selling</a>
+                                <a class="nav-link" href="/product-list?mark=4"><i class="fa fa-shopping-bag"></i>Best Selling</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#new-arrival"><i class="fa fa-plus-square"></i>New Arrivals</a>
+                                <a class="nav-link" href="/product-list?newArrival=true"><i class="fa fa-plus-square"></i>New Arrivals</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Beauty</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-tshirt"></i>Famous Brands</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-cart-plus"></i>Accessories</a>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-female"></i>Beauty</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-tshirt"></i>Famous Brands</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#fashion-beauty"><i class="fa fa-cart-plus"></i>Accessories</a>--}}
+{{--                            </li>--}}
                         </ul>
                     </nav>
                 </div>
@@ -215,7 +215,7 @@
                 <h1 id="best-sale">Best sale</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach($products as $item)
+                @foreach(\App\Models\product::where("mark", "=", 5)->take(5)->get() as $item)
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
@@ -239,8 +239,8 @@
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>{{$item->price}}</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            <h3><span>$</span>{{number_format($item->price * (100 - $item->discount) / 100, 2)}}</h3>
+                            <a buyNow="true" product="{{$item->toJson()}}" class="btn add-to-cart buy-now"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
                 </div>
@@ -266,7 +266,7 @@
             </div>
         </div>
     </div>
-    <!-- Newsletter End -->
+    <!-- `N`ewsletter End -->
 
     <!-- Recent Product Start -->
     <div class="recent-product product">
@@ -275,7 +275,7 @@
                 <h1 id="new-arrival">New Arrival</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach($products as $item)
+                @foreach(\App\Models\product::where("status", "=", 2)->take(5)->get() as $item)
                     <div class="col-lg-3">
                         <div class="product-item">
                             <div class="product-title">
@@ -299,8 +299,8 @@
                                 </div>
                             </div>
                             <div class="product-price">
-                                <h3><span>$</span>{{$item->price}}</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                <h3><span>$</span>{{$item->price * (100 - $item->discount) / 100}}</h3>
+                                <a buyNow="true" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
                     </div>
@@ -314,15 +314,14 @@
     <div class="review">
         <div class="container-fluid">
             <div class="row align-items-center review-slider normal-slider">
-                @foreach($reviews as $review)
+                @foreach(\App\Models\review::where("mark", ">=", 4)->take(5)->get() as $review)
                 <div class="col-md-6">
                     <div class="review-slider-item">
                         <div class="review-img">
                             <img src="https://i.pravatar.cc/150?img={{$review->user->id+2}}" alt="Image">
                         </div>
                         <div class="review-text">
-                            <h2>{{$review->user->username}}</h2>
-                            <h3>{{$review->user->email}}</h3>
+                            <h2>{{$review->user->lname." ".$review->user->fname}}</h2>
                             <div class="ratting">
                                 @for($i=0; $i < $review->mark; $i++)
                                     <i class="fa fa-star"></i>

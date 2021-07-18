@@ -24,7 +24,7 @@ class ClientController extends Controller
         $products = product::all();
         $reviews = review::all();
         //$listItem = $this->paginate($products, 9);
-        return view("index", ["products" => $products, "reviews" => $reviews]);
+        return view("index");
     }
 
     public function signin()
@@ -383,7 +383,9 @@ class ClientController extends Controller
         $from = null;
         $to = null;
         $status = null;
+        $mark = null;
         $tag = null;
+        $newArrival = false;
         if (count($request->query()) > 0) {
             $name = $request->input("name");
             $brand = $request->input("brand");
@@ -392,6 +394,8 @@ class ClientController extends Controller
             $to = $request->input("to");
             $status = $request->input("status");
             $tag = $request->input("tag");
+            $mark = $request->input("mark");
+            $newArrival = $request->input("newArrival");
             if ($name != null) {
                 $product_query->where('name', 'LIKE', '%' . $name . '%');
             }
@@ -412,6 +416,12 @@ class ClientController extends Controller
             }
             if ($tag != null) {
                 $product_query->leftJoin('product_tag', 'product_tag.product_id', '=', 'product.id')->where("tag_id", "=", $tag);
+            }
+            if($mark != null){
+                $product_query->where('mark', '>=', $mark);
+            }
+            if($newArrival){
+                $product_query->where('status', '=', 2);
             }
         }
 

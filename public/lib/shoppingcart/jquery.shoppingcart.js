@@ -59,7 +59,7 @@
                         'name': content.name || '',
                         'discount': content.discount || '',
                         //'attributes': content.attributes || [],
-                        'price': parseFloat(content.price),
+                        'price': parseFloat(content.price) * (100 - parseFloat(content.discount))/100,
                         'count': parseInt((content.count || 1))
                     });
                 } else {
@@ -75,7 +75,7 @@
                 localStorage.setItem('shoppingcartCount', Count);
 
                 // Update price
-                var Price = parseFloat(localStorage.getItem('shoppingcartPrice')) + (content.price * (content.count || 1));
+                var Price = parseFloat(localStorage.getItem('shoppingcartPrice')) + (content.price * ((100 - parseFloat(content.discount))/100) * (content.count || 1));
                 localStorage.setItem('shoppingcartPrice', Price);
 
                 return true;
@@ -117,6 +117,7 @@
                     if (content.price !== undefined) {
                         shoppingcartArray[index].price = parseFloat(content.price);
                     }
+
                     var oldCount = shoppingcartArray[index].count;
                     if (content.count !== undefined) {
                         shoppingcartArray[index].count = parseInt(content.count);

@@ -31,7 +31,7 @@ class order extends Model
         $coupon = $this->coupon_value != null ? $this->coupon_value : 0;
         $sum = 0;
         foreach ($items as $item){
-            $sum = $sum + $item->product->price * $item->quantity;
+            $sum = $sum + $item->product->price * $item->quantity * (100 - $item->product->discount) / 100;
         }
         return $sum - $coupon;
     }

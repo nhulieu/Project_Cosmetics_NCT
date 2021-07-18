@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(imageSeeder::class);
         $this->call(userSeeder::class);
         $this->call(reviewSeeder::class);
-        $this->call(couponSeeder::class);
     }
 }
 
@@ -70,9 +69,9 @@ class userSeeder extends Seeder
     public function run()
     {
         DB::table('user')->insert([
-            ["fname"=>"Cang","lname"=>"Trinh","email"=>"trinhvancang92@gmail.com","username"=>"Cang Trinh","password"=>"123","address"=>"123 Nguyen Trai","phone"=>"0962382911", "type"=>"1"],
-            ["fname"=>"Tai","lname"=>"Ngo","email"=>"taingo@gmail.com","username"=>"Tai Ngo","password"=>"123","address"=>"456 Nguyen Trai","phone"=>"0988777999", "type"=>"2"],
-            ["fname"=>"Nhu","lname"=>"Lieu","email"=>"lieunhu@gmail.com","username"=>"lieunhu","password"=>"123","address"=>"789 Nguyen Trai","phone"=>"0999888666", "type"=>"2"],
+            ["fname"=>"Cang","lname"=>"Trinh Van","email"=>"trinhvancang92@gmail.com","username"=>"cangtring","password"=>"123","address"=>"123 Nguyen Trai","phone"=>"0962382911", "type"=>"1"],
+            ["fname"=>"Tai","lname"=>"Ngo","email"=>"taingo@gmail.com","username"=>"taingo","password"=>"123","address"=>"456 Nguyen Trai","phone"=>"0988777999", "type"=>"2"],
+            ["fname"=>"Nhu","lname"=>"Lieu Quynh","email"=>"lieunhu@gmail.com","username"=>"lieunhu","password"=>"123","address"=>"789 Nguyen Trai","phone"=>"0999888666", "type"=>"2"],
         ]);
     }
 }
