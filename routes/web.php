@@ -24,7 +24,9 @@ use App\Http\Controllers\Admin\UserController;
 Route::get('/signin', [ClientController::class, "signin"]);
 Route::post('/signin', [ClientController::class, "postSignin"]);
 
+
 Route::get("/signout", [ClientController::class, "signout"]);
+Route::get("/signoutExt", [ClientController::class, "sigoutExt"]);
 
 Route::get('/signup', [ClientController::class, "signin"]);
 Route::post('/signup', [ClientController::class, "postSignup"]);

@@ -27,10 +27,10 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="search">
-                    <input type="text" placeholder="Search">
-                    <button><i class="fa fa-search"></i></button>
-                </div>
+                <form class="search" action="/product-list" method="get">
+                    <input type="text" name="name" placeholder="Search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
             </div>
             <div class="col-md-3">
                 <div class="user">

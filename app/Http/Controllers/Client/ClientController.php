@@ -29,7 +29,7 @@ class ClientController extends Controller
 
     public function signin()
     {
-        return view("client.signin", ["isSignup" => true, "status" => "0"]);
+        return view("client.signin", ["isSignup" => false, "status" => "0"]);
     }
 
     public function signout(Request $request)
@@ -38,6 +38,13 @@ class ClientController extends Controller
             $request->session()->forget(["user", "userFullname", "wishlistAmount", "order"]);
         }
         return response()->json(["result" => "Sign out success"]);
+    }
+
+    public function sigoutExt(Request $request){
+        if ($request->session()->get("user")[0]) {
+            $request->session()->forget(["user", "userFullname", "wishlistAmount", "order"]);
+        }
+        return redirect("/");
     }
 
     public function postSignup(Request $request)
@@ -170,17 +177,14 @@ class ClientController extends Controller
     {
         $username = $request->session()->get('user');
         if ($username === null) {
-            return Redirect("/sigin");
+            return response()->json(["result" => ""]);
         }
 
         $user = user::where("username", "=", $username)->first();
 
         if ($user === null) {
-            return response()->json(["result" => 0]);
+            return response()->json(["result" => ""]);
         }
-        //dd($user->wishlists->count);
-        // $request->session()->put("wishlistAmount", $user->wishlists->count());
-        // return response()->json(["result"=>2]);
 
         $existed_wish_item = wishlist::where([["user_id", "=", $user->id], ["product_id", "=", $id]])->first();
 

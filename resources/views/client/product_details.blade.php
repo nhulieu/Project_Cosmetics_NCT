@@ -104,9 +104,6 @@
                                 <a class="nav-link active" data-toggle="pill" href="#description">Description</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#specification">Specification</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="pill" href="#reviews" id="reviews_count">Reviews</a>
                             </li>
                         </ul>
@@ -117,14 +114,6 @@
                                 <p>
                                     {{$product->description}}
                                 </p>
-
-                            </div>
-                            <div id="specification" class="container tab-pane fade">
-                                <h4>Product specification</h4>
-                                <ul>
-                                    {{$product->feature}}
-                                </ul>
-
                             </div>
                             <div id="reviews" class="container tab-pane fade">
                                 <div id="review_list">
@@ -276,7 +265,7 @@
                     <h2 class="title">Our Brands</h2>
                     <ul>
                         @foreach (\App\Models\brand::all() as $brand)
-                            <li><a href="#">{{$brand->name}}</a><span>({{$brand->products->count()}})</span></li>
+                            <li><a  href="{{url('/product-list?brand='.$brand->id)}}">{{$brand->name}}</a><span>({{$brand->products->count()}})</span></li>
                         @endforeach
                     </ul>
                 </div>
@@ -284,7 +273,7 @@
                 <div class="sidebar-widget tag">
                     <h2 class="title">Tags Cloud</h2>
                     @foreach(\App\Models\tag::all() as $tag)
-                        <a href="#">{{$tag->label}} </a>
+                        <a href="{{url('/product-list?tag='.$tag->id)}}">{{$tag->label}} </a>
                     @endforeach
                 </div>
             </div>

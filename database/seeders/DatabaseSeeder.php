@@ -23,6 +23,15 @@ class DatabaseSeeder extends Seeder
         $this->call(imageSeeder::class);
         $this->call(userSeeder::class);
         $this->call(reviewSeeder::class);
+        $this->call(couponSeeder::class);
+    }
+}
+
+class couponSeeder extends Seeder{
+    public function run(){
+//        DB::table('coupon')->insert([
+//            ["brand_id"=>"id của brand(bắt đầu từ 1","name"=>"Tên Coupon", "code"=>"Mã coupon không viết dấu cách", "description"=>"Thông tin coupon", "start_date"=>"yyyy-mm-dd", "end_date"=>"yyyy-mm-dd"],
+//        ]);
     }
 }
 
@@ -63,7 +72,7 @@ class userSeeder extends Seeder
         DB::table('user')->insert([
             ["fname"=>"Cang","lname"=>"Trinh","email"=>"trinhvancang92@gmail.com","username"=>"Cang Trinh","password"=>"123","address"=>"123 Nguyen Trai","phone"=>"0962382911", "type"=>"1"],
             ["fname"=>"Tai","lname"=>"Ngo","email"=>"taingo@gmail.com","username"=>"Tai Ngo","password"=>"123","address"=>"456 Nguyen Trai","phone"=>"0988777999", "type"=>"2"],
-            ["fname"=>"Nhu","lname"=>"Lieu","email"=>"lieunhu@gmail.com","username"=>"Lieu Nhu","password"=>"123","address"=>"789 Nguyen Trai","phone"=>"0999888666", "type"=>"2"],
+            ["fname"=>"Nhu","lname"=>"Lieu","email"=>"lieunhu@gmail.com","username"=>"lieunhu","password"=>"123","address"=>"789 Nguyen Trai","phone"=>"0999888666", "type"=>"2"],
         ]);
     }
 }
@@ -206,97 +215,101 @@ class imageSeeder extends Seeder
             ["product_id" => "27", "path" => "img/Product_Photo/27. Bath & Body Works Black Raspberry Vanilla Shower Gel 295ml/2.jpg"],
             ["product_id" => "27", "path" => "img/Product_Photo/27. Bath & Body Works Black Raspberry Vanilla Shower Gel 295ml/3.jpg"],
 
-            ["product_id" => "28", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/1.jpg"],
-            ["product_id" => "28", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/2.jpg"],
-            ["product_id" => "28", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/3.jpg"],
+            ["product_id" => "28", "path" => "img/Product_Photo/51. Bath & Body Works Body Lotion Moonlight Path 236ml/1.jpg"],
+            ["product_id" => "28", "path" => "img/Product_Photo/51. Bath & Body Works Body Lotion Moonlight Path 236ml/2.jpg"],
+            ["product_id" => "28", "path" => "img/Product_Photo/51. Bath & Body Works Body Lotion Moonlight Path 236ml/3.jpg"],
 
-            ["product_id" => "29", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/1.jpg"],
-            ["product_id" => "29", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/2.jpeg"],
-            ["product_id" => "29", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/3.jpg"],
+            ["product_id" => "29", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/1.jpg"],
+            ["product_id" => "29", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/2.jpg"],
+            ["product_id" => "29", "path" => "img/Product_Photo/28. VICTORIA'S SECRET Amber Romance shower gel 250ml/3.jpg"],
 
-            ["product_id" => "30", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/1.jpg"],
-            ["product_id" => "30", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/2.jpeg"],
-            ["product_id" => "30", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/3.jpg"],
+            ["product_id" => "30", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/1.jpg"],
+            ["product_id" => "30", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/2.jpeg"],
+            ["product_id" => "30", "path" => "img/Product_Photo/29. Senka Pink Brightening Facial Mask 25ml/3.jpg"],
 
-            ["product_id" => "31", "path" => "img/Product_Photo/31. Innisfree Bright Solution Mask 22ml/1.png"],
-            ["product_id" => "31", "path" => "img/Product_Photo/31. Innisfree Bright Solution Mask 22ml/2.jpg"],
-            ["product_id" => "31", "path" => "img/Product_Photo/31. Innisfree Bright Solution Mask 22ml/3.jpg"],
+            ["product_id" => "31", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/1.png"],
+            ["product_id" => "31", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/2.jpg"],
+            ["product_id" => "31", "path" => "img/Product_Photo/30. Victoria's Secret Very Sexy Body Lotion 100ml/3.jpg"],
 
-            ["product_id" => "32", "path" => "img/Product_Photo/32. Bourjois Vitamin C Exfoliating Cream - 75ml Radiance Boosting Face Scrub/1.jpg"],
-            ["product_id" => "32", "path" => "img/Product_Photo/32. Bourjois Vitamin C Exfoliating Cream - 75ml Radiance Boosting Face Scrub/2.jpg"],
-            ["product_id" => "32", "path" => "img/Product_Photo/32. Bourjois Vitamin C Exfoliating Cream - 75ml Radiance Boosting Face Scrub/3.jpg"],
+            ["product_id" => "32", "path" => "img/Product_Photo/31. Innisfree Bright Solution Mask 22ml/1.png"],
+            ["product_id" => "32", "path" => "img/Product_Photo/31. Innisfree Bright Solution Mask 22ml/2.jpg"],
+            ["product_id" => "32", "path" => "img/Product_Photo/31. Innisfree Bright Solution Mask 22ml/3.jpg"],
 
-            ["product_id" => "33", "path" => "img/Product_Photo/33. Vichy Moisturizing Lipstick No Color Softening Lips 4.5g/1.jpg"],
-            ["product_id" => "33", "path" => "img/Product_Photo/33. Vichy Moisturizing Lipstick No Color Softening Lips 4.5g/2.jpg"],
-            ["product_id" => "33", "path" => "img/Product_Photo/33. Vichy Moisturizing Lipstick No Color Softening Lips 4.5g/3.jpg"],
+            ["product_id" => "33", "path" => "img/Product_Photo/32. Bourjois Vitamin C Exfoliating Cream - 75ml Radiance Boosting Face Scrub/1.jpg"],
+            ["product_id" => "33", "path" => "img/Product_Photo/32. Bourjois Vitamin C Exfoliating Cream - 75ml Radiance Boosting Face Scrub/2.jpg"],
+            ["product_id" => "33", "path" => "img/Product_Photo/32. Bourjois Vitamin C Exfoliating Cream - 75ml Radiance Boosting Face Scrub/3.jpg"],
 
-            ["product_id" => "34", "path" => "img/Product_Photo/34. Maybelline Light Brown Double Head Eyebrow Pencil 0.16g/1.jpg"],
-            ["product_id" => "34", "path" => "img/Product_Photo/34. Maybelline Light Brown Double Head Eyebrow Pencil 0.16g/2.jpg"],
-            ["product_id" => "34", "path" => "img/Product_Photo/34. Maybelline Light Brown Double Head Eyebrow Pencil 0.16g/3.jpg"],
+            ["product_id" => "34", "path" => "img/Product_Photo/33. Vichy Moisturizing Lipstick No Color Softening Lips 4.5g/1.jpg"],
+            ["product_id" => "34", "path" => "img/Product_Photo/33. Vichy Moisturizing Lipstick No Color Softening Lips 4.5g/2.jpg"],
+            ["product_id" => "34", "path" => "img/Product_Photo/33. Vichy Moisturizing Lipstick No Color Softening Lips 4.5g/3.jpg"],
 
-            ["product_id" => "35", "path" => "img/Product_Photo/35. Makeup Remover Perfect Cleansing Water Oil Clear/1.jpg"],
-            ["product_id" => "35", "path" => "img/Product_Photo/35. Makeup Remover Perfect Cleansing Water Oil Clear/2.jpg"],
-            ["product_id" => "35", "path" => "img/Product_Photo/35. Makeup Remover Perfect Cleansing Water Oil Clear/3.jpg"],
+            ["product_id" => "35", "path" => "img/Product_Photo/34. Maybelline Light Brown Double Head Eyebrow Pencil 0.16g/1.jpg"],
+            ["product_id" => "35", "path" => "img/Product_Photo/34. Maybelline Light Brown Double Head Eyebrow Pencil 0.16g/2.jpg"],
+            ["product_id" => "35", "path" => "img/Product_Photo/34. Maybelline Light Brown Double Head Eyebrow Pencil 0.16g/3.jpg"],
 
-            ["product_id" => "36", "path" => "img/Product_Photo/36. Bioderma Acne Removal And Prevention Cream 30ml/1.jpg"],
-            ["product_id" => "36", "path" => "img/Product_Photo/36. Bioderma Acne Removal And Prevention Cream 30ml/2.png"],
-            ["product_id" => "36", "path" => "img/Product_Photo/36. Bioderma Acne Removal And Prevention Cream 30ml/3.jpg"],
+            ["product_id" => "36", "path" => "img/Product_Photo/35. Makeup Remover Perfect Cleansing Water Oil Clear/1.jpg"],
+            ["product_id" => "36", "path" => "img/Product_Photo/35. Makeup Remover Perfect Cleansing Water Oil Clear/2.jpg"],
+            ["product_id" => "36", "path" => "img/Product_Photo/35. Makeup Remover Perfect Cleansing Water Oil Clear/3.jpg"],
 
-            ["product_id" => "37", "path" => "img/Product_Photo/37. TheFaceShop Oil Clear Blotting Powder/1.jpg"],
-            ["product_id" => "37", "path" => "img/Product_Photo/37. TheFaceShop Oil Clear Blotting Powder/2.jpg"],
-            ["product_id" => "37", "path" => "img/Product_Photo/37. TheFaceShop Oil Clear Blotting Powder/3.jpg"],
+            ["product_id" => "37", "path" => "img/Product_Photo/36. Bioderma Acne Removal And Prevention Cream 30ml/1.jpg"],
+            ["product_id" => "37", "path" => "img/Product_Photo/36. Bioderma Acne Removal And Prevention Cream 30ml/2.png"],
+            ["product_id" => "37", "path" => "img/Product_Photo/36. Bioderma Acne Removal And Prevention Cream 30ml/3.jpg"],
 
-            ["product_id" => "38", "path" => "img/Product_Photo/38. Nivea Sunscreen Oil Control Himalayan Salt 40ml/1.jpg"],
-            ["product_id" => "38", "path" => "img/Product_Photo/38. Nivea Sunscreen Oil Control Himalayan Salt 40ml/2.jpg"],
-            ["product_id" => "38", "path" => "img/Product_Photo/38. Nivea Sunscreen Oil Control Himalayan Salt 40ml/3.jpg"],
+            ["product_id" => "38", "path" => "img/Product_Photo/37. TheFaceShop Oil Clear Blotting Powder/1.jpg"],
+            ["product_id" => "38", "path" => "img/Product_Photo/37. TheFaceShop Oil Clear Blotting Powder/2.jpg"],
+            ["product_id" => "38", "path" => "img/Product_Photo/37. TheFaceShop Oil Clear Blotting Powder/3.jpg"],
 
-            ["product_id" => "39", "path" => "img/Product_Photo/39. Victoria's Secret Very Sexy Body Lotion 250ml/1.jpg"],
-            ["product_id" => "39", "path" => "img/Product_Photo/39. Victoria's Secret Very Sexy Body Lotion 250ml/2.jpg"],
-            ["product_id" => "39", "path" => "img/Product_Photo/39. Victoria's Secret Very Sexy Body Lotion 250ml/3.jpg"],
+            ["product_id" => "39", "path" => "img/Product_Photo/38. Nivea Sunscreen Oil Control Himalayan Salt 40ml/1.jpg"],
+            ["product_id" => "39", "path" => "img/Product_Photo/38. Nivea Sunscreen Oil Control Himalayan Salt 40ml/2.jpg"],
+            ["product_id" => "39", "path" => "img/Product_Photo/38. Nivea Sunscreen Oil Control Himalayan Salt 40ml/3.jpg"],
 
-            ["product_id" => "40", "path" => "img/Product_Photo/40. L'Oréal Paris 115 I'm Worth It Premium Lipstick L'Oréal Paris 115 I'm Worth It 7ml/1.jpg"],
-            ["product_id" => "40", "path" => "img/Product_Photo/40. L'Oréal Paris 115 I'm Worth It Premium Lipstick L'Oréal Paris 115 I'm Worth It 7ml/2.jpg"],
-            ["product_id" => "40", "path" => "img/Product_Photo/40. L'Oréal Paris 115 I'm Worth It Premium Lipstick L'Oréal Paris 115 I'm Worth It 7ml/3.jpg"],
+            ["product_id" => "40", "path" => "img/Product_Photo/39. Victoria's Secret Very Sexy Body Lotion 250ml/1.jpg"],
+            ["product_id" => "40", "path" => "img/Product_Photo/39. Victoria's Secret Very Sexy Body Lotion 250ml/2.jpg"],
+            ["product_id" => "40", "path" => "img/Product_Photo/39. Victoria's Secret Very Sexy Body Lotion 250ml/3.jpg"],
 
-            ["product_id" => "41", "path" => "img/Product_Photo/41. Moroccanoil Treatment Hair Oil 100ml/1.jpg"],
-            ["product_id" => "41", "path" => "img/Product_Photo/41. Moroccanoil Treatment Hair Oil 100ml/2.jpg"],
-            ["product_id" => "41", "path" => "img/Product_Photo/41. Moroccanoil Treatment Hair Oil 100ml/3.jpg"],
+            ["product_id" => "41", "path" => "img/Product_Photo/40. L'Oréal Paris 115 I'm Worth It Premium Lipstick L'Oréal Paris 115 I'm Worth It 7ml/1.jpg"],
+            ["product_id" => "41", "path" => "img/Product_Photo/40. L'Oréal Paris 115 I'm Worth It Premium Lipstick L'Oréal Paris 115 I'm Worth It 7ml/2.jpg"],
+            ["product_id" => "41", "path" => "img/Product_Photo/40. L'Oréal Paris 115 I'm Worth It Premium Lipstick L'Oréal Paris 115 I'm Worth It 7ml/3.jpg"],
 
-            ["product_id" => "42", "path" => "img/Product_Photo/42. CHANEL LES BEIGES LIP BALM/1.jpg"],
-            ["product_id" => "42", "path" => "img/Product_Photo/42. CHANEL LES BEIGES LIP BALM/2.jpg"],
-            ["product_id" => "42", "path" => "img/Product_Photo/42. CHANEL LES BEIGES LIP BALM/3.jpg"],
+            ["product_id" => "42", "path" => "img/Product_Photo/41. Moroccanoil Treatment Hair Oil 100ml/1.jpg"],
+            ["product_id" => "42", "path" => "img/Product_Photo/41. Moroccanoil Treatment Hair Oil 100ml/2.jpg"],
+            ["product_id" => "42", "path" => "img/Product_Photo/41. Moroccanoil Treatment Hair Oil 100ml/3.jpg"],
 
-            ["product_id" => "43", "path" => "img/Product_Photo/43. Laneige Lip Sleeping Mask Apple Flavor 20g/1.jpg"],
-            ["product_id" => "43", "path" => "img/Product_Photo/43. Laneige Lip Sleeping Mask Apple Flavor 20g/2.jpg"],
-            ["product_id" => "43", "path" => "img/Product_Photo/43. Laneige Lip Sleeping Mask Apple Flavor 20g/3.jpg"],
+            ["product_id" => "43", "path" => "img/Product_Photo/42. CHANEL LES BEIGES LIP BALM/1.jpg"],
+            ["product_id" => "43", "path" => "img/Product_Photo/42. CHANEL LES BEIGES LIP BALM/2.jpg"],
+            ["product_id" => "43", "path" => "img/Product_Photo/42. CHANEL LES BEIGES LIP BALM/3.jpg"],
 
-            ["product_id" => "44", "path" => "img/Product_Photo/44. HATOMUGI Shower Gel Brightening Skin 800ml/1.jpeg"],
-            ["product_id" => "44", "path" => "img/Product_Photo/44. HATOMUGI Shower Gel Brightening Skin 800ml/2.jpg"],
-            ["product_id" => "44", "path" => "img/Product_Photo/44. HATOMUGI Shower Gel Brightening Skin 800ml/3.jpg"],
+            ["product_id" => "44", "path" => "img/Product_Photo/43. Laneige Lip Sleeping Mask Apple Flavor 20g/1.jpg"],
+            ["product_id" => "44", "path" => "img/Product_Photo/43. Laneige Lip Sleeping Mask Apple Flavor 20g/2.jpg"],
+            ["product_id" => "44", "path" => "img/Product_Photo/43. Laneige Lip Sleeping Mask Apple Flavor 20g/3.jpg"],
 
-            ["product_id" => "45", "path" => "img/Product_Photo/45. La Roche-Posay Deep Cleansing Foam For Oily Acne Skin 125ml/1.jpg"],
-            ["product_id" => "45", "path" => "img/Product_Photo/45. La Roche-Posay Deep Cleansing Foam For Oily Acne Skin 125ml/2.jpg"],
-            ["product_id" => "45", "path" => "img/Product_Photo/45. La Roche-Posay Deep Cleansing Foam For Oily Acne Skin 125ml/3.jpg"],
+            ["product_id" => "45", "path" => "img/Product_Photo/44. HATOMUGI Shower Gel Brightening Skin 800ml/1.jpeg"],
+            ["product_id" => "45", "path" => "img/Product_Photo/44. HATOMUGI Shower Gel Brightening Skin 800ml/2.jpg"],
+            ["product_id" => "45", "path" => "img/Product_Photo/44. HATOMUGI Shower Gel Brightening Skin 800ml/3.jpg"],
 
-            ["product_id" => "46", "path" => "img/Product_Photo/46. Vichy Anti-Wrinkle & Firming Eye Cream 15ml/1.jpg"],
-            ["product_id" => "46", "path" => "img/Product_Photo/46. Vichy Anti-Wrinkle & Firming Eye Cream 15ml/2.jpg"],
-            ["product_id" => "46", "path" => "img/Product_Photo/46. Vichy Anti-Wrinkle & Firming Eye Cream 15ml/3.png"],
+            ["product_id" => "46", "path" => "img/Product_Photo/45. La Roche-Posay Deep Cleansing Foam For Oily Acne Skin 125ml/1.jpg"],
+            ["product_id" => "46", "path" => "img/Product_Photo/45. La Roche-Posay Deep Cleansing Foam For Oily Acne Skin 125ml/2.jpg"],
+            ["product_id" => "46", "path" => "img/Product_Photo/45. La Roche-Posay Deep Cleansing Foam For Oily Acne Skin 125ml/3.jpg"],
 
-            ["product_id" => "47", "path" => "img/Product_Photo/47. Maybelline Concealer Pen Cushion Reduce Dark Circles 140 Honey 6ml/1.jpg"],
-            ["product_id" => "47", "path" => "img/Product_Photo/47. Maybelline Concealer Pen Cushion Reduce Dark Circles 140 Honey 6ml/2.jpg"],
-            ["product_id" => "47", "path" => "img/Product_Photo/47. Maybelline Concealer Pen Cushion Reduce Dark Circles 140 Honey 6ml/3.jpg"],
+            ["product_id" => "47", "path" => "img/Product_Photo/46. Vichy Anti-Wrinkle & Firming Eye Cream 15ml/1.jpg"],
+            ["product_id" => "47", "path" => "img/Product_Photo/46. Vichy Anti-Wrinkle & Firming Eye Cream 15ml/2.jpg"],
+            ["product_id" => "47", "path" => "img/Product_Photo/46. Vichy Anti-Wrinkle & Firming Eye Cream 15ml/3.png"],
 
-            ["product_id" => "48", "path" => "img/Product_Photo/48. L'Oreal Hair Color Conditioner 6.1 Smoky Brown 172ml/1.jpg"],
-            ["product_id" => "48", "path" => "img/Product_Photo/48. L'Oreal Hair Color Conditioner 6.1 Smoky Brown 172ml/2.jpg"],
-            ["product_id" => "48", "path" => "img/Product_Photo/48. L'Oreal Hair Color Conditioner 6.1 Smoky Brown 172ml/3.jpg"],
+            ["product_id" => "48", "path" => "img/Product_Photo/47. Maybelline Concealer Pen Cushion Reduce Dark Circles 140 Honey 6ml/1.jpg"],
+            ["product_id" => "48", "path" => "img/Product_Photo/47. Maybelline Concealer Pen Cushion Reduce Dark Circles 140 Honey 6ml/2.jpg"],
+            ["product_id" => "48", "path" => "img/Product_Photo/47. Maybelline Concealer Pen Cushion Reduce Dark Circles 140 Honey 6ml/3.jpg"],
 
-            ["product_id" => "49", "path" => "img/Product_Photo/49. Sunplay Sunscreen Milk Prevents Darkening, Outstanding Protection 30g/1.jpg"],
-            ["product_id" => "49", "path" => "img/Product_Photo/49. Sunplay Sunscreen Milk Prevents Darkening, Outstanding Protection 30g/2.jpg"],
-            ["product_id" => "49", "path" => "img/Product_Photo/49. Sunplay Sunscreen Milk Prevents Darkening, Outstanding Protection 30g/3.jpg"],
+            ["product_id" => "49", "path" => "img/Product_Photo/48. L'Oreal Hair Color Conditioner 6.1 Smoky Brown 172ml/1.jpg"],
+            ["product_id" => "49", "path" => "img/Product_Photo/48. L'Oreal Hair Color Conditioner 6.1 Smoky Brown 172ml/2.jpg"],
+            ["product_id" => "49", "path" => "img/Product_Photo/48. L'Oreal Hair Color Conditioner 6.1 Smoky Brown 172ml/3.jpg"],
 
-            ["product_id" => "50", "path" => "img/Product_Photo/50. Vaseline Lip Balm 10g Lip Therapy Advanced Healing/1.jpg"],
-            ["product_id" => "50", "path" => "img/Product_Photo/50. Vaseline Lip Balm 10g Lip Therapy Advanced Healing/2.jpg"],
-            ["product_id" => "50", "path" => "img/Product_Photo/50. Vaseline Lip Balm 10g Lip Therapy Advanced Healing/3.jpg"],
+            ["product_id" => "50", "path" => "img/Product_Photo/49. Sunplay Sunscreen Milk Prevents Darkening, Outstanding Protection 30g/1.jpg"],
+            ["product_id" => "50", "path" => "img/Product_Photo/49. Sunplay Sunscreen Milk Prevents Darkening, Outstanding Protection 30g/2.jpg"],
+            ["product_id" => "50", "path" => "img/Product_Photo/49. Sunplay Sunscreen Milk Prevents Darkening, Outstanding Protection 30g/3.jpg"],
+
+            ["product_id" => "51", "path" => "img/Product_Photo/50. Vaseline Lip Balm 10g Lip Therapy Advanced Healing/1.jpg"],
+            ["product_id" => "51", "path" => "img/Product_Photo/50. Vaseline Lip Balm 10g Lip Therapy Advanced Healing/2.jpg"],
+            ["product_id" => "51", "path" => "img/Product_Photo/50. Vaseline Lip Balm 10g Lip Therapy Advanced Healing/3.jpg"],
 
         ]);
     }
@@ -579,7 +592,7 @@ Ingredient :Shea Butter, Aloe Vera, Vitamin E, Jojoba Oil.","status"=>"1","price
 
 How to Use : After showering, pat dry.  Take a sufficient amount of Bath & Body Works Cream with Moonlight Path fragrance and apply all over the body. Just apply and gently massage your skin so that the Moonlight lotion can be evenly absorbed into the skin.
 
-Ingredient : Shea Butter (Shea Butter), Musk. White orchids, violets, and lavender. With vitamins E, B5…","status"=>"1","price"=>"287000","discount"=>"5","quantity"=>"28","tax"=>"8","feature"=>"","mark"=>"5"],
+Ingredient : Shea Butter (Shea Butter), Musk. White orchids, violets, and lavender. With vitamins E, B5…","status"=>"1","price"=>"8","discount"=>"5","quantity"=>"28","tax"=>"8","feature"=>"","mark"=>"5"],
 
             ["name"=>"VICTORIA'S SECRET Amber Romance shower gel 250ml","category_id"=>"8","brand_id"=>"5","description"=>"This is the best-selling scent of the Victoria Secret shower gel line - the scent is passionate and sexy, it is especially loved by those who like seductive scents, the warm, sensual scent of sexy amber cold and ice cream Anglaise.
 
@@ -656,7 +669,7 @@ Ingredient : Aqua, Homosalate, Alcohol Denat., Butyl Methosydibenzoylmethane, Et
 How to Use : Use body lotion after cleansing and drying the body. Pump an appropriate amount into the palm of your hand and massage all over the body until the essence is completely absorbed. Pay attention to the elbows, knees, rough, rough skin areas, ..
 
 Ingredient :Alcohol Denat, Water (Aqua, Eau), Fragrance (Parfum), Propylene Glyco, Glycerin,Butyl Methoxydibenzoylmethane, Ethylhexyl Methoxycinnamate, PPG-26-Buteth26, Ethylhexl Salicylate, PEG-40 Hydrogenated Castor Oil, Aloe Barbadensis Leaf Extract, Chamomilla Recutita (Matricaria) Flower Extract, Benzyl Alcohol,
-Butylphenyl Methylpropional, Limonene, Linalool, Red 33 (CI 17200), Red 40 (CI 16035), Green 3 (CI 42053)","status"=>"1","price"=>"7.6","discount"=>"0","quantity"=>"40","tax"=>"20","feature"=>"","mark"=>"20"],
+Butylphenyl Methylpropional, Limonene, Linalool, Red 33 (CI 17200), Red 40 (CI 16035), Green 3 (CI 42053)","status"=>"1","price"=>"7.6","discount"=>"0","quantity"=>"40","tax"=>"20","feature"=>"","mark"=>"5"],
 
             ["name"=>"L'Oréal Paris 115 I'm Worth It Premium Lipstick L'Oréal Paris 115 I'm Worth It 7ml Rouge Signature","category_id"=>"1","brand_id"=>"20","description"=>"L'Oreal Rouge Signature Matte Liquid Lipstick is a line of high-quality matte lipsticks from the famous LOreal Paris brand originating from France, with a thin and smooth lipstick texture and light as nothing when applied to the lips, giving Finish is true to matte lipstick but still feels soft and smooth like velvet. In particular, the lipstick has the ability to color extremely well from the first time it touches the lips and lasts up to 8 hours after use.
 
@@ -727,21 +740,13 @@ How to Use : - Shake well before use. Apply the product evenly on the skin befor
 
 Ingredient : Cyclopentasiloxane,Water,Ethylhexyl Methoxycinnamate,Zinc Oxide, Triethylhexanoin, Butylene Glycol,Titanium Dioxide, Trimethylsiloxysilicate, Talc, Diethylamino Hydroxybenzoyl Hexyl Benzoate, Hydrated Silica, Lauryl PEG-9 Polydimethylsiloxyethyl Dimethicone, Polymethylsilsesquioxane, Panthenol, Tocopheryl Acetate, Dipotassium Glycyrrhizate, Magnesium Ascorbyl Phosphate, Sodium Hyaluronate, Hydrogen Dimethicone, 1,2-Hexanediol, Polyglyceryl-2 Triisostearate, Aluminum Hydroxide, Stearic Acid, Dimethicone Crosspolymer, Dimethicone, Triethoxysilylethyl Polydimethylsiloxyethyl Hexyl Dimethicone, Disodium EDTA, Methylparaben.","status"=>"1","price"=>"2.5","discount"=>"0","quantity"=>"53","tax"=>"33","feature"=>"","mark"=>"5"],
 
-            ["name"=>"Sunplay Sunscreen Milk Prevents Darkening, Outstanding Protection 30g Super Block SPF81 PA++++","category_id"=>"8","brand_id"=>"9","description"=>"The product is the right choice for those who go to the beach because of its high water and sweat resistance, Sunplay Super Block ensures two effects of both protecting the skin and nourishing the skin when having to exercise continuously outdoors or under Water thanks to the added ingredients of Vitamin C, Vitamin E, Pro Vitamin B5, Hyaluronic Acid, effectively moisturize and nourish the skin. The solution quickly penetrates the skin, is not greasy, gives you a cool feeling on the skin, and is suitable for both face and body.
-
-Sunplay Super Block sunscreen with extremely strong sun protection of SPF81 will protect your skin from burning, sunburn for many hours in combination with PA++++ and UVA Max Defense formula to create maximum UVA protection - anti-UV. All types of UVA rays, help prevent darkening, pigmentation, premature skin aging and avoid the risk of skin cancer.r.
-
-How to Use : - Shake well before use. Apply the product evenly on the skin before going out in the sun. Use daily for best skin protection. After sweating a lot, reapply for better effect.
-
-Ingredient : Cyclopentasiloxane,Water,Ethylhexyl Methoxycinnamate,Zinc Oxide, Triethylhexanoin, Butylene Glycol,Titanium Dioxide, Trimethylsiloxysilicate, Talc, Diethylamino Hydroxybenzoyl Hexyl Benzoate, Hydrated Silica, Lauryl PEG-9 Polydimethylsiloxyethyl Dimethicone, Polymethylsilsesquioxane, Panthenol, Tocopheryl Acetate, Dipotassium Glycyrrhizate, Magnesium Ascorbyl Phosphate, Sodium Hyaluronate, Hydrogen Dimethicone, 1,2-Hexanediol, Polyglyceryl-2 Triisostearate, Aluminum Hydroxide, Stearic Acid, Dimethicone Crosspolymer, Dimethicone, Triethoxysilylethyl Polydimethylsiloxyethyl Hexyl Dimethicone, Disodium EDTA, Methylparaben.","status"=>"1","price"=>"3.5","discount"=>"0","quantity"=>"54","tax"=>"34","feature"=>"","mark"=>"5"],
-
             ["name"=>"Vaseline Lip Balm 10g Lip Therapy Advanced Healing","category_id"=>"4","brand_id"=>"1","description"=>"Your dry lips will be soft and smooth with regular use of Vaseline Lip Therapy. Provides nutrients, gives you soft skin. It functions as both a lip balm + chapping treatment. Vaseline gives you soft, smooth lips and skin. Vaseline Lip Therapy lip balm uses a therapeutic formula to improve the protection of the lips, prevent chapped lips as well as keep the lips soft. Not only moisturizing the lips, Vaseline Lip Therapy can also act as a base layer to help isolate the lip skin from the chemicals of makeup lipstick, and at the same time help the lipstick stick to the color longer. More specifically, this lip balm is 100% free of lead and colorants, does not darken lips or dull color.
 
 Lipstick contains antioxidants, helps protect lips from the harmful effects of the environment, helps lips not be affected by the environment and sunlight, helps lips to be nourished, plump and ruddy. Can be used day and night lip balm, helping lips not be affected by the environment and sunlight. The tube is compact and convenient, you can put it in your bag and easy to carry with you.
 
 How to Use : When your lips are dry, you should use it regularly day and night. Use lip balm first, then apply lipstick to have a sexy, sexy lips as you want.
 
-Ingredient : WHITE PETROLATUM, USP (100%)","status"=>"1","price"=>"2","discount"=>"0","quantity"=>"55","tax"=>"35","feature"=>"","mark"=>"35"]
+Ingredient : WHITE PETROLATUM, USP (100%)","status"=>"1","price"=>"2","discount"=>"0","quantity"=>"55","tax"=>"35","feature"=>"","mark"=>"5"]
 
 
         ]);

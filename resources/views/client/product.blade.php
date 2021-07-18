@@ -102,11 +102,11 @@
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-2">
-                                        <div>
-                                            <input class="btn btn-success" type="submit" value="Filter"/>
-                                            <input id="reset-filter" class="btn btn-danger" onclick="reset()" type="reset" value="Reset"/>
-                                        </div>
+                                    <div class="col-md-1">
+                                        <input class="btn btn-success" type="submit" value="Filter"/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="reset-filter" class="btn btn-danger" onclick="reset()" type="reset" value="Reset"/>
                                     </div>
                                 </div>
                             </div>
@@ -135,8 +135,8 @@
                                         </div>
                                     </div>
                                     <div class="product-price">
-                                        <h3><span>$</span>{{$item->price}}</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <h3><span>$</span>{{number_format($item->price - ($item->price * $item->discount / 100), 2)}}</h3>
+                                        <a product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -188,42 +188,6 @@
                             </ul>
                         </nav>
                     </div>
-                    {{--SLIDEBAR-WIDGET--}}
-{{--                    <div class="sidebar-widget widget-slider">--}}
-{{--                        <div class="sidebar-slider normal-slider">--}}
-{{--                            @foreach($products as $item)--}}
-{{--                                <div class="col-lg-3">--}}
-{{--                                    <div class="product-item">--}}
-{{--                                        <div class="product-title">--}}
-{{--                                            <a href="{{url('/product-details/'.$item->id)}}">{{$item->name}}</a>--}}
-{{--                                            <div class="ratting">--}}
-{{--                                                @for($i=0; $i < $item->mark; $i++)--}}
-{{--                                                    <i class="fa fa-star"></i>--}}
-{{--                                                @endfor--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="product-image">--}}
-{{--                                            --}}{{--                                        {{dd($item->images)}}--}}
-{{--                                            @if(isset($item->images->first()->path))--}}
-{{--                                                <a>--}}
-{{--                                                    <img src="/{{$item->images->first()->path}}" alt="Product Image">--}}
-{{--                                                </a>--}}
-{{--                                            @endif--}}
-{{--                                            <div class="product-action">--}}
-{{--                                                <a product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>--}}
-{{--                                                <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>--}}
-{{--                                                <a href="{{url('/product-details/'.$item->id)}}"><i class="fa fa-search"></i></a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="product-price">--}}
-{{--                                            <h3><span>$</span>{{$item->price}}</h3>--}}
-{{--                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
 
                     <div class="sidebar-widget brands">
                         <h2 class="title">Our Brands</h2>
