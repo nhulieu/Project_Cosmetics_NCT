@@ -166,28 +166,28 @@
                 <!-- Side Bar Start -->
                 <div class="col-lg-4 sidebar">
                     {{--CATEGORY-SIDEBAR--}}
-                    <div class="sidebar-widget category">
-                        <h2 class="title">Category</h2>
-                        <nav class="navbar bg-light">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i>Best Selling</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-plus-square"></i>New Arrivals</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-female"></i>Beauty</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Famous Brands</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-cart-plus"></i>Accessories</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+{{--                    <div class="sidebar-widget category">--}}
+{{--                        <h2 class="title">Category</h2>--}}
+{{--                        <nav class="navbar bg-light">--}}
+{{--                            <ul class="navbar-nav">--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i>Best Selling</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="#"><i class="fa fa-plus-square"></i>New Arrivals</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="#"><i class="fa fa-female"></i>Beauty</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Famous Brands</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="#"><i class="fa fa-cart-plus"></i>Accessories</a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </nav>--}}
+{{--                    </div>--}}
 
                     <div class="sidebar-widget brands">
                         <h2 class="title">Our Brands</h2>

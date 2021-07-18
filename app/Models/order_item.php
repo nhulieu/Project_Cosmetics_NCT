@@ -24,4 +24,10 @@ class order_item extends Model
         $order = order::find($this->order_id);
         return $order;
     }
+
+    public function products()
+    {
+        $product = product::find($this->product_id);
+        return $product;
+    }
 }
