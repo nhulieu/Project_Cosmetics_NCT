@@ -276,7 +276,7 @@
                     <h2 class="title">Our Brands</h2>
                     <ul>
                         @foreach (\App\Models\brand::all() as $brand)
-                            <li><a href="#">{{$brand->name}}</a><span>({{$brand->products->count()}})</span></li>
+                            <li><a  href="{{url('/product-list?brand='.$brand->id)}}">{{$brand->name}}</a><span>({{$brand->products->count()}})</span></li>
                         @endforeach
                     </ul>
                 </div>
@@ -284,7 +284,7 @@
                 <div class="sidebar-widget tag">
                     <h2 class="title">Tags Cloud</h2>
                     @foreach(\App\Models\tag::all() as $tag)
-                        <a href="#">{{$tag->label}} </a>
+                        <a href="{{url('/product-list?tag='.$tag->id)}}">{{$tag->label}} </a>
                     @endforeach
                 </div>
             </div>
