@@ -2,14 +2,15 @@
 @section('title', 'Sign Up/ Sign In')
 @section('content')
 <!-- Login Start -->
+{{--{{dd($isSignup)}}--}}
 <div class="my-account">
     <div class="container-fluid">
         <div class="row">
             {{--Sign-up/Sign-in label--}}
             <div class="col-md-3">
                 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link" id="signup-nav active" data-toggle="pill" href="#signup-tab" role="tab"><i class="fa fa-user"></i>Sign Up</a>
-                    <a class="nav-link" id="signin-nav" data-toggle="pill" href="#signin-tab" role="tab"><i class="fa fa-sign-in-alt"></i>Sign In</a>
+                    <a class="{{$isSignup ? "nav-link" : "nav-link active"}}" id="signin-nav" data-toggle="pill" href="#signin-tab" role="tab"><i class="fa fa-sign-in-alt"></i>Sign In</a>
+                    <a class="{{!$isSignup ? "nav-link" : "nav-link active"}}" id="signup-nav" data-toggle="pill" href="#signup-tab" role="tab"><i class="fa fa-user"></i>Sign Up</a>
                 </div>
             </div>
             {{--Form sign-up/sign-in--}}

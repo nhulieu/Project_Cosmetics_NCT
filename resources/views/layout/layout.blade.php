@@ -68,8 +68,12 @@
                 type: 'GET',
                 data: {}
             }).done(function(response) {
-                $('#wishlist-amount').html(response.result)
-                alertify.notify("Added 1 item to Wishlist");
+                if(response.result === ""){
+                    location.href = "/signin";
+                }else{
+                    $('#wishlist-amount').html(response.result)
+                    alertify.notify("Added 1 item to Wishlist");
+                }
             }).fail(function(error){
                 console.log(error);
             });

@@ -104,9 +104,6 @@
                                 <a class="nav-link active" data-toggle="pill" href="#description">Description</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#specification">Specification</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="pill" href="#reviews" id="reviews_count">Reviews</a>
                             </li>
                         </ul>
@@ -117,14 +114,6 @@
                                 <p>
                                     {{$product->description}}
                                 </p>
-
-                            </div>
-                            <div id="specification" class="container tab-pane fade">
-                                <h4>Product specification</h4>
-                                <ul>
-                                    {{$product->feature}}
-                                </ul>
-
                             </div>
                             <div id="reviews" class="container tab-pane fade">
                                 <div id="review_list">
