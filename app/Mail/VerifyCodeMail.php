@@ -32,7 +32,7 @@ class VerifyCodeMail extends Mailable
      */
     public function build()
     {
-        return $this->from('nct.cosmetic@gmail.com')
+        return $this->from(env('MAIL_FROM_ADDRESS'))
             ->subject('NCT Cosmetic: Verification Code')
             ->view('mail.change_password')
             ->text("mail.change_password_plain");

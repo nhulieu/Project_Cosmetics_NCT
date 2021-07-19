@@ -389,6 +389,7 @@
         $('#check-email-form').on('submit', function(e){
             e.preventDefault();
             $form = e.currentTarget;
+            $("#check-mail-submit")[0].setAttribute("disabled", "disabled");
             $.ajax({
                 url: '/check-email',
                 type: 'POST',
@@ -397,12 +398,14 @@
                     _token: "{{ csrf_token() }}"
                 }
             }).done(function(response) {
+                $("#check-mail-submit")[0].removeAttribute("disabled");
                 alertify.success(response.result, "4");
                 $('#check-email-form').hide();
                 $('#check-code-form')[0].removeAttribute("hidden");
                 $('#check-code-form')[0].emailToCheck.value = $form.emailToCheck.value;
                 console.log(response.code);
             }).fail(function(error) {
+                $("#check-mail-submit")[0].removeAttribute("disabled");
                 console.log(error);
                 alertify.error("Error when sending email !", "4");
             });

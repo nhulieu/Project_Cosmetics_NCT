@@ -127,7 +127,7 @@
                                     <div class="col-md-4">
                                         <label><b>Please input your email</b></label>
                                         <input class="form-control" type="email" required placeholder="E-mail" name="emailToCheck">
-                                        <button type="submit" class="btn">Send</button>
+                                        <button id="check-mail-submit" type="submit" class="btn">Send</button>
                                     </div>
                                 </div>
                             </form>
