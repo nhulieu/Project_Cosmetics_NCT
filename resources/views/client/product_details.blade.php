@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="action">
                                     <button productid="{{$product->id}}" class="btn add-to-wishlist"><i class="fa fa-heart"></i>Add to Wishlist</button>
-                                    <button  product="{{$product->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+                                    <button  product="{{$product->toJson()}}" canBuy="{{$item->status == 1}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
                                     <button buyNow="true" canBuy="{{$product->status == 1 ? true : false}}" product="{{$product->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-bag"></i>Buy Now</button>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span>{{$item->price}}</h3>
-                                        <a buyNow="true" canBuy="{{$item->status == 1 ? true : false}}" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a buyNow="true" canBuy="{{$item->status == 1}}" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +254,7 @@
                                             </a>
                                         @endif
                                         <div class="product-action">
-                                            <a product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>
+                                            <a product="{{$item->toJson()}}" canBuy="{{$item->status == 1}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>
                                             <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>
                                             <a href="{{url('/product-details/'.$item->id)}}"><i class="fa fa-search"></i></a>
                                         </div>

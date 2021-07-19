@@ -134,14 +134,14 @@
                                             </a>
                                         @endif
                                         <div class="product-action">
-                                            <a product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>
+                                            <a product="{{$item->toJson()}}" canBuy="{{$item->status == 1}}" class="btn add-to-cart"><i class="fa fa-cart-plus"></i></a>
                                             <a class="add-to-wishlist" productid="{{$item->id}}"><i class="fa fa-heart"></i></a>
                                             <a href="{{url('/product-details/'.$item->id)}}"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span>{{number_format($item->price - ($item->price * $item->discount / 100), 2)}}</h3>
-                                        <a buyNow="true" canBuy="{{$item->status == 1 ? true : false}}" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a buyNow="true" canBuy="{{$item->status == 1}}" product="{{$item->toJson()}}"  class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
                             </div>
