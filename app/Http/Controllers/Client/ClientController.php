@@ -484,7 +484,7 @@ class ClientController extends Controller
         $email = $request->input("email");
         $user = user::where("email", "=", $email)->first();
         if($user !== null){
-            if($user->verifyCode === $code){
+            if($user->verifyCode === trim($code)){
                 return response()->json(["isSuccess"=>true, "message"=>"Correct Verification Code !"]);
             }
             return response()->json(["isSuccess"=>false, "message"=>"Verification Code not correct!"]);

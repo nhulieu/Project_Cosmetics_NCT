@@ -419,10 +419,11 @@
                 type: 'POST',
                 data: {
                     email : $form.emailToCheck.value,
+                    code : $form.codeToCheck.value,
                     _token: "{{ csrf_token() }}"
                 }
             }).done(function(response) {
-                if(response.isSucceess){
+                if(response.isSuccess){
                     alertify.success(response.message, "4");
                     $('#check-code-form').hide();
                     $('#reset-password-form')[0].removeAttribute("hidden");
