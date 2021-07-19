@@ -422,7 +422,7 @@
                     _token: "{{ csrf_token() }}"
                 }
             }).done(function(response) {
-                alertify.success(response.result, "4");
+                alertify.success(response.message, "4");
                 $('#check-code-form').hide();
                 $('#reset-password-form')[0].removeAttribute("hidden");
                 $('#reset-password-form')[0].emailToCheck.value = $form.emailToCheck.value;
