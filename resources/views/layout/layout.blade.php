@@ -422,10 +422,14 @@
                     _token: "{{ csrf_token() }}"
                 }
             }).done(function(response) {
-                alertify.success(response.message, "4");
-                $('#check-code-form').hide();
-                $('#reset-password-form')[0].removeAttribute("hidden");
-                $('#reset-password-form')[0].emailToCheck.value = $form.emailToCheck.value;
+                if(response.isSucceess){
+                    alertify.success(response.message, "4");
+                    $('#check-code-form').hide();
+                    $('#reset-password-form')[0].removeAttribute("hidden");
+                    $('#reset-password-form')[0].emailToCheck.value = $form.emailToCheck.value;
+                }else{
+                    alertify.error(response.message, "4");
+                }
             }).fail(function(error) {
                 console.log(error);
                 alertify.error("Error when confirm code !", "4");

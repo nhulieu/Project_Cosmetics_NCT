@@ -173,7 +173,7 @@
                         <h1>Related Products</h1>
                     </div>
 
-                    <div class="row align-items-center product-slider product-slider-3">
+                    <div class="row align-items-center product-slider product-slider-3-ext">
                         @foreach(\App\Models\product::where("category_id","=",$product->category_id)->get() as $item)
                             <div class="col-lg-3">
                                 <div class="product-item">
