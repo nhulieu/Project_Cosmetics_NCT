@@ -420,13 +420,13 @@ How to Use : Apply the sunscreen evenly over face or body. Reapply regularly esp
 
 Ingredient : Water, Ethylhexyl Methoxycinnamate, Butylene Glycol, Diphenylsiloxy Phenyl Trimethicone, Titanium Dioxide, Diethylamino Hydroxybenzoyl Hexyl Benzoate, Sodium Hyaluronate, Magnesium Ascorbyl Phosphate, Passiflora Edulis Fruit Extract, Hydrolyzed Prunus Domestica, Rosa Roxburghii Fruit Extract, Bis-PEG-18 Methyl Ether Dimethyl Silane, Methyl Methacrylate/Glycol Dimethacrylate Crosspolymer, Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine, Acrylates Copolymer, Polysorbate 60, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Triethanolamine, Ammonium Acryloyldimethyltaurate/VP Copolymer, Silica, PEG-12 Dimethicone, Polystyrene, Polyvinyl Alcohol, Disodium EDTA, Xantham Gum, Alumina, Butylated Hydroxytoluene, Polyglyceryl-2 Triisostearate, Synthetic Fluorphlogopite, Tin Oxide, CI 73360, CI 42090, Fragrance.","status"=>"1","price"=>"7.7","discount"=>"12","quantity"=>"1","tax"=>"2","feature"=>"feature 3","mark"=>"3"]	,
 
-            ["name"=>"superstay 24h full coverage foundation","category_id"=>"12","brand_id"=>"15","description"=>"Winner of Allure's Best of Beauty Award, the Maybelline Super Stay® Full Coverage Foundation Makeup delivers 24-hour wear for concentrated coverage and a flawless finish that doesn't fade or shift all day.
+            ["name"=>"Superstay 24h full coverage foundation","category_id"=>"12","brand_id"=>"15","description"=>"Winner of Allure's Best of Beauty Award, the Maybelline Super Stay® Full Coverage Foundation Makeup delivers 24-hour wear for concentrated coverage and a flawless finish that doesn't fade or shift all day.
 
 How to Use : Apply to the face and blend with fingertip, sponge, or Maybelline Blender.
 
 Ingredient : CYCLOPENTASILOXANE, AQUA / WATER, POLYPROPYLSILSESQUIOXANE,ISODODECANE,DIMETHICONE,C30-45 ALKYLDIMETHYLSILYL POLYPROPYLSILSESQUIOXANE, PEG-10 DIMETHICONE, GLYCERIN,SILICA, DIMETHICONE/POLYGLYCERIN-3 CROSSPOLYMER, SODIUM CHLORIDE, NYLON-12, PHENOXYETHANOL,
 DISTEARDIMONIUM HECTORITE,DISODIUM STEAROYL GLUTAMATE,CYCLOMETHICONE,CHLORPHENESIN,ETHYLPARABEN,DISODIUM EDTA, ACRYLONITRILE/METHYL METHACRYLATE/VINYLIDENE CHLORIDE COPOLYMER,
-ALUMINUM HYDROXIDE ,DIPROPYLENE GLYCOL,ISOBUTANE,PARAFFIN, SODIUM CITRATE, TOCOPHEROL, ISOPROPYL ALCOHOL,[+/- MAY CONTAIN CI 77891 / TITANIUM DIOXIDE, CI 77491, CI 77492, CI 77499 / IRON OXIDES ] G854042","status"=>"1","price"=>"7.5","discount"=>"10","quantity"=>"2","tax"=>"5","feature"=>"feature 4","mark"=>"4"]	,
+ALUMINUM HYDROXIDE ,DIPROPYLENE GLYCOL,ISOBUTANE,PARAFFIN, SODIUM CITRATE, TOCOPHEROL, ISOPROPYL ALCOHOL,[+/- MAY CONTAIN CI 77891 / TITANIUM DIOXIDE, CI 77491, CI 77492, CI 77499 / IRON OXIDES ] G854042","status"=>"2","price"=>"7.5","discount"=>"10","quantity"=>"2","tax"=>"5","feature"=>"feature 4","mark"=>"4"]	,
 
             ["name"=>"The Face Shop Ink Gel Slim Pencil Eyeliner","category_id"=>"9","brand_id"=>"13","description"=>"The thin and light 1.5mm pencil helps to draw the eye line distinctively and naturally.
 With gel touch formula which helps drawing a smooth and clean eye line.
