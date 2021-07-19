@@ -428,7 +428,7 @@ Ingredient : CYCLOPENTASILOXANE, AQUA / WATER, POLYPROPYLSILSESQUIOXANE,ISODODEC
 DISTEARDIMONIUM HECTORITE,DISODIUM STEAROYL GLUTAMATE,CYCLOMETHICONE,CHLORPHENESIN,ETHYLPARABEN,DISODIUM EDTA, ACRYLONITRILE/METHYL METHACRYLATE/VINYLIDENE CHLORIDE COPOLYMER,
 ALUMINUM HYDROXIDE ,DIPROPYLENE GLYCOL,ISOBUTANE,PARAFFIN, SODIUM CITRATE, TOCOPHEROL, ISOPROPYL ALCOHOL,[+/- MAY CONTAIN CI 77891 / TITANIUM DIOXIDE, CI 77491, CI 77492, CI 77499 / IRON OXIDES ] G854042","status"=>"2","price"=>"7.5","discount"=>"10","quantity"=>"2","tax"=>"5","feature"=>"feature 4","mark"=>"4"]	,
 
-            ["name"=>"The Face Shop Ink Gel Slim Pencil Eyeliner","category_id"=>"9","brand_id"=>"13","description"=>"The thin and light 1.5mm pencil helps to draw the eye line distinctively and naturally.
+            ["name"=>"The Face Shop Ink Gel Slim Pencil Eyeliner","category_id"=>"26","brand_id"=>"13","description"=>"The thin and light 1.5mm pencil helps to draw the eye line distinctively and naturally.
 With gel touch formula which helps drawing a smooth and clean eye line.
 Power Defense Polymer can block the water and sebum which can let the eye makeup last for longer hours.
 
