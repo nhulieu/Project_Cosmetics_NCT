@@ -29,37 +29,37 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>First Name</label>
+                                        <label>First Name <span style="color: red">*</span></label>
                                         <input class="form-control" type="text" placeholder="First Name" required name="txtFirstName">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Last Name</label>
+                                        <label>Last Name <span style="color: red">*</span></label>
                                         <input class="form-control" type="text" required placeholder="Last Name" name="txtLastName">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Username</label>
+                                        <label>Username <span style="color: red">*</span></label>
                                         <input class="form-control" type="text" required placeholder="Username" name="txtUserName" >
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Email</label>
+                                        <label>Email <span style="color: red">*</span></label>
                                         <input class="form-control" type="email" required placeholder="E-mail" name="txtEmail">
                                     </div>
                                     <div class="col-md-12">
-                                        <label>Phone</label>
+                                        <label>Phone <span style="color: red">*</span></label>
                                         <input class="form-control" type="tel" required placeholder="Mobile No" name="txtPhone">
                                     </div>
                                     <div class="col-md-12">
-                                        <label>Full Address</label>
+                                        <label>Full Address <span style="color: red">*</span></label>
                                         <input class="form-control" type="text" required placeholder="Address" name="txtAddress">
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label>Password</label>
+                                        <label>Password <span style="color: red">*</span></label>
                                         <input id="password" class="form-control" required type="password" placeholder="Password" name="txtAccountPass">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Confirm Password</label>
-                                        <input id="confirm-password" class="form-control" required type="password" placeholder="Password" name="txtAccountPassRepeat">
+                                        <label>Confirm Password <span style="color: red">*</span></label>
+                                        <input id="confirm-password" class="form-control" required type="password" placeholder="Confirm Password" name="txtAccountPassRepeat">
                                     </div>
                                     @switch($status)
                                     @case(1)
