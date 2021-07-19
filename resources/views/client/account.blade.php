@@ -9,10 +9,10 @@
                 {{--Vertical Account Detail Actions--}}
                 <div class="col-md-3">
                     <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link" id="account-nav active" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
-                        <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Orders</a>
-                        <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Address</a>
-                        <a class="nav-link" id="wishlist-nav" data-toggle="pill" href="#wishlist-tab" role="tab"><i class="fa fa-heart"></i>Wistlist</a>
+                        <a class="nav-link {{$active == 0 ? 'active' : ''}}" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
+                        <a class="nav-link {{$active == 1 ? 'active' : ''}}" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Orders</a>
+                        <a class="nav-link {{$active == 3 ? 'active' : ''}}" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Address</a>
+                        <a class="nav-link {{$active == 4 ? 'active' : ''}}" id="wishlist-nav" data-toggle="pill" href="#wishlist-tab" role="tab"><i class="fa fa-heart"></i>Wistlist</a>
                         <a class="nav-link" href="/signoutExt"><i class="fa fa-sign-out-alt"></i>Sign out</a>
                     </div>
                 </div>

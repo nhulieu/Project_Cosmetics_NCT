@@ -228,7 +228,7 @@ class ClientController extends Controller
         $user = $request->session()->get("user");
         if ($user !== null) {
 
-            return view("client.account", ["user" => user::where("username", "=", $user)->first(), "status" => "0", "active" => "0"]);
+            return view("client.account", ["user" => user::where("username", "=", $user)->first(), "status" => "0", "active" => 0]);
         }
         return redirect("/signin");
     }
@@ -411,12 +411,10 @@ class ClientController extends Controller
                 $product_query->where('category_id', '=', $category);
             }
             if ($from != null) {
-//                $product_query->where('price', '>=', $from);
                 $product_query->whereRaw("price * (100 - discount)/100 >= ?" , [$from]);
             }
             if ($to != null) {
                 $product_query->whereRaw("price * (100 - discount)/100 <= ?" , [$to]);
-//                $product_query->where('price', '<=', $to);
             }
             if ($status != null) {
                 $product_query->where('status', '=', $status);
