@@ -428,7 +428,7 @@ Ingredient : CYCLOPENTASILOXANE, AQUA / WATER, POLYPROPYLSILSESQUIOXANE,ISODODEC
 DISTEARDIMONIUM HECTORITE,DISODIUM STEAROYL GLUTAMATE,CYCLOMETHICONE,CHLORPHENESIN,ETHYLPARABEN,DISODIUM EDTA, ACRYLONITRILE/METHYL METHACRYLATE/VINYLIDENE CHLORIDE COPOLYMER,
 ALUMINUM HYDROXIDE ,DIPROPYLENE GLYCOL,ISOBUTANE,PARAFFIN, SODIUM CITRATE, TOCOPHEROL, ISOPROPYL ALCOHOL,[+/- MAY CONTAIN CI 77891 / TITANIUM DIOXIDE, CI 77491, CI 77492, CI 77499 / IRON OXIDES ] G854042","status"=>"2","price"=>"7.5","discount"=>"10","quantity"=>"2","tax"=>"5","feature"=>"feature 4","mark"=>"4"]	,
 
-            ["name"=>"The Face Shop Ink Gel Slim Pencil Eyeliner","category_id"=>"9","brand_id"=>"13","description"=>"The thin and light 1.5mm pencil helps to draw the eye line distinctively and naturally.
+            ["name"=>"The Face Shop Ink Gel Slim Pencil Eyeliner","category_id"=>"26","brand_id"=>"13","description"=>"The thin and light 1.5mm pencil helps to draw the eye line distinctively and naturally.
 With gel touch formula which helps drawing a smooth and clean eye line.
 Power Defense Polymer can block the water and sebum which can let the eye makeup last for longer hours.
 
@@ -695,7 +695,7 @@ How to Use : Use for lips. Use the product as many times as necessary. LES BEIGE
 
 Ingredient : Moringa butter helps to hydrate and nourish, reinforcing the natural protective film of the lips, ensuring moisture and comfort for the lips. Anti-oxidant Vitamin E derivative, protects the lips against harmful agents from the environment.","status"=>"1","price"=>"34.7","discount"=>"1","quantity"=>"43","tax"=>"23","feature"=>"","mark"=>"5"],
 
-            ["name"=>"Laneige Lip Sleeping Mask Apple Flavor 20g Lip Sleeping Mask [Apple Lime]","category_id"=>"4","brand_id"=>"19","description"=>"Laneige Lip Sleeping Mask is one of the best-selling and most loved product lines of the high-end cosmetic brand Laneige, which helps to care for lips even during sleep, gently removing dead cells. on the lips, while moisturizing the lips to always look smooth, plump and elastic with the gentle fragrance of natural extracts. Experience the feeling of soft care lips at night with Laneige Lip Sleeping Mask with 4 fresh scents like berry, grapefruit, apple and vanilla!
+            ["name"=>"Laneige Lip Sleeping Mask Apple Flavor 20g Lip Sleeping Mask [Apple Lime]","category_id"=>"4","brand_id"=>"18","description"=>"Laneige Lip Sleeping Mask is one of the best-selling and most loved product lines of the high-end cosmetic brand Laneige, which helps to care for lips even during sleep, gently removing dead cells. on the lips, while moisturizing the lips to always look smooth, plump and elastic with the gentle fragrance of natural extracts. Experience the feeling of soft care lips at night with Laneige Lip Sleeping Mask with 4 fresh scents like berry, grapefruit, apple and vanilla!
 
 How to Use : Before going to bed, use a special spatula to apply a generous amount to the lips. The next morning, gently wipe off with a cotton ball or tissue.
 

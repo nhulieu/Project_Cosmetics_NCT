@@ -5,16 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\user;
 use Illuminate\Http\Request;
+
 class UserController extends Controller
 {
-    public function profile() {
+    public function profile()
+    {
         $profile = user::where('type', '=', 1)->first();
         return view('admin.profile.profile', [
             'profile' => $profile
         ]);
     }
 
-    public function updatePasswordProfile(Request $request) {
+    public function updatePasswordProfile(Request $request)
+    {
 
         $this->validate($request, [
             'password' => 'required|required_with:confirmPassword|same:confirmPassword',
@@ -26,6 +29,7 @@ class UserController extends Controller
         $profile->update([
             'password' => $info['password'],
         ]);
-        return back()->with('success','Update successfully !');    }
+        return back()->with('success', 'Update successfully !');
+    }
 }
 

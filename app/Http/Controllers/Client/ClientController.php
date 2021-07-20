@@ -463,18 +463,18 @@ class ClientController extends Controller
         $verification_code = random_int(100000, 999999);
         user::where("email", "=", $email)->update(['verifyCode'=>$verification_code]);
 
-//        $email_param = new \stdClass();
-//        $email_param->receiver = $user->lname." ".$user->fname;
-//        $email_param->code = $verification_code;
-//
-//        $newEmail = new VerifyCodeMail($email_param);
-//        $newEmail->emailParam = $email_param;
-//
-//        Mail::to($email)->send($newEmail);
-//
-//        if (Mail::failures()) {
-//            return response()->json(["result"=>"Fail to send verification code to Mail !", "code"=>$verification_code]);
-//        }
+        $email_param = new \stdClass();
+        $email_param->receiver = $user->lname." ".$user->fname;
+        $email_param->code = $verification_code;
+
+        $newEmail = new VerifyCodeMail($email_param);
+        $newEmail->emailParam = $email_param;
+
+        Mail::to($email)->send($newEmail);
+
+        if (Mail::failures()) {
+            return response()->json(["result"=>"Fail to send verification code to Mail !", "code"=>$verification_code]);
+        }
 
         return response()->json(["result"=>"A verification code has been sent to your mail !", "code"=>$verification_code]);
     }

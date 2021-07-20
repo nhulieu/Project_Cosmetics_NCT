@@ -13,7 +13,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -24,39 +24,39 @@
 
     {{-- CleaveJS --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"
-        integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/alertify.css') }}" />
+    <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/alertify.css') }}"/>
     <!-- include a theme, can be included into the core instead of 2 separate files -->
-    <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/themes/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('lib/alertifyjs/css/themes/bootstrap.css') }}"/>
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    @include('layout.header')
-    <!-- /HEADER-->
+<!-- HEADER -->
+@include('layout.header')
+<!-- /HEADER-->
 
-    <!-- NAVIGATION -->
-    @include('layout.navigation')
-    <!-- /NAVIGATION-->
+<!-- NAVIGATION -->
+@include('layout.navigation')
+<!-- /NAVIGATION-->
 
-    <!-- section -->
-    @yield('content')
-    <!-- /section -->
+<!-- section -->
+@yield('content')
+<!-- /section -->
 
-    <!-- FOOTER -->
-    @include('layout.footer')
-    <!-- /FOOTER-->
+<!-- FOOTER -->
+@include('layout.footer')
+<!-- /FOOTER-->
 
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
