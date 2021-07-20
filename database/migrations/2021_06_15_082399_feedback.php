@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class Feedback extends Migration
@@ -14,7 +15,7 @@ class Feedback extends Migration
     public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
-            $table->increments('id');            
+            $table->increments('id');
             $table->boolean('retired')->nullable()->default(false);
             $table->string('email', 100)->nullable(false);
             $table->string('name', 100)->nullable(false);
