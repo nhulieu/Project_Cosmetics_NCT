@@ -20,7 +20,8 @@ class order_item extends Model
         return $this->belongsTo(order::class);
     }
 
-    public function cart(){
+    public function cart()
+    {
         $order = order::find($this->order_id);
         return $order;
     }

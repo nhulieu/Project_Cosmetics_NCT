@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class brand extends Model
 {
     protected $table = "brand";
-    protected $fillable = ['id', 'name', 'slogan', 'logo' , 'created_at', 'updated_at' ,'retired'];
+    protected $fillable = ['id', 'name', 'slogan', 'logo', 'created_at', 'updated_at', 'retired'];
     public $timestamps = true;
 
     public function products()
@@ -15,7 +15,8 @@ class brand extends Model
         return $this->hasMany(product::class);
     }
 
-    public function coupons(){
+    public function coupons()
+    {
         return $this->hasMany(coupon::class);
     }
 }
