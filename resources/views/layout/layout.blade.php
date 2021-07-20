@@ -76,7 +76,9 @@
                 data: {}
             }).done(function(response) {
                 if (response.result === "") {
-                    location.href = "/signin";
+                    if(!response.exist){
+                        location.href = "/signin";
+                    }
                 } else {
                     if(response.result !== ""){
                         $('#wishlist-amount').html(response.result)

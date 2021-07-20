@@ -64,19 +64,19 @@
                 <div class="col-lg-4">
                     <div class="cart-page-inner">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="coupon">
-                                    <input id="coupon-code" type="text" placeholder="Coupon Code">
-                                    <button onclick="applyCoupon()">Apply Code</button>
-                                </div>
-                            </div>
+{{--                            <div class="col-md-12">--}}
+{{--                                <div class="coupon">--}}
+{{--                                    <input id="coupon-code" type="text" placeholder="Coupon Code">--}}
+{{--                                    <button onclick="applyCoupon()">Apply Code</button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="col-md-12">
                                 <div class="cart-summary">
                                     <div class="cart-content">
                                         <h1>Cart Summary</h1>
                                         @if(isset(json_decode($order)->items))
                                             <p>Sub Total<span id="order_total_value">${{number_format(json_decode($order)->totalPrice, 2)}}</span></p>
-                                            <p>Coupon<span>-$<b id="coupon_value">0</b></span></p>
+                                            <p>Shipping Cost<span>-$<b id="coupon_value">0</b></span></p>
                                             <h2>Grand Total<span id="order_grand_total_value">${{number_format(json_decode($order)->totalPrice, 2)}}</span></h2>
                                         @else
                                             <p>Sub Total<span>$0</span></p>

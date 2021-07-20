@@ -41,7 +41,6 @@
                         @else
                             <span id="wishlist-amount">(0)</span>
                         @endif
-
                     </a>
                     <a href="/order" class="btn cart">
                         <i class="fa fa-shopping-cart"></i>

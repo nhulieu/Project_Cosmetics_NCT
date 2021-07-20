@@ -188,21 +188,21 @@ class ClientController extends Controller
         $user = user::where("username", "=", $username)->first();
 
         if ($user === null) {
-            return response()->json(["result" => ""]);
+            return response()->json(["result" => "", "exist"=>false]);
         }
 
         $existed_wish_item = wishlist::where([["user_id", "=", $user->id], ["product_id", "=", $id]])->first();
 
         if ($existed_wish_item !== null) {
             $request->session()->put("wishlistAmount", $user->wishlists->count());
-            return response()->json(["result" => ""]);
+            return response()->json(["result" => "", "exist"=>true]);
         }
         $wish_item = new wishlist();
         $wish_item->user_id = $user->id;
         $wish_item->product_id = $id;
         $wish_item->save();
         $request->session()->put("wishlistAmount", $user->wishlists->count());
-        return response()->json(["result" => $user->wishlists->count()]);
+        return response()->json(["result" => $user->wishlists->count(), "exist"=>false]);
     }
 
     public function deleteWishlist(Request $request, $id)
