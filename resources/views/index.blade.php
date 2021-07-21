@@ -41,24 +41,12 @@
                     <div class="header-slider normal-slider">
                         <div class="header-slider-item">
                             <img src="img/slider-1.png" alt="Slider Image"/>
-                            <div class="header-slider-caption">
-                                <p>The best-buy brand</p>
-                                <a class="btn" href="/product-list"><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                            </div>
                         </div>
                         <div class="header-slider-item">
                             <img src="img/slider-2.png" alt="Slider Image"/>
-                            <div class="header-slider-caption">
-                                <p>The best sale all the time</p>
-                                <a class="btn" href="/product-list"><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                            </div>
-                        </div>
+                                                    </div>
                         <div class="header-slider-item">
                             <img src="img/slider-3.png" alt="Slider Image"/>
-                            <div class="header-slider-caption">
-                                <p>It's your shopping time</p>
-                                <a class="btn" href="/product-list"><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -213,7 +201,7 @@
     <div class="featured-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h1 id="best-sale">Best sale</h1>
+                <h1 id="best-sale" style="font-size: xx-large">Best sale</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
                 @foreach(\App\Models\product::where("mark", "=", 5)->take(5)->get() as $item)
@@ -273,7 +261,7 @@
     <div class="recent-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h1 id="new-arrival">New Arrival</h1>
+                <h1 id="new-arrival" style="font-size: xx-large">New Arrival</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
                 @foreach(\App\Models\product::where("status", "=", 2)->take(5)->get() as $item)

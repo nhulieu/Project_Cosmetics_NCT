@@ -1,4 +1,4 @@
-@extends('layout.layout')
+//;@extends('layout.layout')
 @section('title', 'Bill')
 @section('content')
 <!-- Breadcrumb Start -->

@@ -118,10 +118,9 @@
 
                         <div class="tab-content">
                             <div id="description" class="container tab-pane active">
-                                <h4>Product description</h4>
-                                <p>
-                                    {{$product->description}}
-                                </p>
+                                <div class="input-group">
+                                    <textarea rows="25" readonly="true" class="form-control text-dark text-field" aria-label="With textarea">{{$product->description}}</textarea>
+                                </div>
                             </div>
                             <div id="reviews" class="container tab-pane fade">
                                 <div id="review_list">
@@ -170,13 +169,13 @@
 
                 <div class="product">
                     <div class="section-header">
-                        <h1>Related Products</h1>
+                        <h1 style="font-size: xx-large">Related Products</h1>
                     </div>
 
                     <div class="row align-items-center product-slider product-slider-3-ext">
                         @foreach(\App\Models\product::where("category_id","=",$product->category_id)->get() as $item)
-                            <div class="col-lg-3">
-                                <div class="product-item">
+{{--                            <div class="col-lg-4">--}}
+                                <div class="product-item mr-3">
                                     <div class="product-title">
                                         <a href="{{url('/product-details/'.$item->id)}}">{{$item->name}}</a>
                                         <div class="ratting">
@@ -203,7 +202,7 @@
                                         <a buyNow="true" canBuy="{{$item->status == 1}}" product="{{$item->toJson()}}" class="btn add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
-                            </div>
+{{--                            </div>--}}
                         @endforeach
                     </div>
                 </div>
