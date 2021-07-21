@@ -101,6 +101,7 @@ Route::prefix('admin')->name('admin')->middleware('checkUser')
         Route::post('product/postUpdate/{id}', [AdminProductController::class, 'postUpdate']);
         Route::get('product/delete/{id}', [AdminProductController::class, 'delete']);
         Route::get('product/view/{id}', [AdminProductController::class, 'viewDetail']);
+        Route::get('product/deleteSure/{id}', [AdminProductController::class, 'deleteProduct']);
 
         //Images
         Route::get('product/image/{id}', [AdminProductController::class, 'image']);

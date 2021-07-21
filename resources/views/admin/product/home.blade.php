@@ -49,7 +49,8 @@
                                href="{{ url('/admin/product/update/' .$product->id) }}">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()" href="">
+                            <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()"
+                               href="{{ url('admin/product/delete/' .$product->id) }}">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </div>
@@ -67,7 +68,6 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->getCategory() }}</td>
                     <td>{{ $product->getBrand() }}</td>
-                    <td title="{{ $product->description }}">{...}</td>
                     <td>{{ $product->getStatus() }}</td>
                     <td>{{ $product->price." $"}}</td>
 

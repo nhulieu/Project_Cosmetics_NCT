@@ -133,7 +133,5 @@
             blocks: [3],
             numericOnly: true
         });
-
-
     </script>
 @endsection
