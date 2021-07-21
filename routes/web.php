@@ -9,6 +9,7 @@ use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,15 +62,21 @@ Route::post('/go-bill', [ClientController::class, "goBill"]);
 Route::post('/update-order', [ClientController::class, "updateOrder"]);
 Route::get('/order-details/{id}', [ClientController::class, "orderDetails"]);
 Route::get('/product-details/{id}', [ClientController::class, "productDetails"]);
-Route::post('/apply-coupon', [ClientController::class, "applyCoupon"]);
+Route::post('/apply-chart', [ClientController::class, "applyCoupon"]);
 Route::post('/submitReview/{id}', [ClientController::class, "submitReview"]);
 
 
 Route::prefix('admin')->name('admin')->middleware('checkUser')
     ->group(function () {
+        //Chart
+        Route::get('/dashboard', [DashboardController::class, 'index']);
+
         //profile
         Route::get('/profile', [UserController::class, 'profile']);
         Route::post('/updateProfile', [UserController::class, 'updatePasswordProfile']);
+        Route::get('logout',[DashboardController::class, 'logout']);
+
+
         //Category
         Route::get('/category', [CategoryController::class, 'home']);
         Route::get('/category/create', [CategoryController::class, 'create']);
@@ -101,6 +108,7 @@ Route::prefix('admin')->name('admin')->middleware('checkUser')
         Route::post('product/postUpdate/{id}', [AdminProductController::class, 'postUpdate']);
         Route::get('product/delete/{id}', [AdminProductController::class, 'delete']);
         Route::get('product/view/{id}', [AdminProductController::class, 'viewDetail']);
+        Route::get('product/deleteSure/{id}', [AdminProductController::class, 'deleteProduct']);
 
         //Images
         Route::get('product/image/{id}', [AdminProductController::class, 'image']);

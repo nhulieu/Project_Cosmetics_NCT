@@ -101,7 +101,7 @@ class ClientController extends Controller
                 $request->session()->save();
                 // dd($request->session()->get("user"));
                 if ($final_user->type == 1) {
-                    return redirect("admin/product");
+                    return redirect("admin/dashboard");
                 } else {
                     return redirect("/");
                 }

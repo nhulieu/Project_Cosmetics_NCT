@@ -239,15 +239,15 @@ return [
         ],
         ['header' => 'account_settings'],
         [
+            'text' => ' Dashboard',
+            'url' => 'http://127.0.0.1:8000/admin/dashboard',
+            'icon' => 'fas fa-tachometer-alt',
+        ],
+        [
             'text' => 'profile',
             'url' => 'http://127.0.0.1:8000/admin/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-//        [
-//            'text' => 'change_password',
-//            'url' => 'admin/settings',
-//            'icon' => 'fas fa-fw fa-lock',
-//        ],
         [
             'text' => 'Products',
             'icon' => 'fas fa-fw fa-share',
@@ -323,6 +323,11 @@ return [
                     'url' => 'http://localhost:8000/admin/feedback',
                 ]
             ],
+        ],
+        [
+            'text' => ' Log out',
+            'url' => 'http://127.0.0.1:8000/admin/logout',
+            'icon' => 'fas fa-sign-out-alt',
         ],
 
 //        ['header' => 'labels'],
@@ -414,11 +419,11 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
                 ],
             ],

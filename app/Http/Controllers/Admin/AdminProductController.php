@@ -229,5 +229,10 @@ class AdminProductController extends Controller
         ]);
     }
 
+    public function deleteProduct($id)
+    {
+        product::where("id", $id)->delete();
+        return redirect()->action([AdminProductController::class,'home']);
+    }
 
 }

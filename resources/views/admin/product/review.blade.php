@@ -37,7 +37,7 @@
                                         <td>{{ $review->mark }}</td>
                                         <td class="text-center">
                                             <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()"
-                                               href="{{ url("product/deleteComment/".$review->id) }}">
+                                               href="{{ url("admin/product/deleteReviews/".$review->id) }}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>
