@@ -30,7 +30,6 @@
                 <th class="text-center">Name</th>
                 <th class="text-center">Category</th>
                 <th class="text-center">Brand</th>
-                <th class="text-center">Description</th>
                 <th class="text-center">Status</th>
                 <th class="text-center">Price</th>
             </tr>

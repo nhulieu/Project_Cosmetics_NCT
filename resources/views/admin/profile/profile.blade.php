@@ -3,45 +3,45 @@
 
 @section('content')
     <div class="container">
-        <h3 class="text-center">Profile {{ $profile->username }}</h3>
+        <h3 class="text-center">Admin Profile</h3>
         <form action="{{ url('admin/updateProfile') }}" method="post">
             @csrf
             <div class="form-group">
                 <div class="row">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Name</span>
+                    <div class="input-group mb-3 pl-2">
+                        <span class="input-group-text text-bold">Name</span>
                         <input readonly type="text" class="form-control"
                                value="{{ $profile->fname }} {{ $profile->lname }}">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Email</span>
+                    <div class="input-group mb-3 pl-2">
+                        <span class="input-group-text text-bold">Email</span>
                         <input readonly type="text" class="form-control" value="{{ $profile->email }}">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Username</span>
+                    <div class="input-group mb-3 pl-2">
+                        <span class="input-group-text text-bold">Username</span>
                         <input readonly type="text" class="form-control" value="{{ $profile->username }}">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Address</span>
+                    <div class="input-group mb-3 pl-2">
+                        <span class="input-group-text text-bold">Address</span>
                         <input readonly type="text" class="form-control" value="{{ $profile->address }}">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Phone</span>
+                    <div class="input-group mb-3 pl-2">
+                        <span class="input-group-text text-bold">Phone</span>
                         <input readonly type="text" class="form-control" value="{{ $profile->phone }}">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col">
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Password</span>
+                            <span class="input-group-text text-bold">Password</span>
                             <input name="password" type="password" id="password" class="form-control"
                                    placeholder="password">
                         </div>
@@ -52,7 +52,7 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="col-6">
+                    <div class="col">
                         <div class="input-group mb-3">
                             <input name="confirmPassword" type="password" id="confirmPassword" class="form-control"
                                    placeholder="confirm password">
